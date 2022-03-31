@@ -1,0 +1,32 @@
+.layout-container {
+  display: grid;
+  min-height: 100%;
+  grid-auto-flow: column;
+  grid-template-areas:
+      'header'
+      'content';
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr;
+
+  app-header {
+    grid-area: header;
+  }
+
+  .content-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    grid-area: content;
+
+    main {
+      display: grid;
+      grid-template-columns: 1fr 5fr 1fr;
+    }
+
+    app-footer {
+      grid-area: footer;
+      bottom: 0;
+    }
+  }
+
+}
