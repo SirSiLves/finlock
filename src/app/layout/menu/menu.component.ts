@@ -24,30 +24,16 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-home',
         items: [
           {
-            label: 'New',
-            icon: 'pi pi-fw pi-plus',
-            items: [
-              {
-                label: 'Bookmark',
-                icon: 'pi pi-fw pi-bookmark'
-              },
-              {
-                label: 'Video',
-                icon: 'pi pi-fw pi-video'
-              },
-
-            ]
+            label: 'News',
+            routerLink: '/news'
           },
           {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-trash'
+            label: 'Impressum',
+            routerLink: '/impressum'
           },
           {
-            separator: true
-          },
-          {
-            label: 'Export',
-            icon: 'pi pi-fw pi-external-link'
+            label: 'Datenschutzerklärung',
+            routerLink: '/dsgvo'
           }
         ]
       },
@@ -56,22 +42,21 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-pencil',
         items: [
           {
-            label: 'Left',
-            icon: 'pi pi-fw pi-align-left'
+            label: 'Kauf',
+            routerLink: '/auftragserfassung/kauf'
           },
           {
-            label: 'Right',
-            icon: 'pi pi-fw pi-align-right'
+            label: 'Verkauf',
+            routerLink: '/auftragserfassung/verkauf'
           },
           {
-            label: 'Center',
-            icon: 'pi pi-fw pi-align-center'
+            label: 'Warenkorb',
+            routerLink: '/auftragserfassung/warenkorb'
           },
           {
-            label: 'Justify',
-            icon: 'pi pi-fw pi-align-justify'
+            label: 'Bestellungen',
+            routerLink: '/auftragserfassung/bestellungen'
           },
-
         ]
       },
       {
@@ -79,75 +64,33 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-desktop',
         items: [
           {
-            label: 'New',
-            icon: 'pi pi-fw pi-user-plus',
-
+            label: 'Auftragsliste',
+            routerLink: '/auftragsverwaltung/auftragsliste'
           },
           {
-            label: 'Delete',
-            icon: 'pi pi-fw pi-user-minus',
-
+            label: 'Wareneingang',
+            routerLink: '/auftragsverwaltung/wareneingang'
           },
           {
-            label: 'Search',
-            icon: 'pi pi-fw pi-users',
-            items: [
-              {
-                label: 'Filter',
-                icon: 'pi pi-fw pi-filter',
-                items: [
-                  {
-                    label: 'Print',
-                    icon: 'pi pi-fw pi-print'
-                  }
-                ]
-              },
-              {
-                icon: 'pi pi-fw pi-bars',
-                label: 'List'
-              }
-            ]
-          }
+            label: 'Warenausgang',
+            routerLink: '/auftragsverwaltung/warenausgang'
+          },
         ]
       },
       {
         label: 'Lagerverwaltung',
         icon: 'pi pi-fw pi-table',
-        items: [
-          {
-            label: 'Edit',
-            icon: 'pi pi-fw pi-pencil',
-            items: [
-              {
-                label: 'Save',
-                icon: 'pi pi-fw pi-calendar-plus'
-              },
-              {
-                label: 'Delete',
-                icon: 'pi pi-fw pi-calendar-minus'
-              },
-
-            ]
-          },
-          {
-            label: 'Archieve',
-            icon: 'pi pi-fw pi-calendar-times',
-            items: [
-              {
-                label: 'Remove',
-                icon: 'pi pi-fw pi-calendar-minus'
-              }
-            ]
-          }
-        ]
+        routerLink: '/lagerverwaltung'
       },
       {
         label: 'Kontakt',
-        icon: 'pi pi-fw pi-file-o'
+        icon: 'pi pi-fw pi-file-o',
+        routerLink: 'kontakt'
       },
       {
         label: 'Profil',
-        icon: 'pi pi-fw pi-user'
+        icon: 'pi pi-fw pi-user',
+        routerLink: 'profil'
       }
     ];
   }
