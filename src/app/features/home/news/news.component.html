@@ -1,0 +1,13 @@
+<h1>Neuigkeiten</h1>
+
+<ul *ngFor="let text of textList">
+  <li>
+    <div class="title">
+      <h3 class="m-0">{{text.title}}</h3>
+      <p>{{text.createTime | date:'dd.MM.yyyy'}}</p>
+    </div>
+    <p>{{text.text}}</p>
+  </li>
+</ul>
+
+
