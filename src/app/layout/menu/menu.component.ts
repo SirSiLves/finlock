@@ -42,12 +42,8 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-pencil',
         items: [
           {
-            label: 'Kauf',
-            routerLink: '/auftragserfassung/kauf'
-          },
-          {
-            label: 'Verkauf',
-            routerLink: '/auftragserfassung/verkauf'
+            label: 'Einkaufen',
+            routerLink: '/auftragserfassung/einkaufen'
           },
           {
             label: 'Warenkorb',

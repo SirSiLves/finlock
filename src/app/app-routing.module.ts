@@ -11,6 +11,9 @@ const routes: Routes = [
     component: NewsComponent
   },
   {
+    path: 'auftragserfassung', loadChildren: () => import('./features/auftragserfassung/auftragserfassung.module').then(m => m.AuftragserfassungModule)
+  },
+  {
     path: '', pathMatch: 'full', redirectTo: 'home'
   },
   {
