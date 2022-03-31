@@ -2,7 +2,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: solid #151515;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 2px 8px 0;
+  z-index: 900;
 
   .container {
     display: flex;
