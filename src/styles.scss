@@ -1,4 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: var(--surface-a);
+  color: var(--text-color);
+  font-family: var(--font-family);
+}
+
 html,
 body {
   height: 100%;
@@ -6,3 +13,11 @@ body {
   overflow-x: hidden;
   transition: background-color 200ms, color 200ms, border-color 200ms, box-shadow 200ms;
 }
+
+// START MENU AREA
+.p-menubar {
+  background-color: var(--surface-a);
+  border-radius: 0;
+  border: 0;
+}
+// END MENU AREA

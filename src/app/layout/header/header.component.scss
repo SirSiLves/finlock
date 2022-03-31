@@ -1,3 +1,30 @@
 :host {
-  background: green;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid #151515;
+
+  .container {
+    display: flex;
+    align-items: center;
+
+    .search {
+      input {
+        width: 20rem;
+      }
+    }
+
+    .shopping {
+      font-size: 1.5rem;
+    }
+
+    .profil {
+      display: flex;
+      align-items: center;
+
+      i {
+        font-size: 1.5rem;
+      }
+    }
+  }
 }
