@@ -17,6 +17,8 @@ import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule } from '@angular/platform-browser';
 import { InputErrorMessageComponent } from '../../shared/components/input-error-message/input-error-message.component';
+import { PickListModule } from 'primeng/picklist';
+import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenkorb-details.component';
 
 
 @NgModule({
@@ -25,7 +27,8 @@ import { InputErrorMessageComponent } from '../../shared/components/input-error-
     WarenkorbComponent,
     BestellungenComponent,
     AuftragserfassungComponent,
-    InputErrorMessageComponent
+    InputErrorMessageComponent,
+    WarenkorbDetailsComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,7 @@ import { InputErrorMessageComponent } from '../../shared/components/input-error-
     InputNumberModule,
     ReactiveFormsModule,
     FormsModule,
+    PickListModule,
   ]
 })
 export class AuftragserfassungModule { }

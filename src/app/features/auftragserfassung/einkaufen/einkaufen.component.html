@@ -1,51 +1,60 @@
-<ng-container *ngIf="typ">
-  <p-table [value]="productList" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
-           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-           [rowsPerPageOptions]="[10,25,50]">
-    <ng-template pTemplate="colgroup">
-      <colgroup>
-        <col style="width: 30%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 10%;">
-      </colgroup>
-    </ng-template>
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Anzahl</th>
-        <th>Einheit</th>
-        <th>Kategorie</th>
-        <th>Total</th>
-        <th>Aktion</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-      <tr>
-        <td>
-          <p-inputNumber #anzahl inputId="anzahl" [ngModel]="0"></p-inputNumber>
-          <app-input-error-message *ngIf="anzahl.value * product.wert > 100000000">
-            Das Total übersteigt 100 Mio.
-          </app-input-error-message>
-        </td>
-        <td>{{product.produkt}}</td>
-        <td>{{product.kategorie}}</td>
-        <td>{{product.wert * anzahl.value | currency:'CHF':'symbol'}}</td>
-        <td class="flex align-items-center justify-content-center" [pTooltip]="'In den Warenkorb'">
-          <button (click)="addToShoppingCard(product, anzahl)"
-                  [disabled]="!anzahl.value"
-                  class="p-button-warning"
-                  pButton
-                  type="button">
-            <i class="pi pi-shopping-cart"></i>
-            <i class="pi pi-plus" [style]="'font-size:0.6rem'"></i>
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+<p-pickList [source]="sourceProducts"
+            [target]="targetProducts"
+            sourceHeader="Verfügbar"
+            targetHeader="Ausgewählt"
+            [responsive]="true"
+            [sourceStyle]="{'height':'400px'}"
+            [targetStyle]="{'height':'400px'}"
+            filterBy="produkt"
+            sourceFilterPlaceholder="Suche nach Produkt"
+            targetFilterPlaceholder="Suche nach Produkt">
+  <ng-template let-product pTemplate="item">
+    <div class="product-item">
+      <div class="formgrid grid p-fluid align-items-center">
+        <div class="field mb-0 col-12 xl:col-5">
+          <p-inputNumber inputId="anzahl"
+                         [ngModel]="product.anzahl"
+                         (onInput)="onInputAnzahl(product, $event)"></p-inputNumber>
 
-</ng-container>
+        </div>
+        <div class="field mb-0 col-12 xl:col-1">
+          <p [style]="'font-size:1.25rem'">x</p>
+        </div>
+        <div class="field mb-0 col-12 xl:col-2">
+          <h4 class="m-0">{{product.produkt}} {{product.kategorie}}</h4>
+        </div>
+        <div class="field mb-0 col-12 xl:col-4" pTooltip="{{product.anzahl * product.wert | currency: 'CHF'}}">
+          <p class="total">Total: {{product.anzahl * product.wert | currency: 'CHF'}}</p>
+        </div>
+
+      </div>
+
+      <app-input-error-message *ngIf="product.anzahl * product.wert > 100000000">
+        Das Total übersteigt 100 Mio.
+      </app-input-error-message>
+    </div>
+  </ng-template>
+</p-pickList>
+
+<div class="warenkorb">
+  <button pButton
+          pRipple
+          type="button"
+          label="In den Warenkorb"
+          class="mt-5"
+          [style]="'height:3rem'"
+          (click)="addToShoppingCart()"
+          [disabled]="isAddToShoppingCartEnabled()"
+          icon="pi pi-shopping-cart" iconPos="left"></button>
+  <button pButton
+          pRipple
+          type="button"
+          label="Warenkorb öffnen"
+          class="mt-5 ml-4"
+          [style]="'height:3rem'"
+          [routerLink]="'/auftragserfassung/warenkorb'"
+          icon="pi pi-folder-open" iconPos="left"></button>
+</div>
 
 
 

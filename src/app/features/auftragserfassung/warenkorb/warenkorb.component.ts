@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { WarenkorbService } from './warenkorb.service';
 
 @Component({
   selector: 'app-warenkorb',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class WarenkorbComponent {
 
-  constructor() { }
+  shoppingCardBuy = this.warenkorbService.shoppingCartBuy;
+  shoppingCardSell = this.warenkorbService.shoppingCartSell;
+
+  constructor(
+    private warenkorbService: WarenkorbService
+  ) { }
 
 }

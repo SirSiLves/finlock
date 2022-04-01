@@ -1,37 +1,37 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WarenkorbService {
 
-  shoppingCardBuy: any[] = [];
-  shoppingCardSell: any[]= [];
+  total: Subject<number> = new Subject<number>();
+
+  shoppingCartBuy: any[] = [];
+  shoppingCartSell: any[] = [];
 
   constructor(
     private messageService: MessageService
-  ) { }
-
-  addToBuyList(product: any, anzahl: number): void {
-    this.shoppingCardBuy.push({
-      anzahl: anzahl,
-      produkt: product
-    });
-
-    this.messageService.add(
-      {severity:'success', detail: 'Zum Warenkorb hinzugefügt'}
-    );
+  ) {
   }
 
-  addToSellList(product: any, anzahl: number): void {
-    this.shoppingCardSell.push({
-      anzahl: anzahl,
-      produkt: product
-    });
+  addToBuyList(products: any): void {
+    this.shoppingCartBuy.push(products);
+    this.addCompleted();
+  }
 
+  addToSellList(products: any): void {
+    this.shoppingCartSell.push(products);
+    this.addCompleted();
+  }
+
+  addCompleted(): void {
     this.messageService.add(
-      {severity:'success', detail: 'Zum Warenkorb hinzugefügt'}
+      {severity: 'success', detail: 'Zum Warenkorb hinzugefügt'}
     );
+
+    this.total.next(this.shoppingCartBuy.length + this.shoppingCartSell.length);
   }
 }
