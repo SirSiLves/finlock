@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import versions, { TsAppVersion } from '../../../_versions';
+
 
 @Component({
   selector: 'app-footer',
@@ -8,6 +10,7 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 
   currentDate = new Date();
+  version: TsAppVersion = versions;
 
   constructor() { }
 
