@@ -6,14 +6,11 @@ import { productBuyList, productSellList } from '@test/products-data';
   templateUrl: './auftragserfassung.component.html',
   styleUrls: ['./auftragserfassung.component.scss']
 })
-export class AuftragserfassungComponent implements OnInit {
+export class AuftragserfassungComponent {
 
   productBuyList = productBuyList;
   productSellList = productSellList;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { textList } from '@test/news-data';
 
 @Component({
@@ -6,13 +6,10 @@ import { textList } from '@test/news-data';
   templateUrl: './news.component.html',
   styleUrls: ['./news.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class NewsComponent {
 
-  textList = textList
+  textList = textList;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import versions, { TsAppVersion } from '../../../_versions';
 
 
@@ -7,14 +7,12 @@ import versions, { TsAppVersion } from '../../../_versions';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
 
   currentDate = new Date();
   version: TsAppVersion = versions;
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
 
 }

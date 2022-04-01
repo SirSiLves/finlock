@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { productBuyList } from '@test/products-data';
+import { Component, Input } from '@angular/core';
 import { WarenkorbService } from '../warenkorb/warenkorb.service';
+import { InputNumber } from 'primeng/inputnumber';
 
 @Component({
   selector: 'app-einkaufen',
   templateUrl: './einkaufen.component.html',
   styleUrls: ['./einkaufen.component.scss']
 })
-export class EinkaufenComponent implements OnInit {
+export class EinkaufenComponent {
 
   @Input() typ?: 'KAUF' | 'VERKAUF';
   @Input() productList?: any;
@@ -17,15 +17,15 @@ export class EinkaufenComponent implements OnInit {
   ) {
   }
 
-  ngOnInit(): void {
-
-  }
-
-  addToShoppingCard(product: any): void {
+  addToShoppingCard(product: any, anzahl: InputNumber): void {
     if (this.typ === 'KAUF') {
-      this.warenkorbService.addToBuyList(product);
+      this.warenkorbService.addToBuyList(product, anzahl.value);
     } else if (this.typ === 'VERKAUF') {
-      this.warenkorbService.addToSellList(product);
+      this.warenkorbService.addToSellList(product, anzahl.value);
     }
+
+    anzahl.writeValue(0);
   }
+
+
 }

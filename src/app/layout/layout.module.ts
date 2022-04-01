@@ -7,6 +7,8 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 
@@ -21,7 +23,9 @@ import { ButtonModule } from 'primeng/button';
     CommonModule,
     MenubarModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    ToastModule,
+    BrowserAnimationsModule
   ],
   exports: [
     LayoutComponent

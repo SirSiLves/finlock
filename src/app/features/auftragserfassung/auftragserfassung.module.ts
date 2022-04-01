@@ -11,6 +11,12 @@ import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
 import { TabViewModule } from 'primeng/tabview';
 import { AuftragserfassungComponent } from './auftragserfassung.component';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ToastModule } from 'primeng/toast';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserModule } from '@angular/platform-browser';
+import { InputErrorMessageComponent } from '../../shared/components/input-error-message/input-error-message.component';
 
 
 @NgModule({
@@ -18,7 +24,8 @@ import { AuftragserfassungComponent } from './auftragserfassung.component';
     EinkaufenComponent,
     WarenkorbComponent,
     BestellungenComponent,
-    AuftragserfassungComponent
+    AuftragserfassungComponent,
+    InputErrorMessageComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +34,10 @@ import { AuftragserfassungComponent } from './auftragserfassung.component';
     RippleModule,
     TableModule,
     TooltipModule,
-    TabViewModule
+    TabViewModule,
+    InputNumberModule,
+    ReactiveFormsModule,
+    FormsModule,
   ]
 })
 export class AuftragserfassungModule { }
