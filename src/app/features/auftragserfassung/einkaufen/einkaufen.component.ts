@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { productList } from '@test/products-data';
+import { Component, Input, OnInit } from '@angular/core';
+import { productBuyList } from '@test/products-data';
 import { WarenkorbService } from '../warenkorb/warenkorb.service';
 
 @Component({
@@ -9,8 +9,8 @@ import { WarenkorbService } from '../warenkorb/warenkorb.service';
 })
 export class EinkaufenComponent implements OnInit {
 
-  typ: 'KAUF' | 'VERKAUF' | undefined;
-  productList = productList;
+  @Input() typ?: 'KAUF' | 'VERKAUF';
+  @Input() productList?: any;
 
   constructor(
     private warenkorbService: WarenkorbService

@@ -13,10 +13,14 @@ body {
   transition: background-color 200ms, color 200ms, border-color 200ms, box-shadow 200ms;
 }
 
-// START MENU AREA
+// Menu
 .p-menubar {
   background-color: var(--surface-a);
   border-radius: 0;
   border: 0;
 }
-// END MENU AREA
+
+// Einkaufen
+.p-tabview-nav, .p-tabview .p-tabview-nav li {
+  padding: 3px 0 0 3px;
+}

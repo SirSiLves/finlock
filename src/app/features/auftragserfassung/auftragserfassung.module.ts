@@ -9,13 +9,16 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { TableModule } from 'primeng/table';
 import { TooltipModule } from 'primeng/tooltip';
+import { TabViewModule } from 'primeng/tabview';
+import { AuftragserfassungComponent } from './auftragserfassung.component';
 
 
 @NgModule({
   declarations: [
     EinkaufenComponent,
     WarenkorbComponent,
-    BestellungenComponent
+    BestellungenComponent,
+    AuftragserfassungComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +26,8 @@ import { TooltipModule } from 'primeng/tooltip';
     ButtonModule,
     RippleModule,
     TableModule,
-    TooltipModule
+    TooltipModule,
+    TabViewModule
   ]
 })
 export class AuftragserfassungModule { }

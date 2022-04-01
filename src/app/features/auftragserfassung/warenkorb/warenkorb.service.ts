@@ -5,13 +5,16 @@ import { Injectable } from '@angular/core';
 })
 export class WarenkorbService {
 
+  shoppingCardBuy: any[] = [];
+  shoppingCardSell: any[]= [];
+
   constructor() { }
 
   addToBuyList(product: any): void {
-    console.log('kauf', product);
+    this.shoppingCardBuy.push(product);
   }
 
   addToSellList(product: any): void {
-    console.log('verkauf', product);
+    this.shoppingCardSell.push(product);
   }
 }

@@ -1,33 +1,4 @@
-<h1>Einkaufen</h1>
-
-<div class="actions" *ngIf="!typ">
-  <button class="flex-grow-1 flex align-items-center justify-content-center"
-          pButton
-          pRipple
-          type="button"
-          label="KAUF"
-          (click)="typ = 'KAUF'"></button>
-  <button class="flex-grow-1 flex align-items-center justify-content-center"
-          pButton
-          pRipple
-          type="button"
-          label="VERKAUF"
-          (click)="typ = 'VERKAUF'"></button>
-</div>
-
-
 <ng-container *ngIf="typ">
-  <div class="subtitle">
-    <h2>{{typ === 'KAUF' ? 'Kauf' : 'Verkauf'}}</h2>
-    <button pButton
-            pRipple
-            type="button"
-            icon="pi pi-arrow-left"
-            class="p-button-rounded"
-            [pTooltip]="'Zurück'"
-            (click)="typ = undefined"></button>
-  </div>
-
   <p-table [value]="productList" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[10,25,50]">
     <ng-template pTemplate="colgroup">
@@ -35,12 +6,14 @@
         <col style="width: 45%;">
         <col style="width: 45%;">
         <col style="width: 10%;">
+        <col style="width: 10%;">
       </colgroup>
     </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th>Einheit</th>
         <th>Kategorie</th>
+        <th>INPUT FELD mit ANZAHL</th>
         <th>Aktion</th>
       </tr>
     </ng-template>
@@ -48,6 +21,7 @@
       <tr>
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
+        <td>ANZAHL???</td>
         <td class="flex align-items-center justify-content-center" [pTooltip]="'In den Warenkorb'">
           <button pButton type="button" class="p-button-warning" (click)="addToShoppingCard(product)">
             <i class="pi pi-shopping-cart"></i>
@@ -59,4 +33,6 @@
   </p-table>
 
 </ng-container>
+
+
 

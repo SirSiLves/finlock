@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { EinkaufenComponent } from './einkaufen/einkaufen.component';
 import { WarenkorbComponent } from './warenkorb/warenkorb.component';
 import { BestellungenComponent } from './bestellungen/bestellungen.component';
+import { AuftragserfassungComponent } from './auftragserfassung.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'einkaufen',
-    component: EinkaufenComponent
+    component: AuftragserfassungComponent
   },
   {
     path: 'warenkorb',
