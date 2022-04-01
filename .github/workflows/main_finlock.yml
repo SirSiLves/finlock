@@ -47,7 +47,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: node-app
+          name: finlock
           expire-in: 0 # Setting this to 0 will delete all artifacts
 
       - name: unzip artifact for deployment
