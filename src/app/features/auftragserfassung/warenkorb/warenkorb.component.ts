@@ -1,6 +1,7 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from './warenkorb.service';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { shareReplay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-warenkorb',
@@ -9,8 +10,10 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class WarenkorbComponent implements OnInit {
 
-  shoppingCartBuy$?: BehaviorSubject<any>;
-  shoppingCartSell$?: BehaviorSubject<any>;
+  shoppingCartBuy$?: Observable<any>;
+  shoppingCartSell$?: Observable<any>;
+
+  send = false;
 
   constructor(
     private warenkorbService: WarenkorbService
@@ -18,8 +21,8 @@ export class WarenkorbComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.shoppingCartBuy$ = this.warenkorbService.shoppingCartBuy$;
-    this.shoppingCartSell$ = this.warenkorbService.shoppingCartSell$;
+    this.shoppingCartBuy$ = this.warenkorbService.shoppingCartBuy$.pipe(shareReplay());
+    this.shoppingCartSell$ = this.warenkorbService.shoppingCartSell$.pipe(shareReplay());
   }
 
   removeFromShoppingCartBuy($event: any): void {
@@ -28,5 +31,10 @@ export class WarenkorbComponent implements OnInit {
 
   removeFromShoppingCartSell($event: any): void {
     this.warenkorbService.removeFromShoppingCartSell($event);
+  }
+
+  sendProducts(): void {
+    this.warenkorbService.reset();
+    this.send = true;
   }
 }

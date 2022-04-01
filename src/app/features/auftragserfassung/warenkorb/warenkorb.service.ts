@@ -38,4 +38,9 @@ export class WarenkorbService {
   removeFromShoppingCartSell(product: any): void {
     this.shoppingCartSell$.next(this.shoppingCartSell$.value.filter((p: any) => p !== product));
   }
+
+  reset(): void {
+    this.shoppingCartBuy$.next([]);
+    this.shoppingCartSell$.next([]);
+  }
 }

@@ -36,12 +36,19 @@
   </ng-template>
 </p-pickList>
 
-<div class="warenkorb">
+<div class="warenkorb mt-5">
+  <button pButton
+          pRipple
+          type="button"
+          label="Warenkorb öffnen"
+          class="p-button-secondary"
+          [routerLink]="'/auftragserfassung/warenkorb'"
+          [style]="'height:3rem'"
+          icon="pi pi-external-link" iconPos="left"></button>
   <button pButton
           pRipple
           type="button"
           label="In den Warenkorb"
-          class="mt-5"
           [style]="'height:3rem'"
           (click)="addToShoppingCart()"
           [disabled]="isAddToShoppingCartEnabled()"

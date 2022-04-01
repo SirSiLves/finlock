@@ -20,6 +20,7 @@ import { InputErrorMessageComponent } from '../../shared/components/input-error-
 import { PickListModule } from 'primeng/picklist';
 import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenkorb-details.component';
 import { FieldsetModule } from 'primeng/fieldset';
+import { CardModule } from 'primeng/card';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { FieldsetModule } from 'primeng/fieldset';
     FormsModule,
     PickListModule,
     FieldsetModule,
+    CardModule,
   ]
 })
 export class AuftragserfassungModule { }
