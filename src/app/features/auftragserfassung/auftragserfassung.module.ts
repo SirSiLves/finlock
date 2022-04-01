@@ -19,6 +19,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { InputErrorMessageComponent } from '../../shared/components/input-error-message/input-error-message.component';
 import { PickListModule } from 'primeng/picklist';
 import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenkorb-details.component';
+import { FieldsetModule } from 'primeng/fieldset';
 
 
 @NgModule({
@@ -42,6 +43,7 @@ import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenko
     ReactiveFormsModule,
     FormsModule,
     PickListModule,
+    FieldsetModule,
   ]
 })
 export class AuftragserfassungModule { }

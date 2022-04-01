@@ -3,7 +3,7 @@
 <div class="container">
   <div class="shopping" [pTooltip]="'Warenkorb öffnen'" [routerLink]="'auftragserfassung/warenkorb'">
     <i class="pi pi-shopping-cart mr-1"></i>
-    <p class="mr-5">{{shoppingCardSize | async | number}}</p>
+    <p class="mr-5">{{shoppingCardSize$ | async | number}}</p>
   </div>
 
   <span class="p-input-icon-left mr-5 search">

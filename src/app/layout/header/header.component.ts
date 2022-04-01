@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from '../../features/auftragserfassung/warenkorb/warenkorb.service';
-import { Subject } from 'rxjs';
+import { combineLatest, Observable } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -10,14 +11,19 @@ import { Subject } from 'rxjs';
 export class HeaderComponent implements OnInit {
 
   search: string = "";
-  shoppingCardSize?: Subject<number>;
+  shoppingCardSize$?: Observable<any>;
 
   constructor(
     private warenkorbService: WarenkorbService
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.shoppingCardSize = this.warenkorbService.total;
+    this.shoppingCardSize$ = combineLatest(
+      [this.warenkorbService.shoppingCartBuy$, this.warenkorbService.shoppingCartSell$]
+    ).pipe(
+      map(([buy, sell]) => buy.length + sell.length)
+    );
   }
 
 }

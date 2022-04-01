@@ -1,29 +1,27 @@
 import { Injectable } from '@angular/core';
 import { MessageService } from 'primeng/api';
-import { Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class WarenkorbService {
 
-  total: Subject<number> = new Subject<number>();
-
-  shoppingCartBuy: any[] = [];
-  shoppingCartSell: any[] = [];
+  shoppingCartBuy$ = new BehaviorSubject<any>([]);
+  shoppingCartSell$ = new BehaviorSubject<any>([]);
 
   constructor(
     private messageService: MessageService
   ) {
   }
 
-  addToBuyList(products: any): void {
-    this.shoppingCartBuy.push(products);
+  addToBuyList(products: any[]): void {
+    this.shoppingCartBuy$.next(this.shoppingCartBuy$.value.concat(products));
     this.addCompleted();
   }
 
-  addToSellList(products: any): void {
-    this.shoppingCartSell.push(products);
+  addToSellList(products: any[]): void {
+    this.shoppingCartSell$.next(this.shoppingCartSell$.value.concat(products));
     this.addCompleted();
   }
 
@@ -31,7 +29,13 @@ export class WarenkorbService {
     this.messageService.add(
       {severity: 'success', detail: 'Zum Warenkorb hinzugefügt'}
     );
+  }
 
-    this.total.next(this.shoppingCartBuy.length + this.shoppingCartSell.length);
+  removeFromShoppingCartBuy(product: any): void {
+    this.shoppingCartBuy$.next(this.shoppingCartBuy$.value.filter((p: any) => p !== product));
+  }
+
+  removeFromShoppingCartSell(product: any): void {
+    this.shoppingCartSell$.next(this.shoppingCartSell$.value.filter((p: any) => p !== product));
   }
 }

@@ -1,48 +1,14 @@
 <h1>Warenkorb</h1>
 
-<ng-container *ngIf="shoppingCardBuy">
-  <p-table [value]="shoppingCardBuy" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
-           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-           [rowsPerPageOptions]="[10,25,50]">
-    <ng-template pTemplate="colgroup">
-      <colgroup>
-        <col style="width: 30%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 20%;">
-        <col style="width: 10%;">
-      </colgroup>
-    </ng-template>
-    <ng-template pTemplate="header">
-      <tr>
-        <th>Anzahl</th>
-        <th>Einheit</th>
-        <th>Kategorie</th>
-        <th>Total</th>
-        <th>Aktion</th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product>
-      <tr>
-        <td>
-          <p-inputNumber #anzahl inputId="anzahl" [ngModel]="0"></p-inputNumber>
-          <app-input-error-message *ngIf="anzahl.value * product.wert > 100000000">
-            Das Total übersteigt 100 Mio.
-          </app-input-error-message>
-        </td>
-        <td>{{product.produkt}}</td>
-        <td>{{product.kategorie}}</td>
-        <td>{{product.wert * anzahl.value | currency:'CHF':'symbol'}}</td>
-        <td class="flex align-items-center justify-content-center" [pTooltip]="'In den Warenkorb'">
-          <button class="p-button-warning"
-                  pButton
-                  type="button">
-            <i class="pi pi-shopping-cart"></i>
-            <i class="pi pi-plus" [style]="'font-size:0.6rem'"></i>
-          </button>
-        </td>
-      </tr>
-    </ng-template>
-  </p-table>
+<div>
+  <p-fieldset legend="Kauf" [toggleable]="true" *ngIf="shoppingCartBuy$ | async as productList">
+    <app-warenkorb-details [productList]="productList" (remove$)="removeFromShoppingCartBuy($event)"></app-warenkorb-details>
+  </p-fieldset>
+</div>
 
-</ng-container>
+<div class="mt-5">
+  <p-fieldset legend="Verkauf" [toggleable]="true" class="mt-5" *ngIf="shoppingCartSell$ | async as productList" >
+    <app-warenkorb-details [productList]="productList" (remove$)="removeFromShoppingCartSell($event)"></app-warenkorb-details>
+  </p-fieldset>
+</div>
+
