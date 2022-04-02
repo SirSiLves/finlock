@@ -5,17 +5,25 @@ import { AuftragsverwaltungRoutingModule } from './auftragsverwaltung-routing.mo
 import { AuftragsverwaltungComponent } from './auftragsverwaltung.component';
 import { CardModule } from 'primeng/card';
 import { AuftragslisteComponent } from './auftragsliste/auftragsliste.component';
+import { TableModule } from 'primeng/table';
+import { TooltipModule } from 'primeng/tooltip';
+import { WareneingangComponent } from './wareneingang/wareneingang.component';
+import { WarenausgangComponent } from './warenausgang/warenausgang.component';
 
 
 @NgModule({
   declarations: [
     AuftragsverwaltungComponent,
-    AuftragslisteComponent
+    AuftragslisteComponent,
+    WareneingangComponent,
+    WarenausgangComponent
   ],
   imports: [
     CommonModule,
     AuftragsverwaltungRoutingModule,
-    CardModule
+    CardModule,
+    TableModule,
+    TooltipModule
   ]
 })
 export class AuftragsverwaltungModule { }
