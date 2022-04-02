@@ -7,7 +7,7 @@
     <p-inputNumber inputId="auftragId"
                    placeholder="Auftrag ID"
                    [formControl]="suche"
-                   (onInput)="openAuftrag($event)"></p-inputNumber>
+                   (onInput)="openAuftrag($event.value)"></p-inputNumber>
   </span>
     <div>
       <button *ngIf="auftrag"
@@ -22,7 +22,31 @@
 
   <div *ngIf="auftrag; else empty">
     <app-auftragsliste-details [auftrag]="auftrag"></app-auftragsliste-details>
-    <app-grobkontrolle *ngIf="isGrobkontrolle()" [auftragList]="auftrag.produkte"></app-grobkontrolle>
+
+    <div class="mt-4">
+      <p-accordion>
+        <p-accordionTab [(selected)]="activeState[0]">
+          <ng-template pTemplate="header">
+            <ng-container *ngIf="!activeState[0]">Grobkontrolle</ng-container>
+          </ng-template>
+          <app-grobkontrolle [data]="auftrag"></app-grobkontrolle>
+        </p-accordionTab>
+
+        <p-accordionTab [(selected)]="activeState[1]">
+          <ng-template pTemplate="header">
+            <ng-container *ngIf="!activeState[1]">Feinkontrolle</ng-container>
+          </ng-template>
+          <h1>TODO</h1>
+        </p-accordionTab>
+
+        <p-accordionTab [(selected)]="activeState[2]">
+          <ng-template pTemplate="header">
+            <ng-container *ngIf="!activeState[2]">Einlagerung</ng-container>
+          </ng-template>
+          <h1>TODO</h1>
+        </p-accordionTab>
+      </p-accordion>
+    </div>
   </div>
 
   <ng-template #empty>

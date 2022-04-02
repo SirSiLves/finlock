@@ -17,6 +17,10 @@ import { RippleModule } from 'primeng/ripple';
 import { AuftragslisteDetailsComponent } from './auftragsliste-details/auftragsliste-details.component';
 import { GrobkontrolleComponent } from './wareneingang/grobkontrolle/grobkontrolle.component';
 import { AuftragserfassungModule } from '../auftragserfassung/auftragserfassung.module';
+import { InputTextareaModule } from 'primeng/inputtextarea';
+import { DropdownModule } from 'primeng/dropdown';
+import { AccordionModule } from 'primeng/accordion';
+import { FeinkontrolleComponent } from './wareneingang/feinkontrolle/feinkontrolle.component';
 
 
 @NgModule({
@@ -26,7 +30,8 @@ import { AuftragserfassungModule } from '../auftragserfassung/auftragserfassung.
     WareneingangComponent,
     WarenausgangComponent,
     GrobkontrolleComponent,
-    AuftragslisteDetailsComponent
+    AuftragslisteDetailsComponent,
+    FeinkontrolleComponent
   ],
   imports: [
     CommonModule,
@@ -40,7 +45,10 @@ import { AuftragserfassungModule } from '../auftragserfassung/auftragserfassung.
     ReactiveFormsModule,
     ButtonModule,
     RippleModule,
-    AuftragserfassungModule
+    AuftragserfassungModule,
+    InputTextareaModule,
+    DropdownModule,
+    AccordionModule
   ]
 })
 export class AuftragsverwaltungModule { }

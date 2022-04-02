@@ -21,6 +21,7 @@ export class WareneingangComponent implements OnInit, OnDestroy {
     suche: [null, [Validators.required]]
   });
 
+  activeState: boolean[] = [false, false, false];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -40,12 +41,17 @@ export class WareneingangComponent implements OnInit, OnDestroy {
 
   findAuftrag(): void {
     this.activatedRoute.url.pipe(takeUntil(this.onDestroy$)).subscribe(url =>
-      this.auftrag = auftraege.filter((a: any) => a.id === Number(url[1]?.path) && a.typ === 'KAUF').shift()
+      this.openAuftrag(Number(url[1]?.path))
     );
   }
 
-  openAuftrag($event: any): void {
-    this.auftrag = auftraege.filter((a: any) => a.id === $event.value && a.typ === 'KAUF').shift();
+  openAuftrag(id: number): void {
+    this.auftrag = auftraege.filter((a: any) => a.id === id && a.typ === 'KAUF').shift();
+    this.location.replaceState("/auftragsverwaltung/wareneingang/" + id);
+
+    this.activeState[0] = this.isGrobkontrolle();
+    this.activeState[1] = this.isFeinkontrolle();
+    this.activeState[2] = this.isEinlagerung();
   }
 
   get suche(): FormControl {
@@ -58,5 +64,13 @@ export class WareneingangComponent implements OnInit, OnDestroy {
 
   isGrobkontrolle(): boolean {
     return this.auftrag.status === 'NEU';
+  }
+
+  isFeinkontrolle(): boolean {
+    return this.auftrag.status === 'GROBKONTROLLIERT';
+  }
+
+  isEinlagerung(): boolean {
+    return this.auftrag.status === 'EINGELAGERT';
   }
 }
