@@ -11,8 +11,8 @@ export interface TsAppVersion {
 export const versions: TsAppVersion = {
     version: '0.0.0',
     name: 'finlock',
-    versionDate: '2022-04-01T20:28:19.051Z',
-    gitCommitHash: 'a09ff73',
-    versionLong: '0.0.0-a09ff73',
+    versionDate: '2022-04-02T08:48:34.890Z',
+    gitCommitHash: '02ac0bf',
+    versionLong: '0.0.0-02ac0bf',
 };
 export default versions;
