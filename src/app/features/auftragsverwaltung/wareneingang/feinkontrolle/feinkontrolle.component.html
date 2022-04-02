@@ -14,14 +14,14 @@
 
     <div class="field col-6 xl:col-3 mt-3">
       <span class="p-float-label">
-        <p-dropdown [formControl]="status" id=status [options]="statusList" optionLabel="name"></p-dropdown>
+        <p-dropdown [formControl]="status" id=status [options]="statusListOptions" optionLabel="name"></p-dropdown>
         <label for="status">Status</label>
       </span>
     </div>
 
     <div class="field col-6 xl:col-3 mt-3">
       <span class="p-float-label">
-        <p-dropdown id="bearbeiter" [options]="bearbeiter" optionLabel="name"></p-dropdown>
+        <p-dropdown id="bearbeiter" [formControl]="bearbeiter" [options]="bearbeiterOptions" optionLabel="name"></p-dropdown>
         <label for="bearbeiter">Bearbeiter</label>
       </span>
     </div>

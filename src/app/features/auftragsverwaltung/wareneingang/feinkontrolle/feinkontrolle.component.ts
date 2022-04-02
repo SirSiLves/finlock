@@ -16,7 +16,7 @@ export class FeinkontrolleComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
-    if (this.status.value.value === 'FEINKONTROLLIERT') {
+    if (this.status.value.value === 'FEINKONTROLLIERT' || this.status.value.value === 'EINGELAGERT') {
       this.auftragList.forEach((a: any) => {
         this.getFormAnzahl(a).patchValue(a.anzahl);
         this.getFormZustand(a).patchValue(this.zustandOptions[1]);
@@ -34,8 +34,8 @@ export class FeinkontrolleComponent {
   countTotal = 0;
   total = 0;
 
-  statusList = statusList;
-  bearbeiter = bearbeiter;
+  statusListOptions = statusList;
+  bearbeiterOptions = bearbeiter;
   zustandOptions = [
     {name: 'Defekt', value: 0},
     {name: 'Gebraucht', value: 1},
@@ -50,10 +50,11 @@ export class FeinkontrolleComponent {
   private fillFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       bemerkung: [''],
-      status: [this.auftrag.status]
+      status: [this.auftrag.status],
+      bearbeiter: [Validators.required]
     });
 
-    this.status.patchValue(this.statusList.filter(s => s.value === this.auftrag.status)[0]);
+    this.status.patchValue(this.statusListOptions.filter(s => s.value === this.auftrag.status)[0]);
 
     this.auftragList.forEach((a: any) => {
       this.formGroup?.addControl(
@@ -84,10 +85,13 @@ export class FeinkontrolleComponent {
     return this.formGroup?.controls.status as FormControl;
   }
 
+  get bearbeiter(): FormControl {
+    return this.formGroup?.controls.bearbeiter as FormControl;
+  }
+
   setCountedTotal(): void {
     this.countTotal = this.auftragList.map((a: any) => this.getFormAnzahl(a).value * a.wert).reduce((a1: any, a2: any) => a1 + a2);
   }
-
 
   save(): void {
     this.auftrag.status = this.status.value.value;

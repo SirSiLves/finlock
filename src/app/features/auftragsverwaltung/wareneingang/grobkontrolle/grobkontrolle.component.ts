@@ -17,7 +17,7 @@ export class GrobkontrolleComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
-    if (this.status.value.value === 'GROBKONTROLLIERT') {
+    if (this.status.value.value === 'GROBKONTROLLIERT' || this.status.value.value === 'FEINKONTROLLIERT' || this.status.value.value === 'EINGELAGERT') {
       this.auftragList.forEach((a: any) => {
         this.getForm(a).patchValue(a.anzahl);
       });
@@ -34,8 +34,8 @@ export class GrobkontrolleComponent {
   countTotal = 0;
   total = 0;
 
-  statusList = statusList;
-  bearbeiter = bearbeiter;
+  statusListOptions = statusList;
+  bearbeiterOptions = bearbeiter;
 
   constructor(
     private formBuilder: FormBuilder
@@ -46,9 +46,10 @@ export class GrobkontrolleComponent {
     this.formGroup = this.formBuilder.group({
       bemerkung: [''],
       status: [null],
+      bearbeiter: [Validators.required]
     });
 
-    this.status.patchValue(this.statusList.filter(s => s.value === this.auftrag.status)[0]);
+    this.status.patchValue(this.statusListOptions.filter(s => s.value === this.auftrag.status)[0]);
 
     this.auftragList.forEach((a: any) => {
       this.formGroup?.addControl(
@@ -70,10 +71,13 @@ export class GrobkontrolleComponent {
     return this.formGroup?.controls.status as FormControl;
   }
 
+  get bearbeiter(): FormControl {
+    return this.formGroup?.controls.bearbeiter as FormControl;
+  }
+
   setCountedTotal(): void {
     this.countTotal = this.auftragList.map((a: any) => this.getForm(a).value * a.wert).reduce((a1: any, a2: any) => a1 + a2);
   }
-
 
   save(): void {
     this.auftrag.status = this.status.value.value;

@@ -29,8 +29,8 @@ export class EinlagerungComponent {
   auftragList: any;
   formGroup?: FormGroup;
 
-  statusList = statusList;
-  bearbeiter = bearbeiter;
+  statusListOptions = statusList;
+  bearbeiterOptions = bearbeiter;
   lagerRegal = [
     {name: 'A1 Nord', value: 'A1N'},
     {name: 'A2 Nord', value: 'A2N'},
@@ -48,10 +48,11 @@ export class EinlagerungComponent {
   private fillFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       bemerkung: [''],
-      status: [this.auftrag.status]
+      status: [this.auftrag.status],
+      bearbeiter: [Validators.required]
     });
 
-    this.status.patchValue(this.statusList.filter(s => s.value === this.auftrag.status)[0]);
+    this.status.patchValue(this.statusListOptions.filter(s => s.value === this.auftrag.status)[0]);
 
     this.auftragList.forEach((a: any) => {
       this.formGroup?.addControl(
@@ -72,6 +73,10 @@ export class EinlagerungComponent {
 
   get status(): FormControl {
     return this.formGroup?.controls.status as FormControl;
+  }
+
+  get bearbeiter(): FormControl {
+    return this.formGroup?.controls.bearbeiter as FormControl;
   }
 
   save(): void {

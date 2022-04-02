@@ -24,7 +24,7 @@
     <app-auftragsliste-details [auftrag]="auftrag"></app-auftragsliste-details>
 
     <div class="mt-4">
-      <p-accordion>
+      <p-accordion [multiple]="true">
         <p-accordionTab [(selected)]="activeState[0]">
           <ng-template pTemplate="header">
             <ng-container *ngIf="!activeState[0]">Grobkontrolle</ng-container>
