@@ -6,13 +6,10 @@ import { auftraege } from '@test/auftraege-data';
   templateUrl: './auftragsverwaltung.component.html',
   styleUrls: ['./auftragsverwaltung.component.scss']
 })
-export class AuftragsverwaltungComponent implements OnInit {
+export class AuftragsverwaltungComponent {
 
   auftraegeList = auftraege;
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
