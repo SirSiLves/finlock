@@ -2,7 +2,7 @@ import { gegenparteien, raiffeisen } from '@test/gegenparteien-data';
 
 export const auftraege = [
   {
-    id: 0,
+    id: 1,
     createDate: new Date(),
     status: 'NEU',
     typ: 'KAUF',
@@ -24,7 +24,7 @@ export const auftraege = [
     ]
   },
   {
-    id: 1,
+    id: 2,
     createDate: new Date(),
     status: 'NEU',
     typ: 'KAUF',
@@ -52,7 +52,7 @@ export const auftraege = [
     ]
   },
   {
-    id: 2,
+    id: 3,
     createDate: new Date(),
     status: 'NEU',
     typ: 'VERKAUF',

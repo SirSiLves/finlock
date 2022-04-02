@@ -40,7 +40,10 @@
     </ng-template>
     <ng-template pTemplate="body" let-auftrag>
       <tr>
-        <td><i class="pi pi-pencil" pTooltip="Auftrag öffnen"></i></td>
+        <td>
+          <i *ngIf="auftrag.typ === 'KAUF'" class="pi pi-pencil" pTooltip="Auftrag öffnen" [routerLink]="['../wareneingang', auftrag.id]"></i>
+          <i *ngIf="auftrag.typ === 'VERKAUF'" class="pi pi-pencil" pTooltip="Auftrag öffnen" [routerLink]="['../warenausgang', auftrag.id]"></i>
+        </td>
         <td>{{auftrag.id}}</td>
         <td>{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
         <td>{{auftrag.status}}</td>

@@ -1,1 +1,33 @@
-<p>wareneingang works!</p>
+<h1>Wareneingang</h1>
+
+<p-card>
+  <div class="header">
+      <span class="p-input-icon-right mr-5 search">
+    <i class="pi pi-search"></i>
+    <p-inputNumber inputId="auftragId"
+                   placeholder="Auftrag ID"
+                   [formControl]="suche"
+                   (onInput)="openAuftrag($event)"></p-inputNumber>
+  </span>
+    <div>
+      <button *ngIf="auftrag"
+              pButton
+              pRipple
+              pTooltip="Zurück"
+              type="button"
+              (click)="back()"
+              icon="pi pi-arrow-left" iconPos="left"></button>
+    </div>
+  </div>
+
+  <div *ngIf="auftrag; else empty">
+    <app-auftragsliste-details [auftrag]="auftrag"></app-auftragsliste-details>
+    <app-grobkontrolle *ngIf="isGrobkontrolle()" [auftragList]="auftrag.produkte"></app-grobkontrolle>
+  </div>
+
+  <ng-template #empty>
+    <div *ngIf="suche.touched">
+      <h3>Kein Auftrag mit gesuchter ID gefunden!</h3>
+    </div>
+  </ng-template>
+</p-card>

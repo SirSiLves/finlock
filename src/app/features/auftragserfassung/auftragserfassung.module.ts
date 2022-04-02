@@ -25,14 +25,17 @@ import { DropdownModule } from 'primeng/dropdown';
 
 
 @NgModule({
-  declarations: [
-    EinkaufenComponent,
-    WarenkorbComponent,
-    BestellungenComponent,
-    AuftragserfassungComponent,
-    InputErrorMessageComponent,
-    WarenkorbDetailsComponent
-  ],
+    declarations: [
+        EinkaufenComponent,
+        WarenkorbComponent,
+        BestellungenComponent,
+        AuftragserfassungComponent,
+        InputErrorMessageComponent,
+        WarenkorbDetailsComponent
+    ],
+    exports: [
+        InputErrorMessageComponent
+    ],
     imports: [
         CommonModule,
         AuftragserfassungRoutingModule,

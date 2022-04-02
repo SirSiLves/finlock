@@ -31,7 +31,6 @@ export class EinkaufenComponent implements OnInit {
   ngOnInit(): void {
     this.resetSourceProductList();
     this.setGegenparteiDropDown();
-
   }
 
   private resetSourceProductList(): void {

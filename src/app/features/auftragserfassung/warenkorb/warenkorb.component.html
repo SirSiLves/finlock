@@ -1,6 +1,6 @@
 <h1>Warenkorb</h1>
 
-<p-card *ngIf="(shoppingCartBuy$ | async).length > 0 && (shoppingCartBuy$ | async).length > 0; else emptyOrSend">
+<p-card *ngIf="(shoppingCartBuy$ | async).length > 0 || (shoppingCartSell$ | async).length > 0; else emptyOrSend">
   <div>
     <p-fieldset legend="Kauf" [toggleable]="true" *ngIf="shoppingCartBuy$ | async as productList">
       <app-warenkorb-details *ngIf="productList.length > 0; else emptyBuy"
