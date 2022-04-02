@@ -43,7 +43,7 @@
           <ng-template pTemplate="header">
             <ng-container *ngIf="!activeState[2]">Einlagerung</ng-container>
           </ng-template>
-          <h1>TODO</h1>
+          <app-einlagerung [data]="auftrag" (save$)="save($event)"></app-einlagerung>
         </p-accordionTab>
       </p-accordion>
     </div>
