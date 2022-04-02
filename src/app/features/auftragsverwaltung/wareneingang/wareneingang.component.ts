@@ -46,7 +46,12 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   }
 
   openAuftrag(id: number): void {
+    if (!id) return;
+
     this.auftrag = auftraege.filter((a: any) => a.id === id && a.typ === 'KAUF').shift();
+
+    if (!this.auftrag) return;
+
     this.location.replaceState("/auftragsverwaltung/wareneingang/" + id);
 
     this.activeState[0] = this.isGrobkontrolle();
@@ -75,7 +80,7 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   }
 
   save($event: any): void {
-    auftraege.filter((a:any) => a.id === $event.id)[0].status = $event.status;
+    auftraege.filter((a: any) => a.id === $event.id)[0].status = $event.status;
     this.openAuftrag(this.auftrag.id);
   }
 }

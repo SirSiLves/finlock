@@ -73,7 +73,7 @@
             type="button"
             label="Speichern"
             (click)="save()"
-            [disabled]="formGroup.invalid || formGroup.pristine || (countTotal !== total && !bemerkung.value)"
+            [disabled]="formGroup.invalid || this.formGroup.pristine"
             icon="pi pi-save" iconPos="left"></button>
   </div>
 </ng-container>
