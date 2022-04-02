@@ -81,11 +81,11 @@ export class GrobkontrolleComponent {
     if (this.status.value.value === 'GROBKONTROLLIERT') {
       this.formGroup?.disable();
       this.auftrag.inBearbeitung = false;
+      this.save$.emit(this.auftrag);
     } else {
       this.auftrag.inBearbeitung = true;
     }
 
-    this.save$.emit(this.auftrag);
     this.formGroup?.markAsUntouched();
     this.formGroup?.markAsPristine();
   }

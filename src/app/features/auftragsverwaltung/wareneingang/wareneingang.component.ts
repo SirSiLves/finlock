@@ -48,15 +48,20 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   openAuftrag(id: number): void {
     if (!id) return;
 
-    this.auftrag = auftraege.filter((a: any) => a.id === id && a.typ === 'KAUF').shift();
+    this.auftrag = undefined;
 
-    if (!this.auftrag) return;
+    // Workaround for Change Detection on @Input
+    setTimeout(() => {
+      this.auftrag = auftraege.filter((a: any) => a.id === id && a.typ === 'KAUF').shift();
 
-    this.location.replaceState("/auftragsverwaltung/wareneingang/" + id);
+      if (!this.auftrag) return;
 
-    this.activeState[0] = this.isGrobkontrolle();
-    this.activeState[1] = this.isFeinkontrolle();
-    this.activeState[2] = this.isEinlagerung();
+      this.location.replaceState("/auftragsverwaltung/wareneingang/" + id);
+
+      this.activeState[0] = this.isGrobkontrolle();
+      this.activeState[1] = this.isFeinkontrolle();
+      this.activeState[2] = this.isEinlagerung();
+    }, 1);
   }
 
   get suche(): FormControl {
@@ -76,9 +81,7 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   }
 
   save($event: any): void {
-    const filterElement = auftraege.filter((a: any) => a.id === $event.id)[0];
-    filterElement.status = $event.status;
-
+    auftraege.filter((a: any) => a.id === $event.id)[0].status = $event.status;
     this.openAuftrag(this.auftrag.id);
   }
 }

@@ -50,7 +50,7 @@ export class FeinkontrolleComponent {
   private fillFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       bemerkung: [''],
-      status: [null]
+      status: [this.auftrag.status]
     });
 
     this.status.patchValue(this.statusList.filter(s => s.value === this.auftrag.status)[0]);
@@ -95,11 +95,11 @@ export class FeinkontrolleComponent {
     if (this.status.value.value === 'FEINKONTROLLIERT') {
       this.formGroup?.disable();
       this.auftrag.inBearbeitung = false;
+      this.save$.emit(this.auftrag);
     } else {
       this.auftrag.inBearbeitung = true;
     }
 
-    this.save$.emit(this.auftrag);
     this.formGroup?.markAsUntouched();
     this.formGroup?.markAsPristine();
   }
