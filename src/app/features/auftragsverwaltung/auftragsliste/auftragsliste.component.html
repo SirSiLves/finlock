@@ -46,7 +46,7 @@
         </td>
         <td>{{auftrag.id}}</td>
         <td>{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
-        <td>{{auftrag.status}}</td>
+        <td>{{getStatus(auftrag.status)}}</td>
         <td>{{auftrag.typ}}</td>
         <td>{{auftrag.wert | currency:'CHF'}}</td>
         <td>{{auftrag.gegenpartei.name}}</td>

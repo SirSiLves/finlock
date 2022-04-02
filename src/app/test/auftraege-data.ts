@@ -70,6 +70,22 @@ export const auftraege = [
   {
     id: 4,
     createDate: new Date(),
+    status: 'GROBKONTROLLIERT',
+    typ: 'KAUF',
+    wert: 50000,
+    gegenpartei: gegenparteien[0],
+    produkte: [
+      {
+        produkt: '50',
+        kategorie: 'CHF',
+        wert: 50,
+        anzahl: 1000
+      }
+    ]
+  },
+  {
+    id: 99,
+    createDate: new Date(),
     status: 'NEU',
     typ: 'VERKAUF',
     wert: 500000,

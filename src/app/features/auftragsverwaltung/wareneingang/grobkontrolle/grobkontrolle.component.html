@@ -9,7 +9,7 @@
 
     <div class="field col-4 xl:col-4">
       <span class="p-float-label">
-        <p-dropdown id=status [options]="statusList" optionLabel="name"></p-dropdown>
+        <p-dropdown [formControl]="status" id=status [options]="statusList" optionLabel="name"></p-dropdown>
         <label for="status">Status</label>
       </span>
     </div>
@@ -65,12 +65,15 @@
             type="button"
             class="mr-4"
             label="Abbrechen"
+            (click)="cancel()"
+            [disabled]="formGroup.pristine || !formGroup.touched"
             icon="pi pi-times" iconPos="left"></button>
     <button pButton
             pRipple
             type="button"
             label="Speichern"
-            [disabled]="formGroup.invalid || (countTotal !== total && !bemerkung.value)"
+            (click)="save()"
+            [disabled]="formGroup.invalid || formGroup.pristine || (countTotal !== total && !bemerkung.value)"
             icon="pi pi-save" iconPos="left"></button>
   </div>
 </ng-container>

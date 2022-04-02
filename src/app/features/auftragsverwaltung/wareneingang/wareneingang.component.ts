@@ -73,4 +73,9 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   isEinlagerung(): boolean {
     return this.auftrag.status === 'EINGELAGERT';
   }
+
+  save($event: any): void {
+    auftraege.filter((a:any) => a.id === $event.id)[0].status = $event.status;
+    this.openAuftrag(this.auftrag.id);
+  }
 }

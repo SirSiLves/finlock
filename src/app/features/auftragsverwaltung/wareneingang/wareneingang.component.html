@@ -29,7 +29,7 @@
           <ng-template pTemplate="header">
             <ng-container *ngIf="!activeState[0]">Grobkontrolle</ng-container>
           </ng-template>
-          <app-grobkontrolle [data]="auftrag"></app-grobkontrolle>
+          <app-grobkontrolle [data]="auftrag" (save$)="save($event)"></app-grobkontrolle>
         </p-accordionTab>
 
         <p-accordionTab [(selected)]="activeState[1]">

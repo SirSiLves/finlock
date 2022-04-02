@@ -1,17 +1,18 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { statusList } from '@test/status-data';
 
 @Component({
   selector: 'app-auftragsliste',
   templateUrl: './auftragsliste.component.html',
   styleUrls: ['./auftragsliste.component.scss']
 })
-export class AuftragslisteComponent implements OnInit {
+export class AuftragslisteComponent {
 
   @Input() itemList?: any[];
 
   constructor() { }
 
-  ngOnInit(): void {
+  getStatus(status: string): string {
+    return statusList.filter((s: any) => s.value === status)[0].name;
   }
-
 }
