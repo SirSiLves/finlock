@@ -1,1 +1,98 @@
-<p>feinkontrolle works!</p>
+<h2>Feinkontrolle</h2>
+
+<ng-container *ngIf="formGroup">
+  <div class="formgrid grid mt-5 p-fluid">
+    <div class="field col-6 xl:col-3">
+      <label for="ga">Gezählter Auftragswert</label>
+      <h4 id="ga" class="m-0">{{countTotal | currency:'CHF'}}</h4>
+    </div>
+
+    <div class="field col-6 xl:col-3">
+      <label for="bearbeitung">In Bearbeitung</label>
+      <h4 id="bearbeitung" class="m-0">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</h4>
+    </div>
+
+    <div class="field col-6 xl:col-3 mt-3">
+      <span class="p-float-label">
+        <p-dropdown [formControl]="status" id=status [options]="statusList" optionLabel="name"></p-dropdown>
+        <label for="status">Status</label>
+      </span>
+    </div>
+
+    <div class="field col-6 xl:col-3 mt-3">
+      <span class="p-float-label">
+        <p-dropdown id="bearbeiter" [options]="bearbeiter" optionLabel="name"></p-dropdown>
+        <label for="bearbeiter">Bearbeiter</label>
+      </span>
+    </div>
+  </div>
+
+  <h4 class="title-detail">Auftragsdetails</h4>
+
+  <p-table [value]="auftragList" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>Einheit</th>
+        <th>Kategorie</th>
+        <th>Anzahl gemäss Auftrag</th>
+        <th>Gezählte Anzahl</th>
+        <th>Zustand</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product>
+      <tr>
+        <td>{{product.produkt}}</td>
+        <td>{{product.kategorie}}</td>
+        <td>{{product.anzahl | number}}</td>
+        <td>
+          <p-inputNumber (focusout)="setCountedTotal()" [formControl]="getFormAnzahl(product)"
+                         inputId="gezaehlteAnzahl"></p-inputNumber>
+          <app-input-error-message *ngIf="getFormAnzahl(product).touched && getFormAnzahl(product).invalid">
+            Muss abgefüllt sein
+          </app-input-error-message>
+        </td>
+        <td>
+          <p-dropdown appendTo="body"
+                      [formControl]="getFormZustand(product)"
+                      id=zustand
+                      placeholder="Zustand Wählen"
+                      [options]="zustandOptions"
+                      optionLabel="name"></p-dropdown>
+          <app-input-error-message *ngIf="getFormZustand(product).touched && getFormZustand(product).invalid">
+            Bitte auswählen
+          </app-input-error-message>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+
+  <div class="bemerkung">
+    <span class="p-float-label">
+      <textarea [formControl]="bemerkung" id="bemerkung" rows="5" pInputTextarea [autoResize]=true></textarea>
+      <label for="bemerkung">Abweichungsbegründung</label>
+    </span>
+    <app-input-error-message *ngIf="formGroup.valid && (countTotal !== total && !bemerkung.value)">
+      Gezählter Auftragwert stimmt nicht mit Auftragswert überein. Bitte begründen!
+    </app-input-error-message>
+  </div>
+
+  <div class="action mt-5">
+    <button pButton
+            pRipple
+            type="button"
+            class="mr-4"
+            label="Abbrechen"
+            (click)="cancel()"
+            [disabled]="formGroup.pristine || !formGroup.touched"
+            icon="pi pi-times" iconPos="left"></button>
+    <button pButton
+            pRipple
+            type="button"
+            label="Speichern"
+            (click)="save()"
+            [disabled]="formGroup.invalid && !auftrag.inBearbeitung || formGroup.pristine || canClose()"
+            icon="pi pi-save" iconPos="left"></button>
+  </div>
+</ng-container>
+
+

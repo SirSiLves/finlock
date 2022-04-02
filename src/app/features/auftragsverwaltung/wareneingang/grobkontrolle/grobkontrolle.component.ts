@@ -2,7 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { bearbeiter } from '@test/bearbeiter-data';
 import { statusList } from '@test/status-data';
-import { auftraege } from '@test/auftraege-data';
+
 
 @Component({
   selector: 'app-grobkontrolle',
@@ -16,6 +16,14 @@ export class GrobkontrolleComponent {
     this.auftragList = auftrag.produkte;
     this.total = auftrag.wert;
     this.fillFormGroup();
+
+    if (this.status.value.value === 'GROBKONTROLLIERT') {
+      this.auftragList.forEach((a: any) => {
+        this.getForm(a).patchValue(a.anzahl);
+      });
+      this.setCountedTotal();
+      this.formGroup?.disable();
+    }
   };
 
   @Output() save$ = new EventEmitter<any>();
@@ -37,8 +45,10 @@ export class GrobkontrolleComponent {
   private fillFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       bemerkung: [''],
-      status: [this.auftrag.status],
+      status: [null],
     });
+
+    this.status.patchValue(this.statusList.filter(s => s.value === this.auftrag.status)[0]);
 
     this.auftragList.forEach((a: any) => {
       this.formGroup?.addControl(
@@ -69,10 +79,13 @@ export class GrobkontrolleComponent {
     this.auftrag.status = this.status.value.value;
 
     if (this.status.value.value === 'GROBKONTROLLIERT') {
-      this.save$.emit(this.auftrag);
       this.formGroup?.disable();
+      this.auftrag.inBearbeitung = false;
+    } else {
+      this.auftrag.inBearbeitung = true;
     }
 
+    this.save$.emit(this.auftrag);
     this.formGroup?.markAsUntouched();
     this.formGroup?.markAsPristine();
   }
@@ -80,5 +93,10 @@ export class GrobkontrolleComponent {
   cancel(): void {
     this.formGroup?.reset();
     this.countTotal = 0;
+  }
+
+  canClose(): boolean {
+    return (this.status.value.value === 'GROBKONTROLLIERT'
+      && (this.countTotal !== this.total && !this.bemerkung.value));
   }
 }

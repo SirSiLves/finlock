@@ -21,6 +21,7 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
 import { FeinkontrolleComponent } from './wareneingang/feinkontrolle/feinkontrolle.component';
+import { EinlagerungComponent } from './wareneingang/einlagerung/einlagerung.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { FeinkontrolleComponent } from './wareneingang/feinkontrolle/feinkontrol
     WarenausgangComponent,
     GrobkontrolleComponent,
     AuftragslisteDetailsComponent,
-    FeinkontrolleComponent
+    FeinkontrolleComponent,
+    EinlagerungComponent
   ],
   imports: [
     CommonModule,

@@ -41,7 +41,7 @@
     <ng-template pTemplate="body" let-auftrag>
       <tr>
         <td>
-          <i *ngIf="auftrag.typ === 'KAUF'" class="pi pi-pencil" pTooltip="Auftrag öffnen" [routerLink]="['../wareneingang', auftrag.id]"></i>
+          <i *ngIf="auftrag.typ === 'KAUF'" [class]="auftrag.status === 'EINGELAGERT' ? 'pi pi-check' : 'pi pi-pencil'" pTooltip="Auftrag öffnen" [routerLink]="['../wareneingang', auftrag.id]"></i>
           <i *ngIf="auftrag.typ === 'VERKAUF'" class="pi pi-pencil" pTooltip="Auftrag öffnen" [routerLink]="['../warenausgang', auftrag.id]"></i>
         </td>
         <td>{{auftrag.id}}</td>

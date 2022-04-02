@@ -63,10 +63,6 @@ export class WareneingangComponent implements OnInit, OnDestroy {
     return this.formGroup.controls.suche as FormControl;
   }
 
-  back(): void {
-    this.location.back();
-  }
-
   isGrobkontrolle(): boolean {
     return this.auftrag.status === 'NEU';
   }
@@ -76,11 +72,13 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   }
 
   isEinlagerung(): boolean {
-    return this.auftrag.status === 'EINGELAGERT';
+    return this.auftrag.status === 'FEINKONTROLLIERT';
   }
 
   save($event: any): void {
-    auftraege.filter((a: any) => a.id === $event.id)[0].status = $event.status;
+    const filterElement = auftraege.filter((a: any) => a.id === $event.id)[0];
+    filterElement.status = $event.status;
+
     this.openAuftrag(this.auftrag.id);
   }
 }

@@ -2,19 +2,24 @@
 
 <ng-container *ngIf="formGroup">
   <div class="formgrid grid mt-5 p-fluid">
-    <div class="field col-3 xl:col-3">
+    <div class="field col-6 xl:col-3">
       <label for="ga">Gezählter Auftragswert</label>
       <h4 id="ga" class="m-0">{{countTotal | currency:'CHF'}}</h4>
     </div>
 
-    <div class="field col-4 xl:col-4">
+    <div class="field col-6 xl:col-3">
+      <label for="bearbeitung">In Bearbeitung</label>
+      <h4 id="bearbeitung" class="m-0">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</h4>
+    </div>
+
+    <div class="field col-6 xl:col-3 mt-3">
       <span class="p-float-label">
         <p-dropdown [formControl]="status" id=status [options]="statusList" optionLabel="name"></p-dropdown>
         <label for="status">Status</label>
       </span>
     </div>
 
-    <div class="field col-4 xl:col-4">
+    <div class="field col-6 xl:col-3 mt-3">
       <span class="p-float-label">
         <p-dropdown id="bearbeiter" [options]="bearbeiter" optionLabel="name"></p-dropdown>
         <label for="bearbeiter">Bearbeiter</label>
@@ -73,7 +78,7 @@
             type="button"
             label="Speichern"
             (click)="save()"
-            [disabled]="formGroup.invalid || this.formGroup.pristine"
+            [disabled]="formGroup.invalid && !auftrag.inBearbeitung || formGroup.pristine || canClose()"
             icon="pi pi-save" iconPos="left"></button>
   </div>
 </ng-container>

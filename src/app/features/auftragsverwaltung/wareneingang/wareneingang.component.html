@@ -13,9 +13,9 @@
       <button *ngIf="auftrag"
               pButton
               pRipple
-              pTooltip="Zurück"
+              pTooltip="Zurück zur Auftragsliste"
               type="button"
-              (click)="back()"
+              [routerLink]="'/auftragsverwaltung/auftragsliste'"
               icon="pi pi-arrow-left" iconPos="left"></button>
     </div>
   </div>
@@ -36,7 +36,7 @@
           <ng-template pTemplate="header">
             <ng-container *ngIf="!activeState[1]">Feinkontrolle</ng-container>
           </ng-template>
-          <h1>TODO</h1>
+          <app-feinkontrolle [data]="auftrag" (save$)="save($event)"></app-feinkontrolle>
         </p-accordionTab>
 
         <p-accordionTab [(selected)]="activeState[2]">

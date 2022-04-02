@@ -5,6 +5,7 @@ export const auftraege = [
     id: 1,
     createDate: new Date(),
     status: 'NEU',
+    inBearbeitung: false,
     typ: 'KAUF',
     wert: 500000,
     gegenpartei: gegenparteien[0],
@@ -26,7 +27,8 @@ export const auftraege = [
   {
     id: 2,
     createDate: new Date(),
-    status: 'NEU',
+    status: 'GROBKONTROLLIERT',
+    inBearbeitung: false,
     typ: 'KAUF',
     wert: 1000000,
     gegenpartei: gegenparteien[0],
@@ -55,6 +57,7 @@ export const auftraege = [
     id: 3,
     createDate: new Date(),
     status: 'NEU',
+    inBearbeitung: false,
     typ: 'KAUF',
     wert: 50000,
     gegenpartei: gegenparteien[0],
@@ -71,6 +74,7 @@ export const auftraege = [
     id: 4,
     createDate: new Date(),
     status: 'GROBKONTROLLIERT',
+    inBearbeitung: false,
     typ: 'KAUF',
     wert: 50000,
     gegenpartei: gegenparteien[0],
@@ -84,9 +88,102 @@ export const auftraege = [
     ]
   },
   {
+    id: 5,
+    createDate: new Date(),
+    status: 'NEU',
+    inBearbeitung: false,
+    typ: 'KAUF',
+    wert: 100000,
+    gegenpartei: gegenparteien[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '20',
+        kategorie: 'CHF',
+        wert: 20,
+        anzahl: 4500
+      }
+    ]
+  },
+  {
+    id: 6,
+    createDate: new Date(),
+    status: 'FEINKONTROLLIERT',
+    inBearbeitung: false,
+    typ: 'KAUF',
+    wert: 100000,
+    gegenpartei: gegenparteien[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '20',
+        kategorie: 'CHF',
+        wert: 20,
+        anzahl: 4500
+      }
+    ]
+  },
+  {
+    id: 7,
+    createDate: new Date(),
+    status: 'EINGELAGERT',
+    inBearbeitung: false,
+    typ: 'KAUF',
+    wert: 100000,
+    gegenpartei: gegenparteien[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '20',
+        kategorie: 'CHF',
+        wert: 20,
+        anzahl: 4500
+      }
+    ]
+  },
+  {
+    id: 8,
+    createDate: new Date(),
+    status: 'EINGELAGERT',
+    inBearbeitung: false,
+    typ: 'KAUF',
+    wert: 100000,
+    gegenpartei: gegenparteien[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '20',
+        kategorie: 'CHF',
+        wert: 20,
+        anzahl: 4500
+      }
+    ]
+  },
+  {
     id: 99,
     createDate: new Date(),
     status: 'NEU',
+    inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 500000,
     gegenpartei: raiffeisen[0],
