@@ -14,6 +14,9 @@ const routes: Routes = [
     path: 'auftragserfassung', loadChildren: () => import('./features/auftragserfassung/auftragserfassung.module').then(m => m.AuftragserfassungModule)
   },
   {
+    path: 'auftragsverwaltung', loadChildren: () => import('./features/auftragsverwaltung/auftragsverwaltung.module').then(m => m.AuftragsverwaltungModule)
+  },
+  {
     path: '', pathMatch: 'full', redirectTo: 'home'
   },
   {

@@ -1,3 +1,18 @@
+<div class="mb-5 mt-5 gegenpartei">
+    <span class="p-float-label">
+      <p-dropdown [options]="gegenparteiList"
+                  [formControl]="gegenpartei"
+                  placeholder="Wähle Gegenpartei"
+                  optionLabel="name"
+                  id="gegenpartei"></p-dropdown>
+      <label for="gegenpartei">Gegenpartei</label>
+    </span>
+
+  <app-input-error-message *ngIf="gegenpartei.touched && !gegenpartei.value">
+    Bitte Gegenpartei auswählen
+  </app-input-error-message>
+</div>
+
 <p-pickList [source]="sourceProducts"
             [target]="targetProducts"
             sourceHeader="Verfügbar"
@@ -6,6 +21,7 @@
             [sourceStyle]="{'height':'400px'}"
             [targetStyle]="{'height':'400px'}"
             filterBy="produkt"
+            [disabled]="!gegenpartei.value"
             sourceFilterPlaceholder="Suche nach Produkt"
             targetFilterPlaceholder="Suche nach Produkt">
   <ng-template let-product pTemplate="item">

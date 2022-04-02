@@ -5,7 +5,8 @@
     <ng-template pTemplate="colgroup">
       <colgroup>
         <col style="width: 30%;">
-        <col style="width: 20%;">
+        <col style="width: 10%;">
+        <col style="width: 10%;">
         <col style="width: 20%;">
         <col style="width: 20%;">
         <col style="width: 10%;">
@@ -16,6 +17,7 @@
         <th>Anzahl</th>
         <th>Einheit</th>
         <th>Kategorie</th>
+        <th>Gegenpartei</th>
         <th>Total</th>
         <th>Aktion</th>
       </tr>
@@ -30,6 +32,7 @@
         </td>
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
+        <td>{{product.gegenpartei.name}}</td>
         <td>{{product.wert * anzahl.value | currency:'CHF':'symbol'}}</td>
         <td class="flex align-items-center justify-content-center" [pTooltip]="'Aus dem Warenkorb entfernen'">
           <button class="p-button-warning"
