@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from './warenkorb.service';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
 
 @Component({

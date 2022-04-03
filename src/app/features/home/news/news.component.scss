@@ -1,7 +1,7 @@
 .list {
   max-height: 40rem;
   overflow: auto;
-  padding-right: 1rem;
+  padding: 0 1rem 0 1rem;
 }
 
 ul {
@@ -13,6 +13,10 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: solid;
+    box-shadow: rgb(94, 122, 135) 0 2px 0 0, rgb(102, 154, 57) 0 3px 0 0, rgb(237, 186, 47) 0 5px 0 0, rgb(203, 47, 48) 0 7px 0 0, rgb(255, 85, 85) 0 8px 0;
+  }
+
+  li {
+    margin-bottom: 1.5rem;
   }
 }

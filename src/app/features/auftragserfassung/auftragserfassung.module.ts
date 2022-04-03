@@ -22,6 +22,8 @@ import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenko
 import { FieldsetModule } from 'primeng/fieldset';
 import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
+import { AccordionModule } from 'primeng/accordion';
+import { SplitterModule } from 'primeng/splitter';
 
 
 @NgModule({
@@ -36,21 +38,23 @@ import { DropdownModule } from 'primeng/dropdown';
     exports: [
         InputErrorMessageComponent
     ],
-    imports: [
-        CommonModule,
-        AuftragserfassungRoutingModule,
-        ButtonModule,
-        RippleModule,
-        TableModule,
-        TooltipModule,
-        TabViewModule,
-        InputNumberModule,
-        ReactiveFormsModule,
-        FormsModule,
-        PickListModule,
-        FieldsetModule,
-        CardModule,
-        DropdownModule,
-    ]
+  imports: [
+    CommonModule,
+    AuftragserfassungRoutingModule,
+    ButtonModule,
+    RippleModule,
+    TableModule,
+    TooltipModule,
+    TabViewModule,
+    InputNumberModule,
+    ReactiveFormsModule,
+    FormsModule,
+    PickListModule,
+    FieldsetModule,
+    CardModule,
+    DropdownModule,
+    AccordionModule,
+    SplitterModule,
+  ]
 })
 export class AuftragserfassungModule { }

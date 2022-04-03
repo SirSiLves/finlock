@@ -1,14 +1,20 @@
 <h1>Einkaufen</h1>
 
 <p-card>
-  <div class="card">
-    <p-tabView>
-      <p-tabPanel header="Kauf">
-        <app-einkaufen [typ]="'KAUF'" [productList]="productBuyList"></app-einkaufen>
-      </p-tabPanel>
-      <p-tabPanel header="Verkauf">
-        <app-einkaufen [typ]="'VERKAUF'" [productList]="productSellList"></app-einkaufen>
-      </p-tabPanel>
-    </p-tabView>
-  </div>
+  <p-tabView>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <h2 class="m-0">Kauf</h2>
+      </ng-template>
+      <app-einkaufen [typ]="'KAUF'" [productList]="productBuyList"></app-einkaufen>
+    </p-tabPanel>
+    <p-tabPanel>
+      <ng-template pTemplate="header">
+        <h2 class="m-0">Verkauf</h2>
+      </ng-template>
+      <app-einkaufen [typ]="'VERKAUF'" [productList]="productSellList"></app-einkaufen>
+    </p-tabPanel>
+  </p-tabView>
 </p-card>
+
+
