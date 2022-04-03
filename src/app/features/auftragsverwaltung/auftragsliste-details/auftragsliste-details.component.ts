@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { statusList } from '@test/status-data';
+import { statusAusgangList, statusEingangList } from '@test/status-data';
 
 @Component({
   selector: 'app-auftragsliste-details',
@@ -13,7 +13,7 @@ export class AuftragslisteDetailsComponent {
   constructor() { }
 
   getStatus(status: string): string {
-    return statusList.filter((s: any) => s.value === status)[0].name;
+    return statusEingangList.concat(statusAusgangList).filter((s: any) => s.value === status)[0].name;
   }
 
 }

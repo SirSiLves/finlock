@@ -22,6 +22,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
 import { FeinkontrolleComponent } from './wareneingang/feinkontrolle/feinkontrolle.component';
 import { EinlagerungComponent } from './wareneingang/einlagerung/einlagerung.component';
+import { RuestenComponent } from './warenausgang/ruesten/ruesten.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { EinlagerungComponent } from './wareneingang/einlagerung/einlagerung.com
     GrobkontrolleComponent,
     AuftragslisteDetailsComponent,
     FeinkontrolleComponent,
-    EinlagerungComponent
+    EinlagerungComponent,
+    RuestenComponent
   ],
   imports: [
     CommonModule,

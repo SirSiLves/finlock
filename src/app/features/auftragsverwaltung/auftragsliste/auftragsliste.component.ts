@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { statusList } from '@test/status-data';
-import { gegenparteien } from '@test/gegenparteien-data';
+import { statusAusgangList, statusEingangList } from '@test/status-data';
 
 @Component({
   selector: 'app-auftragsliste',
@@ -20,13 +19,15 @@ export class AuftragslisteComponent {
     {label: 'Neu', value: 'NEU'},
     {label: 'Grobkontrolliert', value: 'GROBKONTROLLIERT'},
     {label: 'Feinkontrolliert', value: 'FEINKONTROLLIERT'},
-    {label: 'Eingelagert', value: 'EINGELAGERT'},
+    {label: 'Gerüstet', value: 'GERUESTET'},
+    {label: 'Verpackt', value: 'VERPACKT'},
+    {label: 'Versendet', value: 'VERSENDET'},
   ];
 
   constructor() {
   }
 
   getStatus(status: string): string {
-    return statusList.filter((s: any) => s.value === status)[0].name;
+    return statusEingangList.concat(statusAusgangList).filter((s: any) => s.value === status)[0].name;
   }
 }

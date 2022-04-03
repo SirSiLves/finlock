@@ -56,35 +56,47 @@ export const auftraege = [
   {
     id: 3,
     createDate: new Date(),
-    status: 'NEU',
+    status: 'VERPACKT',
     inBearbeitung: false,
-    typ: 'KAUF',
+    typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: gegenparteien[3],
+    gegenpartei: raiffeisen[0],
     produkte: [
       {
-        produkt: '50',
+        produkt: '10',
         kategorie: 'CHF',
-        wert: 50,
+        wert: 10,
         anzahl: 1000
-      }
+      },
+      {
+        produkt: '100',
+        kategorie: 'CHF',
+        wert: 100,
+        anzahl: 400
+      },
     ]
   },
   {
     id: 4,
     createDate: new Date(),
-    status: 'GROBKONTROLLIERT',
+    status: 'VERPACKT',
     inBearbeitung: false,
-    typ: 'KAUF',
+    typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: gegenparteien[0],
+    gegenpartei: raiffeisen[0],
     produkte: [
       {
-        produkt: '50',
+        produkt: '10',
         kategorie: 'CHF',
-        wert: 50,
+        wert: 10,
         anzahl: 1000
-      }
+      },
+      {
+        produkt: '100',
+        kategorie: 'CHF',
+        wert: 100,
+        anzahl: 400
+      },
     ]
   },
   {
@@ -205,7 +217,24 @@ export const auftraege = [
   {
     id: 10,
     createDate: new Date(),
-    status: 'NEU',
+    status: 'GROBKONTROLLIERT',
+    inBearbeitung: false,
+    typ: 'KAUF',
+    wert: 50000,
+    gegenpartei: gegenparteien[0],
+    produkte: [
+      {
+        produkt: '50',
+        kategorie: 'CHF',
+        wert: 50,
+        anzahl: 1000
+      }
+    ]
+  },
+  {
+    id: 11,
+    createDate: new Date(),
+    status: 'VERSENDET',
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 50000,
@@ -225,6 +254,70 @@ export const auftraege = [
       },
     ]
   },
+  {
+    id: 12,
+    createDate: new Date(),
+    status: 'GERUESTET',
+    inBearbeitung: false,
+    typ: 'VERKAUF',
+    wert: 50000,
+    gegenpartei: raiffeisen[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '100',
+        kategorie: 'CHF',
+        wert: 100,
+        anzahl: 400
+      },
+    ]
+  },
+  {
+    id: 13,
+    createDate: new Date(),
+    status: 'GERUESTET',
+    inBearbeitung: false,
+    typ: 'VERKAUF',
+    wert: 50000,
+    gegenpartei: raiffeisen[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '100',
+        kategorie: 'CHF',
+        wert: 100,
+        anzahl: 400
+      },
+    ]
+  },
+  {
+    id: 14,
+    createDate: new Date(),
+    status: 'NEU',
+    inBearbeitung: false,
+    typ: 'KAUF',
+    wert: 50000,
+    gegenpartei: gegenparteien[3],
+    produkte: [
+      {
+        produkt: '50',
+        kategorie: 'CHF',
+        wert: 50,
+        anzahl: 1000
+      }
+    ]
+  },
+
 
 
 ];

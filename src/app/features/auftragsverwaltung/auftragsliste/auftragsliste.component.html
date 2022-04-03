@@ -1,4 +1,3 @@
-
 <ng-container *ngIf="itemList">
   <p-table [value]="itemList"
            [paginator]="true" [rows]="10"
@@ -20,13 +19,19 @@
       </tr>
       <tr>
         <th></th>
-        <th><p-columnFilter type="text" field="id" display="menu"></p-columnFilter></th>
-        <th><p-columnFilter type="date" field="createDate" display="menu"></p-columnFilter></th>
-        <th><p-columnFilter type="boolean" field="inBearbeitung" display="menu"></p-columnFilter></th>
+        <th>
+          <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="date" field="createDate" display="menu"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="boolean" field="inBearbeitung" display="menu"></p-columnFilter>
+        </th>
         <th>
           <p-columnFilter field="status" matchMode="equals">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-              <p-dropdown [ngModel]="value" [options]="statusOptions" (onChange)="filter($event.value)"
+              <p-dropdown appendTo="body" [ngModel]="value" [options]="statusOptions" (onChange)="filter($event.value)"
                           placeholder="Alle">
                 <ng-template let-option pTemplate="item">
                   <span>{{option.label}}</span>
@@ -47,23 +52,34 @@
             </ng-template>
           </p-columnFilter>
         </th>
-        <th><p-columnFilter type="numeric" field="wert" display="menu"></p-columnFilter></th>
-        <th><p-columnFilter type="text" field="gegenpartei.name" display="menu"></p-columnFilter></th>
+        <th>
+          <p-columnFilter type="numeric" field="wert" display="menu"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter type="text" field="gegenpartei.name" display="menu"></p-columnFilter>
+        </th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-auftrag>
       <tr>
-        <td>
-          <i *ngIf="auftrag.typ === 'KAUF'" [class]="auftrag.status === 'EINGELAGERT' ? 'pi pi-check' : 'pi pi-pencil'" pTooltip="Auftrag öffnen" [routerLink]="['../wareneingang', auftrag.id]"></i>
-          <i *ngIf="auftrag.typ === 'VERKAUF'" class="pi pi-pencil" pTooltip="Auftrag öffnen" [routerLink]="['../warenausgang', auftrag.id]"></i>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">
+          <i *ngIf="auftrag.typ === 'KAUF'" [class]="auftrag.status === 'EINGELAGERT' ? 'pi pi-check' : 'pi pi-pencil'"
+             pTooltip="Auftrag öffnen" [routerLink]="['../wareneingang', auftrag.id]"></i>
+          <i *ngIf="auftrag.typ === 'VERKAUF'"
+             [class]="auftrag.status === 'VERSENDET' ? 'pi pi-check' : 'pi pi-pencil'" pTooltip="Auftrag öffnen"
+             [routerLink]="['../warenausgang', auftrag.id]"></i>
         </td>
-        <td>{{auftrag.id}}</td>
-        <td>{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
-        <td>{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</td>
-        <td>{{getStatus(auftrag.status)}}</td>
-        <td>{{auftrag.typ}}</td>
-        <td>{{auftrag.wert | currency:'CHF'}}</td>
-        <td>{{auftrag.gegenpartei.name}}</td>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.id}}</td>
+        <td
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
+        <td
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</td>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{getStatus(auftrag.status)}}</td>
+        <td
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.typ === 'KAUF' ? 'Wareneingang' : 'Warenausgang'}}</td>
+        <td
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.wert | currency:'CHF'}}</td>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.gegenpartei.name}}</td>
       </tr>
     </ng-template>
   </p-table>

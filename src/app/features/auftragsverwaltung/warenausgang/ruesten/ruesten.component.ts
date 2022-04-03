@@ -1,14 +1,14 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { bearbeiter } from '@test/bearbeiter-data';
-import { statusEingangList } from '@test/status-data';
+import { statusAusgangList } from '@test/status-data';
 
 @Component({
-  selector: 'app-feinkontrolle',
-  templateUrl: './feinkontrolle.component.html',
-  styleUrls: ['./feinkontrolle.component.scss']
+  selector: 'app-ruesten',
+  templateUrl: './ruesten.component.html',
+  styleUrls: ['./ruesten.component.scss']
 })
-export class FeinkontrolleComponent {
+export class RuestenComponent {
 
   @Input() set data(auftrag: any) {
     this.auftrag = auftrag;
@@ -16,10 +16,10 @@ export class FeinkontrolleComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
-    if (this.status.value.value === 'FEINKONTROLLIERT' || this.status.value.value === 'EINGELAGERT') {
+    if (this.status.value.value === 'GERUESTET' || this.status.value.value === 'VERPACKT' || this.status.value.value === 'VERSENDET') {
       this.auftragList.forEach((a: any) => {
-        this.getFormAnzahl(a).patchValue(a.anzahl);
-        this.getFormZustand(a).patchValue(this.zustandOptions[1]);
+        this.getForm(a).patchValue(a.anzahl);
+        this.getFormPallet(a).patchValue(this.bezeichnungPalletOptions[3]);
       });
       this.setCountedTotal();
       this.formGroup?.disable();
@@ -34,12 +34,19 @@ export class FeinkontrolleComponent {
   countTotal = 0;
   total = 0;
 
-  statusListOptions = statusEingangList;
+  statusListOptions = statusAusgangList;
   bearbeiterOptions = bearbeiter;
-  zustandOptions = [
-    {name: 'Defekt', value: 0},
-    {name: 'Gebraucht', value: 1},
-    {name: 'Neuwertig', value: 2},
+
+  bezeichnungPalletOptions = [
+    {name: 'AABB01', value: 'AABB01'},
+    {name: 'AABB02', value: 'AABB02'},
+    {name: 'AABB03', value: 'AABB03'},
+    {name: 'AABB04', value: 'AABB04'},
+    {name: 'AABB05', value: 'AABB05'},
+    {name: 'AABB06', value: 'AABB06'},
+    {name: 'BBAA01', value: 'BBAA01'},
+    {name: 'BBAA02', value: 'BBAA02'},
+    {name: 'BBAA03', value: 'BBAA03'},
   ];
 
   constructor(
@@ -50,7 +57,7 @@ export class FeinkontrolleComponent {
   private fillFormGroup(): void {
     this.formGroup = this.formBuilder.group({
       bemerkung: [''],
-      status: [this.auftrag.status],
+      status: [null],
       bearbeiter: [Validators.required]
     });
 
@@ -62,18 +69,18 @@ export class FeinkontrolleComponent {
       );
 
       this.formGroup?.addControl(
-        a.produkt + '.' + a.kategorie + '_zustand', this.formBuilder.control(null, Validators.required)
+        a.produkt + '.' + a.kategorie + '_pallet', this.formBuilder.control(null, Validators.required)
       );
     });
   }
 
-  getFormAnzahl(a: any): FormControl {
+  getForm(a: any): FormControl {
     const name = a.produkt + '.' + a.kategorie;
     return this.formGroup?.controls[name] as FormControl;
   }
 
-  getFormZustand(a: any): FormControl {
-    const name = a.produkt + '.' + a.kategorie + '_zustand';
+  getFormPallet(a: any): FormControl {
+    const name = a.produkt + '.' + a.kategorie + '_pallet';
     return this.formGroup?.controls[name] as FormControl;
   }
 
@@ -90,13 +97,13 @@ export class FeinkontrolleComponent {
   }
 
   setCountedTotal(): void {
-    this.countTotal = this.auftragList.map((a: any) => this.getFormAnzahl(a).value * a.wert).reduce((a1: any, a2: any) => a1 + a2);
+    this.countTotal = this.auftragList.map((a: any) => this.getForm(a).value * a.wert).reduce((a1: any, a2: any) => a1 + a2);
   }
 
   save(): void {
     this.auftrag.status = this.status.value.value;
 
-    if (this.status.value.value === 'FEINKONTROLLIERT') {
+    if (this.status.value.value === 'GERUESTET') {
       this.formGroup?.disable();
       this.auftrag.inBearbeitung = false;
       this.save$.emit(this.auftrag);
@@ -114,8 +121,7 @@ export class FeinkontrolleComponent {
   }
 
   canClose(): boolean {
-    return (this.status.value.value === 'FEINKONTROLLIERT'
+    return (this.status.value.value === 'GROBKONTROLLIERT'
       && (this.countTotal !== this.total && !this.bemerkung.value));
   }
-
 }
