@@ -43,7 +43,7 @@
           <ng-template pTemplate="header">
             <ng-container *ngIf="!activeState[2]">Versenden</ng-container>
           </ng-template>
-          TODO
+          <app-versenden [data]="auftrag" (save$)="save($event)"></app-versenden>
         </p-accordionTab>
       </p-accordion>
     </div>

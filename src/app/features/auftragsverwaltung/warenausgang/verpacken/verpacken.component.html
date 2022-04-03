@@ -2,17 +2,17 @@
 
 <ng-container *ngIf="formGroup">
   <div class="formgrid grid mt-5 p-fluid">
-    <div class="field col-6 xl:col-3">
+    <div class="field col-6 xl:col-2">
       <label for="ga">Gezählter Auftragswert</label>
       <h4 id="ga" class="m-0">{{countTotal | currency:'CHF'}}</h4>
     </div>
 
-    <div class="field col-6 xl:col-3">
+    <div class="field col-6 xl:col-2">
       <label for="bearbeitung">In Bearbeitung</label>
       <h4 id="bearbeitung" class="m-0">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</h4>
     </div>
 
-    <div class="field col-6 xl:col-3 mt-3">
+    <div class="field col-6 xl:col-2 mt-3">
       <span class="p-float-label">
         <p-dropdown [formControl]="status" id=status [options]="statusListOptions" optionLabel="name"></p-dropdown>
         <label for="status">Status</label>
@@ -21,9 +21,26 @@
 
     <div class="field col-6 xl:col-3 mt-3">
       <span class="p-float-label">
-        <p-dropdown id="bearbeiter" [formControl]="bearbeiter" [options]="bearbeiterOptions" optionLabel="name"></p-dropdown>
+        <p-dropdown id="bearbeiter" [formControl]="bearbeiter" [options]="bearbeiterOptions"
+                    optionLabel="name"></p-dropdown>
         <label for="bearbeiter">Bearbeiter</label>
       </span>
+    </div>
+
+    <div class="field col-6 xl:col-2 mt-3">
+      <span class="p-float-label">
+        <p-dropdown appendTo="body"
+                    [formControl]="pallet"
+                    id=pallet
+                    placeholder="In Pallet wählen"
+                    [options]="bezeichnungPalletOptions"
+                    optionLabel="name"></p-dropdown>
+        <label for="pallet">Pallet</label>
+      </span>
+
+      <app-input-error-message *ngIf="pallet.touched && pallet.invalid">
+        Bitte auswählen
+      </app-input-error-message>
     </div>
   </div>
 
@@ -35,9 +52,8 @@
         <th>Einheit</th>
         <th>Kategorie</th>
         <th>Anzahl gemäss Auftrag</th>
-        <th>Bag</th>
         <th>Gezählte Anzahl</th>
-        <th>Pallet</th>
+        <th>Bag</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -45,7 +61,6 @@
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
         <td>{{product.anzahl | number}}</td>
-        <td>{{product.bag}}</td>
         <td>
           <p-inputNumber (focusout)="setCountedTotal()" [formControl]="getForm(product)"
                          inputId="gezaehlteAnzahl"></p-inputNumber>
@@ -53,17 +68,7 @@
             Muss abgefüllt sein
           </app-input-error-message>
         </td>
-        <td>
-          <p-dropdown appendTo="body"
-                      [formControl]="getFormPallet(product)"
-                      id=pallet
-                      placeholder="In Pallet wählen"
-                      [options]="bezeichnungPalletOptions"
-                      optionLabel="name"></p-dropdown>
-          <app-input-error-message *ngIf="getFormPallet(product).touched && getFormPallet(product).invalid">
-            Bitte auswählen
-          </app-input-error-message>
-        </td>
+        <td>{{product.bag}}</td>
       </tr>
     </ng-template>
   </p-table>

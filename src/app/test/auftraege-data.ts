@@ -1,4 +1,4 @@
-import { gegenparteien, raiffeisen } from '@test/gegenparteien-data';
+import { gegenparteien } from '@test/gegenparteien-data';
 
 export const auftraege = [
   {
@@ -8,7 +8,7 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'KAUF',
     wert: 500000,
-    gegenpartei: gegenparteien[0],
+    gegenpartei: gegenparteien[4],
     produkte: [
       {
         produkt: '10',
@@ -31,7 +31,7 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'KAUF',
     wert: 1000000,
-    gegenpartei: gegenparteien[0],
+    gegenpartei: gegenparteien[3],
     produkte: [
       {
         produkt: '10',
@@ -60,7 +60,8 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: raiffeisen[0],
+    gegenpartei: gegenparteien[0],
+    pallet: 'AABB01',
     produkte: [
       {
         produkt: '10',
@@ -85,7 +86,8 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: raiffeisen[0],
+    gegenpartei: gegenparteien[0],
+    pallet: 'AABB01',
     produkte: [
       {
         produkt: '10',
@@ -202,7 +204,8 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 500000,
-    gegenpartei: raiffeisen[0],
+    gegenpartei: gegenparteien[2],
+    pallet: undefined,
     produkte: [
       {
         produkt: '10',
@@ -244,7 +247,8 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: raiffeisen[0],
+    gegenpartei: gegenparteien[1],
+    pallet: 'AABB02',
     produkte: [
       {
         produkt: '10',
@@ -269,7 +273,8 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: raiffeisen[0],
+    gegenpartei: gegenparteien[0],
+    pallet: undefined,
     produkte: [
       {
         produkt: '10',
@@ -294,7 +299,8 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'VERKAUF',
     wert: 50000,
-    gegenpartei: raiffeisen[0],
+    gegenpartei: gegenparteien[0],
+    pallet: undefined,
     produkte: [
       {
         produkt: '10',
@@ -319,7 +325,7 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'KAUF',
     wert: 50000,
-    gegenpartei: gegenparteien[3],
+    gegenpartei: gegenparteien[4],
     produkte: [
       {
         produkt: '50',

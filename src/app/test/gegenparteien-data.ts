@@ -15,6 +15,10 @@ export const gegenparteien = [
     id: 4,
     name: 'Julius Bär'
   },
+  {
+    id: 5,
+    name: 'Raiffeisenbank Bern'
+  },
 ];
 
 export const raiffeisen = [

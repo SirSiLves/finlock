@@ -24,6 +24,7 @@ import { FeinkontrolleComponent } from './wareneingang/feinkontrolle/feinkontrol
 import { EinlagerungComponent } from './wareneingang/einlagerung/einlagerung.component';
 import { RuestenComponent } from './warenausgang/ruesten/ruesten.component';
 import { VerpackenComponent } from './warenausgang/verpacken/verpacken.component';
+import { VersendenComponent } from './warenausgang/versenden/versenden.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { VerpackenComponent } from './warenausgang/verpacken/verpacken.component
     FeinkontrolleComponent,
     EinlagerungComponent,
     RuestenComponent,
-    VerpackenComponent
+    VerpackenComponent,
+    VersendenComponent
   ],
   imports: [
     CommonModule,

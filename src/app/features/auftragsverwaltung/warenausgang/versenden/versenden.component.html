@@ -1,4 +1,4 @@
-<h2>Rüsten</h2>
+<h2>Versenden</h2>
 
 <ng-container *ngIf="formGroup">
   <div class="formgrid grid mt-5 p-fluid">
@@ -25,6 +25,22 @@
         <label for="bearbeiter">Bearbeiter</label>
       </span>
     </div>
+
+    <div class="field col-6 xl:col-2 mt-3">
+      <span class="p-float-label">
+        <p-dropdown appendTo="body"
+                    [formControl]="lieferant"
+                    id=lieferant
+                    placeholder="Lieferant wählen"
+                    [options]="lieferantOptions"
+                    optionLabel="name"></p-dropdown>
+        <label for="lieferant">Lieferant</label>
+      </span>
+
+      <app-input-error-message *ngIf="lieferant.touched && lieferant.invalid">
+        Bitte auswählen
+      </app-input-error-message>
+    </div>
   </div>
 
   <h4 class="title-detail">Auftragsdetails</h4>
@@ -34,10 +50,9 @@
       <tr>
         <th>Einheit</th>
         <th>Kategorie</th>
-        <th>Anzahl gemäss Auftrag</th>
-        <th>Gezählte Anzahl</th>
-        <th>Bag</th>
-        <th>Lager</th>
+        <th>Anzahl</th>
+        <th>Bag gemäss Auftrag</th>
+        <th>Bag vorhanden</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -45,35 +60,20 @@
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
         <td>{{product.anzahl | number}}</td>
-        <td>
-          <p-inputNumber (focusout)="setCountedTotal()" [formControl]="getForm(product)"
-                         inputId="gezaehlteAnzahl"></p-inputNumber>
-          <app-input-error-message *ngIf="getForm(product).touched && getForm(product).invalid">
-            Muss abgefüllt sein
-          </app-input-error-message>
-        </td>
+        <td>{{product.bag}}</td>
         <td>
           <p-dropdown appendTo="body"
                       [formControl]="getFormBag(product)"
                       id=pallet
-                      placeholder="In Bag wählen"
-                      [options]="bezeichnungBagOptions"
+                      (onChange)="setCountedTotal()"
+                      placeholder="Vorhanden wählen"
+                      [options]="bagVorhandenOptions"
                       optionLabel="name"></p-dropdown>
           <app-input-error-message *ngIf="getFormBag(product).touched && getFormBag(product).invalid">
             Bitte auswählen
           </app-input-error-message>
         </td>
-        <td>
-          <p-dropdown appendTo="body"
-                      [formControl]="getFormLager(product)"
-                      id=lager
-                      placeholder="Aus Lager wählen"
-                      [options]="lagerRegal"
-                      optionLabel="name"></p-dropdown>
-          <app-input-error-message *ngIf="getFormLager(product).touched && getFormLager(product).invalid">
-            Bitte auswählen
-          </app-input-error-message>
-        </td>
+        <td></td>
       </tr>
     </ng-template>
   </p-table>
