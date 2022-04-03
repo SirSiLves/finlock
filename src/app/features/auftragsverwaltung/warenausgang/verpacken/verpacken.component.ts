@@ -1,14 +1,14 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { bearbeiter } from '@test/bearbeiter-data';
 import { statusAusgangList } from '@test/status-data';
 
 @Component({
-  selector: 'app-ruesten',
-  templateUrl: './ruesten.component.html',
-  styleUrls: ['./ruesten.component.scss']
+  selector: 'app-verpacken',
+  templateUrl: './verpacken.component.html',
+  styleUrls: ['./verpacken.component.scss']
 })
-export class RuestenComponent {
+export class VerpackenComponent {
 
   @Input() set data(auftrag: any) {
     this.auftrag = auftrag;
@@ -16,11 +16,10 @@ export class RuestenComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
-    if (this.status.value.value === 'GERUESTET' || this.status.value.value === 'VERPACKT' || this.status.value.value === 'VERSENDET') {
+    if (this.status.value.value === 'VERPACKT' || this.status.value.value === 'VERSENDET') {
       this.auftragList.forEach((a: any) => {
         this.getForm(a).patchValue(a.anzahl);
-        this.getFormBag(a).patchValue(this.bezeichnungBagOptions[3]);
-        this.getFormLager(a).patchValue(this.lagerRegal[1]);
+        this.getFormPallet(a).patchValue(this.bezeichnungPalletOptions[3]);
       });
       this.setCountedTotal();
       this.formGroup?.disable();
@@ -38,25 +37,16 @@ export class RuestenComponent {
   statusListOptions = statusAusgangList;
   bearbeiterOptions = bearbeiter;
 
-  bezeichnungBagOptions = [
-    {name: 'B001', value: 'B001'},
-    {name: 'B002', value: 'B002'},
-    {name: 'B003', value: 'B003'},
-    {name: 'B004', value: 'B004'},
-    {name: 'B005', value: 'B005'},
-    {name: 'B006', value: 'B006'},
-    {name: 'B007', value: 'B007'},
-    {name: 'B008', value: 'B008'},
-    {name: 'B009', value: 'B009'},
-  ];
-
-  lagerRegal = [
-    {name: 'A1 Nord', value: 'A1N'},
-    {name: 'A2 Nord', value: 'A2N'},
-    {name: 'A1 Süd', value: 'A1S'},
-    {name: 'A2 Süd', value: 'A2S'},
-    {name: 'B1 Nord', value: 'B1N'},
-    {name: 'B2 Süd', value: 'B2SN'},
+  bezeichnungPalletOptions = [
+    {name: 'AABB01', value: 'AABB01'},
+    {name: 'AABB02', value: 'AABB02'},
+    {name: 'AABB03', value: 'AABB03'},
+    {name: 'AABB04', value: 'AABB04'},
+    {name: 'AABB05', value: 'AABB05'},
+    {name: 'AABB06', value: 'AABB06'},
+    {name: 'BBAA01', value: 'BBAA01'},
+    {name: 'BBAA02', value: 'BBAA02'},
+    {name: 'BBAA03', value: 'BBAA03'},
   ];
 
   constructor(
@@ -79,11 +69,7 @@ export class RuestenComponent {
       );
 
       this.formGroup?.addControl(
-        a.produkt + '.' + a.kategorie + '_bag', this.formBuilder.control(null, Validators.required)
-      );
-
-      this.formGroup?.addControl(
-        a.produkt + '.' + a.kategorie + '_lager', this.formBuilder.control(null, Validators.required)
+        a.produkt + '.' + a.kategorie + '_pallet', this.formBuilder.control(null, Validators.required)
       );
     });
   }
@@ -93,14 +79,8 @@ export class RuestenComponent {
     return this.formGroup?.controls[name] as FormControl;
   }
 
-  getFormBag(a: any): FormControl {
-    const name = a.produkt + '.' + a.kategorie + '_bag';
-    return this.formGroup?.controls[name] as FormControl;
-  }
-
-
-  getFormLager(a: any): FormControl {
-    const name = a.produkt + '.' + a.kategorie + '_lager';
+  getFormPallet(a: any): FormControl {
+    const name = a.produkt + '.' + a.kategorie + '_pallet';
     return this.formGroup?.controls[name] as FormControl;
   }
 
@@ -123,7 +103,7 @@ export class RuestenComponent {
   save(): void {
     this.auftrag.status = this.status.value.value;
 
-    if (this.status.value.value === 'GERUESTET') {
+    if (this.status.value.value === 'VERPACKT') {
       this.formGroup?.disable();
       this.auftrag.inBearbeitung = false;
       this.save$.emit(this.auftrag);
@@ -141,7 +121,7 @@ export class RuestenComponent {
   }
 
   canClose(): boolean {
-    return (this.status.value.value === 'GROBKONTROLLIERT'
+    return (this.status.value.value === 'VERPACKT'
       && (this.countTotal !== this.total && !this.bemerkung.value));
   }
 }

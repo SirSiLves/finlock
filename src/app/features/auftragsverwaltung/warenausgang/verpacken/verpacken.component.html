@@ -1,4 +1,4 @@
-<h2>Rüsten</h2>
+<h2>Verpacken</h2>
 
 <ng-container *ngIf="formGroup">
   <div class="formgrid grid mt-5 p-fluid">
@@ -35,9 +35,9 @@
         <th>Einheit</th>
         <th>Kategorie</th>
         <th>Anzahl gemäss Auftrag</th>
-        <th>Gezählte Anzahl</th>
         <th>Bag</th>
-        <th>Lager</th>
+        <th>Gezählte Anzahl</th>
+        <th>Pallet</th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
@@ -45,6 +45,7 @@
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
         <td>{{product.anzahl | number}}</td>
+        <td>{{product.bag}}</td>
         <td>
           <p-inputNumber (focusout)="setCountedTotal()" [formControl]="getForm(product)"
                          inputId="gezaehlteAnzahl"></p-inputNumber>
@@ -54,23 +55,12 @@
         </td>
         <td>
           <p-dropdown appendTo="body"
-                      [formControl]="getFormBag(product)"
+                      [formControl]="getFormPallet(product)"
                       id=pallet
-                      placeholder="In Bag wählen"
-                      [options]="bezeichnungBagOptions"
+                      placeholder="In Pallet wählen"
+                      [options]="bezeichnungPalletOptions"
                       optionLabel="name"></p-dropdown>
-          <app-input-error-message *ngIf="getFormBag(product).touched && getFormBag(product).invalid">
-            Bitte auswählen
-          </app-input-error-message>
-        </td>
-        <td>
-          <p-dropdown appendTo="body"
-                      [formControl]="getFormLager(product)"
-                      id=lager
-                      placeholder="Aus Lager wählen"
-                      [options]="lagerRegal"
-                      optionLabel="name"></p-dropdown>
-          <app-input-error-message *ngIf="getFormLager(product).touched && getFormLager(product).invalid">
+          <app-input-error-message *ngIf="getFormPallet(product).touched && getFormPallet(product).invalid">
             Bitte auswählen
           </app-input-error-message>
         </td>

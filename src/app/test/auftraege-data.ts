@@ -66,13 +66,15 @@ export const auftraege = [
         produkt: '10',
         kategorie: 'CHF',
         wert: 10,
-        anzahl: 1000
+        anzahl: 1000,
+        bag: 'B003'
       },
       {
         produkt: '100',
         kategorie: 'CHF',
         wert: 100,
-        anzahl: 400
+        anzahl: 400,
+        bag: 'B004'
       },
     ]
   },
@@ -89,13 +91,15 @@ export const auftraege = [
         produkt: '10',
         kategorie: 'CHF',
         wert: 10,
-        anzahl: 1000
+        anzahl: 1000,
+        bag: 'B005'
       },
       {
         produkt: '100',
         kategorie: 'CHF',
         wert: 100,
-        anzahl: 400
+        anzahl: 400,
+        bag: 'B001'
       },
     ]
   },
@@ -204,13 +208,15 @@ export const auftraege = [
         produkt: '10',
         kategorie: 'CHF',
         wert: 10,
-        anzahl: 10000
+        anzahl: 10000,
+        bag: 'B002'
       },
       {
         produkt: '100',
         kategorie: 'CHF',
         wert: 100,
-        anzahl: 4000
+        anzahl: 4000,
+        bag: 'B003'
       },
     ]
   },
@@ -244,13 +250,15 @@ export const auftraege = [
         produkt: '10',
         kategorie: 'CHF',
         wert: 10,
-        anzahl: 1000
+        anzahl: 1000,
+        bag: 'B007'
       },
       {
         produkt: '100',
         kategorie: 'CHF',
         wert: 100,
-        anzahl: 400
+        anzahl: 400,
+        bag: 'B008'
       },
     ]
   },
@@ -267,13 +275,15 @@ export const auftraege = [
         produkt: '10',
         kategorie: 'CHF',
         wert: 10,
-        anzahl: 1000
+        anzahl: 1000,
+        bag: 'B009'
       },
       {
         produkt: '100',
         kategorie: 'CHF',
         wert: 100,
-        anzahl: 400
+        anzahl: 400,
+        bag: 'B003'
       },
     ]
   },
@@ -290,13 +300,15 @@ export const auftraege = [
         produkt: '10',
         kategorie: 'CHF',
         wert: 10,
-        anzahl: 1000
+        anzahl: 1000,
+        bag: 'B001'
       },
       {
         produkt: '100',
         kategorie: 'CHF',
         wert: 100,
-        anzahl: 400
+        anzahl: 400,
+        bag: 'B001'
       },
     ]
   },

@@ -23,6 +23,7 @@ import { AccordionModule } from 'primeng/accordion';
 import { FeinkontrolleComponent } from './wareneingang/feinkontrolle/feinkontrolle.component';
 import { EinlagerungComponent } from './wareneingang/einlagerung/einlagerung.component';
 import { RuestenComponent } from './warenausgang/ruesten/ruesten.component';
+import { VerpackenComponent } from './warenausgang/verpacken/verpacken.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { RuestenComponent } from './warenausgang/ruesten/ruesten.component';
     AuftragslisteDetailsComponent,
     FeinkontrolleComponent,
     EinlagerungComponent,
-    RuestenComponent
+    RuestenComponent,
+    VerpackenComponent
   ],
   imports: [
     CommonModule,
