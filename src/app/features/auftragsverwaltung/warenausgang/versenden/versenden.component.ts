@@ -16,6 +16,10 @@ export class VersendenComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
+    if (this.status.value.value === 'NEU' || this.status.value.value === 'GERUESTET') {
+      this.formGroup?.disable();
+    }
+
     if (this.status.value.value === 'VERSENDET') {
       this.auftragList.forEach((a: any) => {
         this.getFormBag(a).patchValue(this.bagVorhandenOptions[0]);

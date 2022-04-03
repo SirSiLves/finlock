@@ -15,6 +15,10 @@ export class EinlagerungComponent {
     this.auftragList = auftrag.produkte;
     this.fillFormGroup();
 
+    if (this.status.value.value === 'NEU' || this.status.value.value === 'GROBKONTROLLIERT') {
+      this.formGroup?.disable();
+    }
+
     if (this.status.value.value === 'EINGELAGERT') {
       this.auftragList.forEach((a: any) => {
         this.getFormLager(a).patchValue(this.lagerRegal[1]);

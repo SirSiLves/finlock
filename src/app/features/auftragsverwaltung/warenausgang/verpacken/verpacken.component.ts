@@ -16,6 +16,10 @@ export class VerpackenComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
+    if (this.status.value.value === 'NEU') {
+      this.formGroup?.disable();
+    }
+
     if (this.status.value.value === 'VERPACKT' || this.status.value.value === 'VERSENDET') {
       this.auftragList.forEach((a: any) => {
         this.getForm(a).patchValue(a.anzahl);

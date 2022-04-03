@@ -16,6 +16,10 @@ export class FeinkontrolleComponent {
     this.total = auftrag.wert;
     this.fillFormGroup();
 
+    if (this.status.value.value === 'NEU') {
+      this.formGroup?.disable();
+    }
+
     if (this.status.value.value === 'FEINKONTROLLIERT' || this.status.value.value === 'EINGELAGERT') {
       this.auftragList.forEach((a: any) => {
         this.getFormAnzahl(a).patchValue(a.anzahl);
