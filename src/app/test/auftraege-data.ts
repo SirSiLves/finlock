@@ -60,7 +60,7 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'KAUF',
     wert: 50000,
-    gegenpartei: gegenparteien[0],
+    gegenpartei: gegenparteien[3],
     produkte: [
       {
         produkt: '50',
@@ -94,7 +94,7 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'KAUF',
     wert: 100000,
-    gegenpartei: gegenparteien[0],
+    gegenpartei: gegenparteien[2],
     produkte: [
       {
         produkt: '10',
@@ -140,7 +140,7 @@ export const auftraege = [
     inBearbeitung: false,
     typ: 'KAUF',
     wert: 100000,
-    gegenpartei: gegenparteien[0],
+    gegenpartei: gegenparteien[1],
     produkte: [
       {
         produkt: '10',
@@ -180,7 +180,7 @@ export const auftraege = [
     ]
   },
   {
-    id: 99,
+    id: 9,
     createDate: new Date(),
     status: 'NEU',
     inBearbeitung: false,
@@ -199,6 +199,29 @@ export const auftraege = [
         kategorie: 'CHF',
         wert: 100,
         anzahl: 4000
+      },
+    ]
+  },
+  {
+    id: 10,
+    createDate: new Date(),
+    status: 'NEU',
+    inBearbeitung: false,
+    typ: 'VERKAUF',
+    wert: 50000,
+    gegenpartei: raiffeisen[0],
+    produkte: [
+      {
+        produkt: '10',
+        kategorie: 'CHF',
+        wert: 10,
+        anzahl: 1000
+      },
+      {
+        produkt: '100',
+        kategorie: 'CHF',
+        wert: 100,
+        anzahl: 400
       },
     ]
   },

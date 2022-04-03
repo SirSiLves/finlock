@@ -20,13 +20,35 @@
       </tr>
       <tr>
         <th></th>
-        <th><p-columnFilter type="text" field="id"></p-columnFilter></th>
+        <th><p-columnFilter type="text" field="id" display="menu"></p-columnFilter></th>
         <th><p-columnFilter type="date" field="createDate" display="menu"></p-columnFilter></th>
         <th><p-columnFilter type="boolean" field="inBearbeitung" display="menu"></p-columnFilter></th>
-        <th><p-columnFilter type="text" field="status"></p-columnFilter></th>
-        <th><p-columnFilter type="text" field="typ"></p-columnFilter></th>
-        <th><p-columnFilter type="numeric" field="wert"></p-columnFilter></th>
-        <th><p-columnFilter type="text" field="gegenpartei.name"></p-columnFilter></th>
+        <th>
+          <p-columnFilter field="status" matchMode="equals">
+            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <p-dropdown [ngModel]="value" [options]="statusOptions" (onChange)="filter($event.value)"
+                          placeholder="Alle">
+                <ng-template let-option pTemplate="item">
+                  <span>{{option.label}}</span>
+                </ng-template>
+              </p-dropdown>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter field="typ" matchMode="equals">
+            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <p-dropdown [ngModel]="value" [options]="typOptions" (onChange)="filter($event.value)"
+                          placeholder="Alle">
+                <ng-template let-option pTemplate="item">
+                  <span>{{option.label}}</span>
+                </ng-template>
+              </p-dropdown>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th><p-columnFilter type="numeric" field="wert" display="menu"></p-columnFilter></th>
+        <th><p-columnFilter type="text" field="gegenpartei.name" display="menu"></p-columnFilter></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-auftrag>
