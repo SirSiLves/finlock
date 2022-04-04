@@ -20,6 +20,9 @@ const routes: Routes = [
     path: 'kontakt', loadChildren: () => import('./features/kontakt/kontakt.module').then(m => m.KontaktModule)
   },
   {
+    path: 'profil', loadChildren: () => import('./features/profil/profil.module').then(m => m.ProfilModule)
+  },
+  {
     path: '', pathMatch: 'full', redirectTo: 'home'
   },
   // {

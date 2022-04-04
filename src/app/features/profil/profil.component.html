@@ -1,0 +1,43 @@
+<h1>Profil</h1>
+
+<p-card>
+  <ng-container>
+    <h2>Benutzerinformationen</h2>
+
+    <div class="formgrid grid mt-5 p-fluid">
+      <div class="field col-6 xl:col-4">
+        <label>Vorname</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" [ngModel]="'Max'" pInputText [disabled]="true">
+        </div>
+      </div>
+
+      <div class="field col-6 xl:col-4">
+        <label>Nachname</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-user"></i></span>
+          <input type="text" [ngModel]="'Muster'" pInputText [disabled]="true">
+        </div>
+      </div>
+
+      <div class="field col-6 xl:col-4">
+        <label>Rolle</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon"><i class="pi pi-users"></i></span>
+          <input type="text" [ngModel]="'Devisen Handel'" pInputText [disabled]="true">
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="action mt-5">
+      <button pButton
+              pRipple
+              type="button"
+              label="Abmelden"></button>
+    </div>
+  </ng-container>
+
+</p-card>
