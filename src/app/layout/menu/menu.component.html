@@ -1,3 +1,6 @@
-<ng-container *ngIf="items">
+<ng-container *ngIf="($user | async) !== undefined; else nonLoginMenu">
   <p-menubar [model]="items"></p-menubar>
 </ng-container>
+<ng-template #nonLoginMenu>
+  <p-menubar [model]="itemsWithoutLogin"></p-menubar>
+</ng-template>

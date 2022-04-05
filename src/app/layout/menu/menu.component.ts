@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
+import { AuthenticationService } from '../../core/authentication.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +9,13 @@ import { MenuItem } from 'primeng/api';
 })
 export class MenuComponent implements OnInit {
 
-  items?: MenuItem[];
+  items!: MenuItem[];
+  itemsWithoutLogin!: MenuItem[];
+  $user = this.authenticationService.user$;
 
-  constructor() {
+  constructor(
+    private authenticationService: AuthenticationService
+  ) {
   }
 
   ngOnInit(): void {
@@ -88,6 +93,25 @@ export class MenuComponent implements OnInit {
         icon: 'pi pi-fw pi-user',
         routerLink: 'user/profil'
       }
+    ];
+
+    this.itemsWithoutLogin = [
+      {
+        label: 'Anmelden',
+        routerLink: '/anmelden'
+      },
+      {
+        label: 'Impressum',
+        routerLink: '/impressum'
+      },
+      {
+        label: 'Datenschutzerklärung',
+        routerLink: '/dsgvo'
+      },
+      {
+        label: 'Kontakt',
+        routerLink: 'kontakt'
+      },
     ];
   }
 

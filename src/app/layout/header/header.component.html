@@ -1,27 +1,29 @@
 <h1 class="ml-5 logo" [routerLink]="'/home'">R-FINLOK</h1>
 
-<div class="container">
+<div class="container" *ngIf="$user | async as user else nonUser">
   <div class="shopping" [pTooltip]="'Warenkorb öffnen'" [routerLink]="'auftragserfassung/warenkorb'">
     <i class="pi pi-shopping-cart mr-1"></i>
     <p class="mr-5">{{shoppingCardSize$ | async | number}}</p>
   </div>
 
-  <span class="p-input-icon-left mr-5 search">
+  <span *ngIf="$user | async as user" class="p-input-icon-left mr-5 search">
     <i class="pi pi-search"></i>
     <input type="text" pInputText placeholder="Suche" [value]="search"/>
   </span>
 
-  <ng-container *ngIf="$user | async as user; else nonUser">
+  <ng-container>
     <div [routerLink]="'user/profil'" class="profil" pTooltip="Profil öffnen">
       <p class="mr-3">{{user.name}}</p>
       <i class="pi pi-user mr-4"></i>
     </div>
   </ng-container>
-  <ng-template #nonUser>
-    <div [routerLink]="'user/anmelden'" class="profil" pTooltip="Anmeldung öffnen">
+</div>
+
+<ng-template #nonUser>
+  <div class="container profi">
+    <div [routerLink]="'user/anmelden'" class="container profil" pTooltip="Anmeldung öffnen">
       <p class="mr-3">Anmelden</p>
       <i class="pi pi-user mr-4"></i>
     </div>
-  </ng-template>
-
-</div>
+  </div>
+</ng-template>

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from '../../features/auftragserfassung/warenkorb/warenkorb.service';
 import { combineLatest, Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map, shareReplay, tap } from 'rxjs/operators';
 import { AuthenticationService } from '../../core/authentication.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   search: string = "";
   shoppingCardSize$?: Observable<any>;
-  $user = this.authenticationService.user$;
+  $user = this.authenticationService.user$.pipe(shareReplay());
 
   constructor(
     private warenkorbService: WarenkorbService,

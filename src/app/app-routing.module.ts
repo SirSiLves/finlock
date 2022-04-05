@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationService } from './core/authentication.service';
+import { LoginComponent } from './features/user/login/login.component';
 
 const routes: Routes = [
   {
@@ -19,17 +20,19 @@ const routes: Routes = [
   },
   {
     path: 'kontakt', loadChildren: () => import('./features/kontakt/kontakt.module').then(m => m.KontaktModule),
-    canLoad: [AuthenticationService]
   },
   {
     path: 'user', loadChildren: () => import('./features/user/user.module').then(m => m.UserModule)
+  },
+  {
+    path: 'anmelden', component: LoginComponent
   },
   {
     path: '', pathMatch: 'full', redirectTo: 'home',
     canLoad: [AuthenticationService]
   },
   {
-    path: '**', redirectTo: 'user/anmelden'
+    path: '**', redirectTo: 'anmelden'
   }
 ];
 

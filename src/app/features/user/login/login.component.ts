@@ -25,6 +25,8 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.user.patchValue('111');
+    this.password.patchValue('111');
   }
 
   get user(): FormControl {
