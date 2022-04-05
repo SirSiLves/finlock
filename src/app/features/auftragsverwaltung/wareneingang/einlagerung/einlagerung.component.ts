@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { bearbeiter } from '@test/bearbeiter-data';
+import { users } from '@test/user-data';
 import { statusEingangList } from '@test/status-data';
 
 @Component({
@@ -34,7 +34,7 @@ export class EinlagerungComponent {
   formGroup?: FormGroup;
 
   statusListOptions = statusEingangList;
-  bearbeiterOptions = bearbeiter;
+  bearbeiterOptions = users;
   lagerRegal = [
     {name: 'A1 Nord', value: 'A1N'},
     {name: 'A2 Nord', value: 'A2N'},

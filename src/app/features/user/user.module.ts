@@ -1,30 +1,36 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ProfilRoutingModule } from './profil-routing.module';
-import { ProfilComponent } from './profil.component';
+import { UserRoutingModule } from './user-routing.module';
 import { CardModule } from 'primeng/card';
 import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
-import { AuftragserfassungModule } from '../auftragserfassung/auftragserfassung.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
+import { AuftragserfassungModule } from '../auftragserfassung/auftragserfassung.module';
+import { ProfilComponent } from './profil/profil.component';
+import { PasswordModule } from 'primeng/password';
+import { DividerModule } from 'primeng/divider';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
-    ProfilComponent
+    ProfilComponent,
+    LoginComponent
   ],
   imports: [
     CommonModule,
-    ProfilRoutingModule,
+    UserRoutingModule,
     CardModule,
     RippleModule,
     ButtonModule,
     AuftragserfassungModule,
     ReactiveFormsModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    PasswordModule,
+    DividerModule
   ]
 })
-export class ProfilModule { }
+export class UserModule { }

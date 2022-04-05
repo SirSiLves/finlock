@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { bearbeiter } from '@test/bearbeiter-data';
+import { users } from '@test/user-data';
 import { statusEingangList } from '@test/status-data';
 
 @Component({
@@ -39,7 +39,7 @@ export class FeinkontrolleComponent {
   total = 0;
 
   statusListOptions = statusEingangList;
-  bearbeiterOptions = bearbeiter;
+  bearbeiterOptions = users;
   zustandOptions = [
     {name: 'Defekt', value: 0},
     {name: 'Gebraucht', value: 1},

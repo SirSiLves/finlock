@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { bearbeiter } from '@test/bearbeiter-data';
+import { users } from '@test/user-data';
 import { statusAusgangList } from '@test/status-data';
 
 @Component({
@@ -36,7 +36,7 @@ export class RuestenComponent {
   total = 0;
 
   statusListOptions = statusAusgangList;
-  bearbeiterOptions = bearbeiter;
+  bearbeiterOptions = users;
 
   bezeichnungBagOptions = [
     {name: 'B001', value: 'B001'},

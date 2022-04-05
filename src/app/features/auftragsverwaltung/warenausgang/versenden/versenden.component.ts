@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { bearbeiter } from '@test/bearbeiter-data';
+import { users } from '@test/user-data';
 import { statusAusgangList } from '@test/status-data';
 
 @Component({
@@ -40,7 +40,7 @@ export class VersendenComponent {
   total = 0;
 
   statusListOptions = statusAusgangList;
-  bearbeiterOptions = bearbeiter;
+  bearbeiterOptions = users;
 
   bagVorhandenOptions = [
     {name: 'Ja', value: true},

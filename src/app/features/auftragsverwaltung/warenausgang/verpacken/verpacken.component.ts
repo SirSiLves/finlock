@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { bearbeiter } from '@test/bearbeiter-data';
+import { users } from '@test/user-data';
 import { statusAusgangList } from '@test/status-data';
 
 @Component({
@@ -40,7 +40,7 @@ export class VerpackenComponent {
   total = 0;
 
   statusListOptions = statusAusgangList;
-  bearbeiterOptions = bearbeiter;
+  bearbeiterOptions = users;
 
   bezeichnungPalletOptions = [
     {name: 'AABB01', value: 'AABB01'},

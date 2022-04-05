@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from '../../features/auftragserfassung/warenkorb/warenkorb.service';
 import { combineLatest, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
+import { AuthenticationService } from '../../core/authentication.service';
 
 @Component({
   selector: 'app-header',
@@ -12,9 +13,11 @@ export class HeaderComponent implements OnInit {
 
   search: string = "";
   shoppingCardSize$?: Observable<any>;
+  $user = this.authenticationService.user$;
 
   constructor(
-    private warenkorbService: WarenkorbService
+    private warenkorbService: WarenkorbService,
+    private authenticationService: AuthenticationService
   ) {
   }
 

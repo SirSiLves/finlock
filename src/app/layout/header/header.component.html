@@ -11,9 +11,17 @@
     <input type="text" pInputText placeholder="Suche" [value]="search"/>
   </span>
 
-  <div class="profil" [routerLink]="'/profil'" pTooltip="Profil öffnen">
-    <p class="mr-3">Max Muster</p>
-    <i class="pi pi-user mr-4"></i>
-  </div>
+  <ng-container *ngIf="$user | async as user; else nonUser">
+    <div [routerLink]="'user/profil'" class="profil" pTooltip="Profil öffnen">
+      <p class="mr-3">{{user.name}}</p>
+      <i class="pi pi-user mr-4"></i>
+    </div>
+  </ng-container>
+  <ng-template #nonUser>
+    <div [routerLink]="'user/anmelden'" class="profil" pTooltip="Anmeldung öffnen">
+      <p class="mr-3">Anmelden</p>
+      <i class="pi pi-user mr-4"></i>
+    </div>
+  </ng-template>
 
 </div>

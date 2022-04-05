@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { bearbeiter } from '@test/bearbeiter-data';
+import { users } from '@test/user-data';
 import { statusEingangList } from '@test/status-data';
 
 
@@ -35,7 +35,7 @@ export class GrobkontrolleComponent {
   total = 0;
 
   statusListOptions = statusEingangList;
-  bearbeiterOptions = bearbeiter;
+  bearbeiterOptions = users;
 
   constructor(
     private formBuilder: FormBuilder

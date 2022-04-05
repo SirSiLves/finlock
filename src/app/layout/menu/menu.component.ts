@@ -25,7 +25,7 @@ export class MenuComponent implements OnInit {
         items: [
           {
             label: 'News',
-            routerLink: '/news'
+            routerLink: '/home/news'
           },
           {
             label: 'Impressum',
@@ -86,7 +86,7 @@ export class MenuComponent implements OnInit {
       {
         label: 'Profil',
         icon: 'pi pi-fw pi-user',
-        routerLink: 'profil'
+        routerLink: 'user/profil'
       }
     ];
   }
