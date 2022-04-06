@@ -1,4 +1,5 @@
-<h1>Anmelden</h1>
+<h1 *ngIf="(user$ | async) === undefined">Anmelden</h1>
+<h1 *ngIf="(user$ | async)">Angemeldet</h1>
 
 <p-card>
   <ng-container *ngIf="(user$ | async) === undefined; else success">
