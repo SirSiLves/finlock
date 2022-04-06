@@ -13,6 +13,13 @@
       <button *ngIf="auftrag"
               pButton
               pRipple
+              pTooltip="PDF generieren"
+              type="button"
+              class="mr-2"
+              icon="pi pi-file-pdf" iconPos="left"></button>
+      <button *ngIf="auftrag"
+              pButton
+              pRipple
               pTooltip="Zurück zur Auftragsliste"
               type="button"
               [routerLink]="'/auftragsverwaltung/auftragsliste'"

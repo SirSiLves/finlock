@@ -5,11 +5,8 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './dsgvo.component.html',
   styleUrls: ['./dsgvo.component.scss']
 })
-export class DsgvoComponent implements OnInit {
+export class DsgvoComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
