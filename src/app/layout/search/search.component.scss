@@ -1,0 +1,21 @@
+:host {
+  input {
+    width: 20rem;
+  }
+}
+
+.result {
+  cursor: pointer;
+
+  h5 {
+    display: flex;
+    flex-wrap: nowrap;
+
+    i {
+      margin-left: 0.25rem;
+    }
+  }
+}
+
+
+

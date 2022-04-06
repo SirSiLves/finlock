@@ -10,6 +10,9 @@ import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BreadcrumbModule } from 'primeng/breadcrumb';
+import { SearchComponent } from './search/search.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -18,7 +21,8 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     LayoutComponent,
     HeaderComponent,
     FooterComponent,
-    MenuComponent
+    MenuComponent,
+    SearchComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +31,9 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
     ButtonModule,
     ToastModule,
     BrowserAnimationsModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    OverlayPanelModule,
+    FormsModule
   ],
   exports: [
     LayoutComponent

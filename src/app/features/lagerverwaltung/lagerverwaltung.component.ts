@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-lagerverwaltung',
   templateUrl: './lagerverwaltung.component.html',
   styleUrls: ['./lagerverwaltung.component.scss']
 })
-export class LagerverwaltungComponent implements OnInit {
+export class LagerverwaltungComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

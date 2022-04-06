@@ -11,7 +11,6 @@ import { AuthenticationService } from '../../core/authentication.service';
 })
 export class HeaderComponent implements OnInit {
 
-  search: string = "";
   shoppingCardSize$?: Observable<any>;
   $user = this.authenticationService.user$.pipe(shareReplay());
 
