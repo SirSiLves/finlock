@@ -60,4 +60,4 @@ jobs:
           app-name: 'finlok'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_97008DAC8A774C209A27ED37672F69A9 }}
-          package: .
+          package: ./dist/finlok
