@@ -15,6 +15,10 @@
     <button [routerLink]="'kontakt'" pButton type="button" label="Kontakt"
             class="p-button-text p-button-secondary p-button-rounded"></button>
   </li>
+  <li>
+    <button *ngIf="user$ | async" [routerLink]="'anmelden'"pButton type="button" label="Abmelden" (click)="abmelden()"
+            class="p-button-text p-button-secondary p-button-rounded"></button>
+  </li>
 </ul>
 
 <div class="mr-4 version">

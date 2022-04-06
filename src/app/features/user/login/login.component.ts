@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from '../../../core/authentication.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 
 @Component({
@@ -8,7 +10,9 @@ import { AuthenticationService } from '../../../core/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit, OnDestroy {
+
+  private onDestory$ = new Subject<void>();
 
   user$ = this.authenticationService.user$;
   searched = false;
@@ -22,6 +26,20 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
   ) {
+  }
+
+  ngOnInit(): void {
+    this.authenticationService.user$.pipe(takeUntil(this.onDestory$)).subscribe(user => {
+      if (!user) {
+        this.searched = false;
+        this.formGroup.reset();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.onDestory$.next();
+    this.onDestory$.complete();
   }
 
   get user(): FormControl {
@@ -41,4 +59,5 @@ export class LoginComponent {
     this.formGroup.markAsUntouched();
     this.searched = true;
   }
+
 }
