@@ -1,4 +1,13 @@
-<h1 class="ml-5 logo" [routerLink]="'/home'">R-FINLOK</h1>
+<div class="logo" [routerLink]="'/home'">
+  <h1 style="color:rgb(255, 85, 85)">R</h1>
+  <h1 style="color:#151515">-</h1>
+  <h1 style="color:rgb(102, 154, 57)">F</h1>
+  <h1 style="color:rgb(102, 154, 57)">I</h1>
+  <h1 style="color:rgb(102, 154, 57)">N</h1>
+  <h1 style="color:rgb(94, 122, 135) ">L</h1>
+  <h1 style="color:rgb(94, 122, 135) ">O</h1>
+  <h1 style="color:rgb(94, 122, 135) ">K</h1>
+</div>
 
 <div class="container" *ngIf="$user | async as user else nonUser">
   <div class="shopping" [pTooltip]="'Warenkorb öffnen'" [routerLink]="'auftragserfassung/warenkorb'">

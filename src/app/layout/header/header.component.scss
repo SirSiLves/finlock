@@ -6,7 +6,14 @@
   z-index: 900;
 
   .logo {
+    display: flex;
     cursor: pointer;
+    margin-top: 1rem;
+    margin-left: 0.8rem;
+
+    h1 {
+      margin-top: 0.03em;
+    }
     //box-shadow: rgb(94, 122, 135) 0 2px 0 0, rgb(102, 154, 57) 0 3px 0 0, rgb(237, 186, 47) 0 5px 0 0, rgb(203, 47, 48) 0 7px 0 0, rgb(255, 85, 85) 0 8px 0;
   }
 
