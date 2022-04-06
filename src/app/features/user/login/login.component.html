@@ -1,7 +1,11 @@
+<h1>Anmelden</h1>
+
 <p-card>
   <ng-container *ngIf="(user$ | async) === undefined; else success">
+
+    <h2 class="m-0"></h2>
+
     <form [formGroup]="formGroup">
-      <h2>Anmelden</h2>
 
       <app-input-error-message *ngIf="searched && (user$ | async) === undefined">
         Ungültiger Username oder Passwort

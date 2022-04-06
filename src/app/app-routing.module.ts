@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthenticationService } from './core/authentication.service';
 import { LoginComponent } from './features/user/login/login.component';
+import { ImpressumComponent } from './features/home/impressum/impressum.component';
+import { DsgvoComponent } from './features/home/dsgvo/dsgvo.component';
 
 const routes: Routes = [
   {
@@ -26,6 +28,12 @@ const routes: Routes = [
   },
   {
     path: 'anmelden', component: LoginComponent
+  },
+  {
+    path: 'impressum', component: ImpressumComponent
+  },
+  {
+    path: 'dsgvo', component: DsgvoComponent
   },
   {
     path: '', pathMatch: 'full', redirectTo: 'home',
