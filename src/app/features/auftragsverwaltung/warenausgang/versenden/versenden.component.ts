@@ -127,4 +127,11 @@ export class VersendenComponent {
     return (this.status.value.value === 'VERSENDET'
       && (this.countTotal !== this.total && !this.bemerkung.value));
   }
+
+  back(): void {
+    this.formGroup?.disable();
+    this.auftrag.inBearbeitung = false;
+    this.auftrag.status = 'GERUESTET';
+    this.save$.emit(this.auftrag);
+  }
 }

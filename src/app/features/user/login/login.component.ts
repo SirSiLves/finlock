@@ -8,7 +8,7 @@ import { AuthenticationService } from '../../../core/authentication.service';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent {
 
   user$ = this.authenticationService.user$;
   searched = false;
@@ -22,11 +22,6 @@ export class LoginComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService
   ) {
-  }
-
-  ngOnInit(): void {
-    this.user.patchValue('111');
-    this.password.patchValue('111');
   }
 
   get user(): FormControl {

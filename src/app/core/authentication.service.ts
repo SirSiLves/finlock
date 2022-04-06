@@ -24,6 +24,7 @@ export class AuthenticationService implements CanLoad, CanActivate {
   constructor(
     private router: Router
   ) {
+    this.user$.next(users[0]);
   }
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {

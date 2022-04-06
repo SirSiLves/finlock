@@ -5,7 +5,8 @@ export const users = [
     nachname: 'Muster',
     name: 'Max Muster',
     password: '111',
-    rolle: 'Devisen Handel'
+    rolle: 'Devisen Handel',
+    mail: 'max.muster@muster.com'
   },
   {
     id: '222',
@@ -13,7 +14,8 @@ export const users = [
     nachname: 'Müller',
     name: 'Laura Müller',
     password: '222',
-    rolle: 'Lager'
+    rolle: 'Lager',
+    mail: 'laura.mueller@muster.com'
   },
   {
     id: '333',
@@ -21,6 +23,7 @@ export const users = [
     nachname: 'Gerber',
     name: 'Lukas Gerber',
     password: '333',
-    rolle: 'Service'
+    rolle: 'Service',
+    mail: 'lukas.gerber@muster.com'
   }
 ];

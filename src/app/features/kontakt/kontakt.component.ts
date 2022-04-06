@@ -1,12 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { AuthenticationService } from '../../core/authentication.service';
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-kontakt',
   templateUrl: './kontakt.component.html',
   styleUrls: ['./kontakt.component.scss']
 })
-export class KontaktComponent {
+export class KontaktComponent implements OnInit, OnDestroy {
+
+  private onDestroy$ = new Subject<void>();
 
   formGroup = this.formBuilder.group({
     vorname: ['', [
@@ -34,8 +39,30 @@ export class KontaktComponent {
   confirm = false;
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService
   ) {
+  }
+
+  ngOnInit(): void {
+    this.authenticationService.user$.pipe(takeUntil(this.onDestroy$)).subscribe(user => {
+      if (user) {
+        this.vorname.patchValue(user.vorname);
+        this.vorname.disable();
+        this.nachname.patchValue(user.nachname);
+        this.nachname.disable();
+        this.mail.patchValue(user.ma  );
+        this.mail.disable();
+      }
+      else {
+        this.formGroup.reset();
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.onDestroy$.next();
+    this.onDestroy$.complete();
   }
 
   send(): void {
@@ -59,5 +86,6 @@ export class KontaktComponent {
   get text(): FormControl {
     return this.formGroup.controls.text as FormControl;
   }
+
 
 }

@@ -125,4 +125,11 @@ export class VerpackenComponent {
     return (this.status.value.value === 'VERPACKT'
       && (this.countTotal !== this.total && !this.bemerkung.value));
   }
+
+  back(): void {
+    this.formGroup?.disable();
+    this.auftrag.inBearbeitung = false;
+    this.auftrag.status = 'NEU';
+    this.save$.emit(this.auftrag);
+  }
 }

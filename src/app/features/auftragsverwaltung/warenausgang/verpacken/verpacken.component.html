@@ -83,6 +83,16 @@
     </app-input-error-message>
   </div>
 
+  <div class="mt-2">
+    <button *ngIf="countTotal !== total && this.bemerkung.value"
+            pButton
+            pRipple
+            type="button"
+            class="mr-4 p-button-danger"
+            label="Auftrag zurückweisen"
+            (click)="back()"></button>
+  </div>
+
   <div class="action mt-5">
     <button pButton
             pRipple
