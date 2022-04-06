@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - finlock
+name: Build and deploy Node.js app to Azure Web App - finlok
 
 on:
   push:
@@ -33,7 +33,7 @@ jobs:
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
-          name: finlock
+          name: finlok
           path: release.zip
 
   deploy:
@@ -47,7 +47,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: finlock
+          name: finlok
           expire-in: 0 # Setting this to 0 will delete all artifacts
 
       - name: unzip artifact for deployment
@@ -57,7 +57,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'finlock'
+          app-name: 'finlok'
           slot-name: 'Production'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_7F680FD1FE7C45A7BD04A0F6DD6CCBA4 }}
-          package: ./dist/finlock
+          package: ./dist/finlok

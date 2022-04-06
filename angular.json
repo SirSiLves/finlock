@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "finlock": {
+    "finlok": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/finlock",
+            "outputPath": "dist/finlok",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -76,10 +76,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "finlock:build:production"
+              "browserTarget": "finlok:build:production"
             },
             "development": {
-              "browserTarget": "finlock:build:development"
+              "browserTarget": "finlok:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -87,7 +87,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "finlock:build"
+            "browserTarget": "finlok:build"
           }
         },
         "test": {
@@ -120,7 +120,7 @@
       }
     }
   },
-  "defaultProject": "finlock",
+  "defaultProject": "finlok",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }
