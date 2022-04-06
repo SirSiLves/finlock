@@ -25,6 +25,7 @@ import { EinlagerungComponent } from './wareneingang/einlagerung/einlagerung.com
 import { RuestenComponent } from './warenausgang/ruesten/ruesten.component';
 import { VerpackenComponent } from './warenausgang/verpacken/verpacken.component';
 import { VersendenComponent } from './warenausgang/versenden/versenden.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { VersendenComponent } from './warenausgang/versenden/versenden.component
     AuftragserfassungModule,
     InputTextareaModule,
     DropdownModule,
-    AccordionModule
+    AccordionModule,
+    SharedModule
   ]
 })
 export class AuftragsverwaltungModule { }

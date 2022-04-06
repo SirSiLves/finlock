@@ -27,11 +27,11 @@ export class AuthenticationService implements CanLoad, CanActivate {
   }
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this.user$.pipe(map(user => !!user || this.router.parseUrl('/user/anmelden')));
+    return this.user$.pipe(map(user => !!user || this.router.parseUrl('/anmelden')));
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.user$.pipe(map(user => !!user || this.router.parseUrl('/user/anmelden')));
+    return this.user$.pipe(map(user => !!user || this.router.parseUrl('/anmelden')));
   }
 
   getUser(): any {

@@ -1,15 +1,18 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { ActivatedRoute, RouterModule, Routes } from '@angular/router';
 import { NewsComponent } from './news/news.component';
+import { AuthenticationService } from '../../core/authentication.service';
 
 const routes: Routes = [
   {
     path: '',
-    component: NewsComponent
+    component: NewsComponent,
+    canActivate: [AuthenticationService]
   },
   {
     path: 'news',
-    component: NewsComponent
+    component: NewsComponent,
+    canActivate: [AuthenticationService]
   }
 ];
 

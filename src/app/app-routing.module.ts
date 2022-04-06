@@ -24,7 +24,13 @@ const routes: Routes = [
     path: 'kontakt', loadChildren: () => import('./features/kontakt/kontakt.module').then(m => m.KontaktModule),
   },
   {
-    path: 'user', loadChildren: () => import('./features/user/user.module').then(m => m.UserModule)
+    path: 'user', loadChildren: () => import('./features/user/user.module').then(m => m.UserModule),
+    canLoad: [AuthenticationService]
+  },
+  {
+    path: 'lagerverwaltung',
+    loadChildren: () => import('./features/lagerverwaltung/lagerverwaltung.module').then(m => m.LagerverwaltungModule),
+    canLoad: [AuthenticationService]
   },
   {
     path: 'anmelden', component: LoginComponent
@@ -40,7 +46,8 @@ const routes: Routes = [
     canLoad: [AuthenticationService]
   },
   {
-    path: '**', redirectTo: 'anmelden'
+    path: '**', redirectTo: 'home/news',
+    canLoad: [AuthenticationService]
   }
 ];
 

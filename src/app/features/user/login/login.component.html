@@ -3,13 +3,13 @@
 <p-card>
   <ng-container *ngIf="(user$ | async) === undefined; else success">
 
+    <app-input-error-message *ngIf="searched && (user$ | async) === undefined">
+      Ungültiger Username oder Passwort
+    </app-input-error-message>
+
     <h2 class="m-0"></h2>
 
     <form [formGroup]="formGroup">
-
-      <app-input-error-message *ngIf="searched && (user$ | async) === undefined">
-        Ungültiger Username oder Passwort
-      </app-input-error-message>
 
       <div class="formgrid grid mt-5 p-fluid">
         <div class="field col-6 xl:col-4">

@@ -13,9 +13,6 @@ import { TabViewModule } from 'primeng/tabview';
 import { AuftragserfassungComponent } from './auftragserfassung.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ToastModule } from 'primeng/toast';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { BrowserModule } from '@angular/platform-browser';
 import { InputErrorMessageComponent } from '../../shared/components/input-error-message/input-error-message.component';
 import { PickListModule } from 'primeng/picklist';
 import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenkorb-details.component';
@@ -24,20 +21,17 @@ import { CardModule } from 'primeng/card';
 import { DropdownModule } from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
 import { SplitterModule } from 'primeng/splitter';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
-    declarations: [
-        EinkaufenComponent,
-        WarenkorbComponent,
-        BestellungenComponent,
-        AuftragserfassungComponent,
-        InputErrorMessageComponent,
-        WarenkorbDetailsComponent
-    ],
-    exports: [
-        InputErrorMessageComponent
-    ],
+  declarations: [
+    EinkaufenComponent,
+    WarenkorbComponent,
+    BestellungenComponent,
+    AuftragserfassungComponent,
+    WarenkorbDetailsComponent,
+  ],
   imports: [
     CommonModule,
     AuftragserfassungRoutingModule,
@@ -55,6 +49,7 @@ import { SplitterModule } from 'primeng/splitter';
     DropdownModule,
     AccordionModule,
     SplitterModule,
+    SharedModule
   ]
 })
 export class AuftragserfassungModule { }

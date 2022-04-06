@@ -12,6 +12,7 @@ import { ProfilComponent } from './profil/profil.component';
 import { PasswordModule } from 'primeng/password';
 import { DividerModule } from 'primeng/divider';
 import { LoginComponent } from './login/login.component';
+import { SharedModule } from '../../shared/shared.module';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { LoginComponent } from './login/login.component';
     InputTextModule,
     FormsModule,
     PasswordModule,
-    DividerModule
+    DividerModule,
+    SharedModule
   ]
 })
 export class UserModule { }
