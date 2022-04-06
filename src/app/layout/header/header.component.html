@@ -11,8 +11,10 @@
 
 <div class="container" *ngIf="$user | async as user else nonUser">
   <div class="shopping" [pTooltip]="'Warenkorb öffnen'" [routerLink]="'auftragserfassung/warenkorb'">
-    <i class="pi pi-shopping-cart mr-1"></i>
-    <p class="mr-5">{{shoppingCardSize$ | async | number}}</p>
+    <button pButton type="button" class="p-button-text p-button-secondary mr-3"
+            icon="pi pi-shopping-cart"
+            iconPos="left" label="{{shoppingCardSize$ | async | number}}">
+    </button>
   </div>
 
   <span *ngIf="$user | async as user" class="p-input-icon-left mr-5 search">
@@ -21,9 +23,11 @@
   </span>
 
   <ng-container>
-    <div [routerLink]="'user/profil'" class="profil" pTooltip="Profil öffnen">
-      <p class="mr-3">{{user.name}}</p>
-      <i class="pi pi-user mr-4"></i>
+    <div class="profil">
+      <button [routerLink]="'user/profil'" pButton type="button" pTooltip="Profil öffnen"
+              class="p-button-text p-button-secondary mr-3" icon="pi pi-user"
+              iconPos="left" label="{{user.name}}">
+      </button>
     </div>
   </ng-container>
 </div>
