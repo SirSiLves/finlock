@@ -10,10 +10,10 @@
       <tr>
         <th></th>
         <th>ID</th>
+        <th>Typ</th>
         <th>Eingangsdatum</th>
         <th>In Bearbeitung</th>
         <th>Status</th>
-        <th>Typ</th>
         <th>Auftragswert</th>
         <th>Gegenpartei</th>
       </tr>
@@ -21,6 +21,18 @@
         <th></th>
         <th>
           <p-columnFilter type="text" field="id" display="menu"></p-columnFilter>
+        </th>
+        <th>
+          <p-columnFilter field="typ" matchMode="equals">
+            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <p-dropdown [ngModel]="value" [options]="typOptions" (onChange)="filter($event.value)"
+                          placeholder="Alle">
+                <ng-template let-option pTemplate="item">
+                  <span>{{option.label}}</span>
+                </ng-template>
+              </p-dropdown>
+            </ng-template>
+          </p-columnFilter>
         </th>
         <th>
           <p-columnFilter type="date" field="createDate" display="menu"></p-columnFilter>
@@ -32,18 +44,6 @@
           <p-columnFilter field="status" matchMode="equals">
             <ng-template pTemplate="filter" let-value let-filter="filterCallback">
               <p-dropdown appendTo="body" [ngModel]="value" [options]="statusOptions" (onChange)="filter($event.value)"
-                          placeholder="Alle">
-                <ng-template let-option pTemplate="item">
-                  <span>{{option.label}}</span>
-                </ng-template>
-              </p-dropdown>
-            </ng-template>
-          </p-columnFilter>
-        </th>
-        <th>
-          <p-columnFilter field="typ" matchMode="equals">
-            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
-              <p-dropdown [ngModel]="value" [options]="typOptions" (onChange)="filter($event.value)"
                           placeholder="Alle">
                 <ng-template let-option pTemplate="item">
                   <span>{{option.label}}</span>
@@ -70,13 +70,21 @@
              [routerLink]="['../warenausgang', auftrag.id]"></i>
         </td>
         <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.id}}</td>
+        <ng-container *ngIf="auftrag.typ === 'KAUF'; else warenausgang">
+          <td [class]="'warenaeingang'">
+            <p-tag severity="info" value="Wareneingang"></p-tag>
+          </td>
+        </ng-container>
+        <ng-template #warenausgang>
+          <td [class]="'warenausgang'">
+            <p-tag severity="warning" value="Wareneingang"></p-tag>
+          </td>
+        </ng-template>
         <td
           [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
         <td
           [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</td>
         <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{getStatus(auftrag.status)}}</td>
-        <td
-          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.typ === 'KAUF' ? 'Wareneingang' : 'Warenausgang'}}</td>
         <td
           [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.wert | currency:'CHF'}}</td>
         <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.gegenpartei.name}}</td>

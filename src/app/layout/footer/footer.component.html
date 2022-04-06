@@ -1,23 +1,22 @@
 <ul class="menus">
   <li>
     <button [routerLink]="'home'" pButton type="button" label="Home"
-            class="p-button-text p-button-secondary"></button>
+            class="p-button-text p-button-secondary p-button-rounded"></button>
   </li>
   <li>
     <button [routerLink]="'impressum'" pButton type="button" label="Impressum"
-            class="p-button-text p-button-secondary"></button>
+            class="p-button-text p-button-secondary p-button-rounded"></button>
   </li>
   <li>
     <button [routerLink]="'dsgvo'" pButton type="button" label="Datenschutz"
-            class="p-button-text p-button-secondary"></button>
+            class="p-button-text p-button-secondary p-button-rounded"></button>
   </li>
   <li>
     <button [routerLink]="'kontakt'" pButton type="button" label="Kontakt"
-            class="p-button-text p-button-secondary"></button>
+            class="p-button-text p-button-secondary p-button-rounded"></button>
   </li>
 </ul>
 
 <div class="mr-4 version">
-  <small>&copy;{{currentDate | date:'yyyy'}} FFHS</small>
-  <small>v{{version.versionLong}}</small>
+  <small>&copy;{{currentDate | date:'yyyy'}} FFHS v{{version.versionLong}}</small>
 </div>

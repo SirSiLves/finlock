@@ -1,4 +1,6 @@
 <ng-container *ngIf="auftrag">
+
+
   <div class="formgrid grid mt-5">
 
     <div class="field col-2 xl:col-1">
@@ -9,11 +11,6 @@
     <div class="field col-4 xl:col-2">
       <label for="createDate">Eingangsdatum</label>
       <h4 id="createDate" class="m-0">{{auftrag.createDate | date:'dd.MM.yyyy HH:mm:ss'}}</h4>
-    </div>
-
-    <div class="field col-2 xl:col-1">
-      <label for="typ">Typ</label>
-      <h4 id="typ" class="m-0">{{auftrag.typ}}</h4>
     </div>
 
     <div class="field col-4 xl:col-3">
@@ -30,5 +27,16 @@
       <label for="status">Status</label>
       <h4 id="status" class="m-0">{{getStatus(auftrag.status)}}</h4>
     </div>
+
+    <div class="field col-2 xl:col-1">
+      <label>Typ</label><br>
+      <ng-container *ngIf="auftrag.typ === 'KAUF'; else warenausgang">
+        <p-tag severity="info" value="{{auftrag.typ}}"></p-tag>
+      </ng-container>
+      <ng-template #warenausgang>
+        <p-tag severity="warning" value="{{auftrag.typ}}"></p-tag>
+      </ng-template>
+    </div>
+
   </div>
 </ng-container>

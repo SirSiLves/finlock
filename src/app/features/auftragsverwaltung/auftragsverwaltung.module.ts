@@ -26,6 +26,7 @@ import { RuestenComponent } from './warenausgang/ruesten/ruesten.component';
 import { VerpackenComponent } from './warenausgang/verpacken/verpacken.component';
 import { VersendenComponent } from './warenausgang/versenden/versenden.component';
 import { SharedModule } from '../../shared/shared.module';
+import { TagModule } from 'primeng/tag';
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { SharedModule } from '../../shared/shared.module';
     InputTextareaModule,
     DropdownModule,
     AccordionModule,
-    SharedModule
+    SharedModule,
+    TagModule
   ]
 })
 export class AuftragsverwaltungModule { }
