@@ -2,13 +2,8 @@
 
 <p-card>
   <div class="header">
-      <span class="p-input-icon-right mr-5 search">
-    <i class="pi pi-search"></i>
-    <p-inputNumber inputId="auftragId"
-                   placeholder="Auftrag ID"
-                   [formControl]="suche"
-                   (onInput)="openAuftrag($event.value)"></p-inputNumber>
-  </span>
+    <app-auftrags-suche></app-auftrags-suche>
+
     <div>
       <button *ngIf="auftrag"
               pButton
@@ -27,7 +22,7 @@
     </div>
   </div>
 
-  <div *ngIf="auftrag; else empty">
+  <div *ngIf="auftrag">
     <app-auftragsliste-details [auftrag]="auftrag"></app-auftragsliste-details>
 
     <div class="mt-4">
@@ -56,9 +51,4 @@
     </div>
   </div>
 
-  <ng-template #empty>
-    <div *ngIf="suche.touched">
-      <h3>Kein Auftrag mit gesuchter ID gefunden!</h3>
-    </div>
-  </ng-template>
 </p-card>

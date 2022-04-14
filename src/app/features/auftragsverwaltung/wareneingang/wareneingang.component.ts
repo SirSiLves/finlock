@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { auftraege } from '@test/auftraege-data';
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { Location } from '@angular/common';
 
 @Component({
@@ -16,10 +16,6 @@ export class WareneingangComponent implements OnInit, OnDestroy {
   onDestroy$ = new Subject<void>();
 
   auftrag: any;
-
-  formGroup = this.formBuilder.group({
-    suche: [null, [Validators.required]]
-  });
 
   activeState: boolean[] = [false, false, false];
 
@@ -62,10 +58,6 @@ export class WareneingangComponent implements OnInit, OnDestroy {
       this.activeState[1] = this.isFeinkontrolle();
       this.activeState[2] = this.isEinlagerung();
     }, 1);
-  }
-
-  get suche(): FormControl {
-    return this.formGroup.controls.suche as FormControl;
   }
 
   isGrobkontrolle(): boolean {

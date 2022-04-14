@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
-import { FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { takeUntil } from 'rxjs/operators';
@@ -16,10 +16,6 @@ export class WarenausgangComponent implements OnInit, OnDestroy {
   onDestroy$ = new Subject<void>();
 
   auftrag: any;
-
-  formGroup = this.formBuilder.group({
-    suche: [null, [Validators.required]]
-  });
 
   activeState: boolean[] = [false, false, false];
 
@@ -62,10 +58,6 @@ export class WarenausgangComponent implements OnInit, OnDestroy {
       this.activeState[1] = this.isVerpacken();
       this.activeState[2] = this.isVersenden();
     }, 1);
-  }
-
-  get suche(): FormControl {
-    return this.formGroup.controls.suche as FormControl;
   }
 
   isRuesten(): boolean {

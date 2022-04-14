@@ -1,3 +1,7 @@
+<div class="mb-4">
+  <app-auftrags-suche></app-auftrags-suche>
+</div>
+
 <ng-container *ngIf="itemList">
   <p-table [value]="itemList"
            [paginator]="true" [rows]="10"
@@ -77,7 +81,7 @@
         </ng-container>
         <ng-template #warenausgang>
           <td [class]="'warenausgang'">
-            <p-tag severity="warning" value="Wareneingang"></p-tag>
+            <p-tag severity="warning" value="Warenausgang"></p-tag>
           </td>
         </ng-template>
         <td

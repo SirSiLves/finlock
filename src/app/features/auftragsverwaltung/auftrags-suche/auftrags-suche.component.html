@@ -1,0 +1,52 @@
+<div>
+  <span class="p-input-icon-left mr-5 search">
+      <i class="pi pi-search"></i>
+    <input type="number" pInputText placeholder="Auftrag ID"
+           [ngModel]="searchValue"
+           (ngModelChange)="onChange($event)"
+           [maxlength]="10"
+           (input)="showSearchBox(op, $event)"/>
+  </span>
+</div>
+
+<p-overlayPanel #op [showCloseIcon]="true">
+  <ng-template pTemplate>
+    <ng-container *ngIf="results.length > 0; else empty">
+      <div *ngFor="let result of results">
+        <div class="header">
+          <p-tag *ngIf="result.typ === 'KAUF'" severity="info" value="Wareneingang"></p-tag>
+          <p-tag *ngIf="result.typ === 'VERKAUF'" severity="warning" value="Warenausgang"></p-tag>
+          <button pButton
+                  pRipple
+                  pTooltip="Auftrag öffnen"
+                  type="button"
+                  (click)="op.hide()"
+                  [routerLink]="result.typ === 'KAUF' ? '/auftragsverwaltung/wareneingang/' + result.id : '/auftragsverwaltung/warenausgang/' + result.id"
+                  icon="pi pi-arrow-right" iconPos="left"></button>
+        </div>
+
+        <div class="formgrid grid">
+          <div class="field col-6 mt-2">
+            <h3 class="m-0">Auftrag ID</h3>{{result.id}}
+          </div>
+
+          <div class="field col-6">
+            <h3 class="m-0">Aktueller Status</h3> {{result.status}}
+          </div>
+
+          <div class="field col-6">
+            <h3 class="m-0">Gegenpartei</h3> {{result.gegenpartei.name}}
+          </div>
+
+          <div class="field col-6">
+            <h3 class="m-0">Auftragswert</h3> {{result.wert | currency:'CHF'}}
+          </div>
+
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #empty>
+      <h3>Kein Auftrag mit gesuchter ID gefunden!</h3>
+    </ng-template>
+  </ng-template>
+</p-overlayPanel>

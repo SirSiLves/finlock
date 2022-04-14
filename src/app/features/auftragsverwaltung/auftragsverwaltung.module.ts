@@ -27,6 +27,8 @@ import { VerpackenComponent } from './warenausgang/verpacken/verpacken.component
 import { VersendenComponent } from './warenausgang/versenden/versenden.component';
 import { SharedModule } from '../../shared/shared.module';
 import { TagModule } from 'primeng/tag';
+import { AuftragsSucheComponent } from './auftrags-suche/auftrags-suche.component';
+import { OverlayPanelModule } from 'primeng/overlaypanel';
 
 
 @NgModule({
@@ -41,26 +43,28 @@ import { TagModule } from 'primeng/tag';
     EinlagerungComponent,
     RuestenComponent,
     VerpackenComponent,
-    VersendenComponent
+    VersendenComponent,
+    AuftragsSucheComponent
   ],
-  imports: [
-    CommonModule,
-    AuftragsverwaltungRoutingModule,
-    CardModule,
-    TableModule,
-    TooltipModule,
-    InputTextModule,
-    InputNumberModule,
-    FormsModule,
-    ReactiveFormsModule,
-    ButtonModule,
-    RippleModule,
-    AuftragserfassungModule,
-    InputTextareaModule,
-    DropdownModule,
-    AccordionModule,
-    SharedModule,
-    TagModule
-  ]
+    imports: [
+        CommonModule,
+        AuftragsverwaltungRoutingModule,
+        CardModule,
+        TableModule,
+        TooltipModule,
+        InputTextModule,
+        InputNumberModule,
+        FormsModule,
+        ReactiveFormsModule,
+        ButtonModule,
+        RippleModule,
+        AuftragserfassungModule,
+        InputTextareaModule,
+        DropdownModule,
+        AccordionModule,
+        SharedModule,
+        TagModule,
+        OverlayPanelModule
+    ]
 })
 export class AuftragsverwaltungModule { }
