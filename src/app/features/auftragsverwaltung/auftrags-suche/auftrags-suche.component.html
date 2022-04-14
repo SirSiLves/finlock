@@ -2,6 +2,7 @@
   <span class="p-input-icon-left mr-5 search">
       <i class="pi pi-search"></i>
     <input type="number" pInputText placeholder="Auftrag ID"
+           [min]="1"
            [ngModel]="searchValue"
            (ngModelChange)="onChange($event)"
            [maxlength]="10"
