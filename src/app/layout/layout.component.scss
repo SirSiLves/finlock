@@ -24,6 +24,13 @@
       grid-template-columns: 0.5fr 5fr 0.5fr;
     }
 
+    @media screen and (max-width:720px) {
+      main {
+        grid-template-columns: 0.2fr 10fr 0.2fr;
+      }
+    }
+
+
     app-footer {
       grid-area: footer;
       bottom: 0;

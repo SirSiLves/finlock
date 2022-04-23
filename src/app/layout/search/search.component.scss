@@ -2,6 +2,12 @@
   input {
     width: 20rem;
   }
+
+  @media screen and (max-width:720px) {
+    input {
+      width: 20rem;
+    }
+  }
 }
 
 .result {
