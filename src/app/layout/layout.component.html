@@ -1,20 +1,6 @@
 <div class="layout-container" id="top-anchor">
   <app-header></app-header>
-  <app-menu *ngIf="(mobile$ | async) === false; else mobile"></app-menu>
-
-  <ng-template #mobile>
-    <div class="menu-search">
-      <div class="p-fluid grid">
-        <div class="col-10">
-          <app-search></app-search>
-        </div>
-
-        <div class="col-1">
-          <app-menu></app-menu>
-        </div>
-      </div>
-    </div>
-  </ng-template>
+  <app-menu></app-menu>
 
   <div class="content-wrapper" id="content-anchor">
     <main>

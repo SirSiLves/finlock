@@ -5,8 +5,11 @@
   <p-menubar *ngIf="(mobile$ | async) === false; else mobile" [model]="itemsWithoutLogin"></p-menubar>
 </ng-template>
 
+
 <ng-template #mobile>
-  <button type="button" class="p-button-secondary" pButton pRipple icon="pi pi-bars"
-          (click)="menu.toggle($event)"></button>
-  <p-menu [style]="{'width':'100%'}" [appendTo]="'body'" #menu [model]="items" [popup]="true"></p-menu>
+  <p-menubar [model]="items">
+    <div class="mt-1">
+      <app-search></app-search>
+    </div>
+  </p-menubar>
 </ng-template>

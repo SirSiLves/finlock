@@ -1,4 +1,4 @@
-<div class="grid p-fluid">
+<div class="grid p-fluid mr-1">
   <div class="col-12">
     <div class="p-inputgroup">
       <span class="p-inputgroup-addon">
@@ -16,7 +16,7 @@
   </div>
 </div>
 
-<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: (mobile$ | async) ? '70%' : '20rem'}">
+<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: (mobile$ | async) ? '90%' : '20rem'}">
   <ng-template pTemplate="body">
     <ng-container *ngIf="results.length > 0; else empty">
       <h3>Ergebnisse für "{{searchValue}}"</h3>

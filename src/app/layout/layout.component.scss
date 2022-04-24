@@ -35,17 +35,6 @@
 
 @media screen and (max-width:720px) {
   .layout-container {
-    grid-template-areas:
-      'header header header'
-      'menu-search menu-search menu-search'
-      'content content content';
-
-    .menu-search {
-      grid-area: menu-search;
-      margin-left: 1rem;
-      margin-top: 1rem;
-    }
-
     .content-wrapper {
       main {
         grid-template-columns: 0.25fr 5fr 0.25fr;
