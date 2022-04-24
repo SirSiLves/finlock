@@ -1,4 +1,12 @@
 :host {
-  display: flex;
-  justify-content: center;
+  position: absolute;
+  bottom: 12rem;
+  right: 2rem;
+}
+
+@media screen and (max-width:720px) {
+  :host {
+    bottom: 2rem;
+    right: 0.5rem;
+  }
 }

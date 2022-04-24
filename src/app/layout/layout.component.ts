@@ -18,7 +18,6 @@ export class LayoutComponent implements OnInit {
   ) {
   }
 
-
   ngOnInit(): void {
     this.layoutService.setMobile(window.innerWidth);
   }

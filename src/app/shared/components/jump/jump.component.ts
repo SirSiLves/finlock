@@ -1,14 +1,25 @@
-import { AfterViewChecked, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { animate, style, transition, trigger } from '@angular/animations';
 
 @Component({
   selector: 'app-jump',
   templateUrl: './jump.component.html',
-  styleUrls: ['./jump.component.scss']
+  styleUrls: ['./jump.component.scss'],
+  animations: [
+    trigger('fadeAndScale', [
+      transition(':enter', [
+        style({transform: 'scale(0)', opacity: '0'}),
+        animate('250ms ease-out', style({transform: 'scale(1)', opacity: '1'})),
+      ]),
+      transition(':leave', [
+        animate('250ms ease-out', style({transform: 'scale(0)', opacity: '0'})),
+      ]),
+    ]),
+  ]
 })
-export class JumpComponent implements AfterViewChecked {
+export class JumpComponent implements OnInit {
 
   visible = false;
-  isLoading = false;
 
   constructor() {
   }
@@ -17,15 +28,13 @@ export class JumpComponent implements AfterViewChecked {
     document.getElementById('top-anchor')!.scrollIntoView({block: "start", behavior: "smooth"});
   }
 
-  ngAfterViewChecked(): void {
-    if (this.isLoading) {
-      return;
-    }
-
-    this.isLoading = true;
-    setTimeout(() => {
-      this.visible = document.getElementById('content-anchor')!.clientHeight > window.innerHeight;
-      this.isLoading = false;
-    }, 1);
+  ngOnInit(): void {
+    document.body.onscroll = (): void => {
+      if (document.body.scrollTop !== 0) {
+        this.visible = document.getElementById('content-anchor')!.clientHeight > window.innerHeight;
+      } else {
+        this.visible = false;
+      }
+    };
   }
 }

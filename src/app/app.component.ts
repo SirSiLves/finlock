@@ -7,4 +7,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'finlok';
+
+  scrollTop(): void {
+    document.body.scrollTop = 0;
+  }
 }
