@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { LayoutService } from '../../../../layout/layout.service';
 
 @Component({
   selector: 'app-warenkorb-details',
@@ -10,7 +11,11 @@ export class WarenkorbDetailsComponent {
   @Input() productList?: any;
   @Output() remove$ = new EventEmitter<any>();
 
-  constructor() {
+  mobile$ = this.layoutService.mobile;
+
+  constructor(
+    private layoutService: LayoutService
+  ) {
   }
 
   emitRemove(product: any): void {

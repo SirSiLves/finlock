@@ -13,7 +13,6 @@ import { TabViewModule } from 'primeng/tabview';
 import { AuftragserfassungComponent } from './auftragserfassung.component';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { InputErrorMessageComponent } from '../../shared/components/input-error-message/input-error-message.component';
 import { PickListModule } from 'primeng/picklist';
 import { WarenkorbDetailsComponent } from './warenkorb/warenkorb-details/warenkorb-details.component';
 import { FieldsetModule } from 'primeng/fieldset';
@@ -22,6 +21,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { AccordionModule } from 'primeng/accordion';
 import { SplitterModule } from 'primeng/splitter';
 import { SharedModule } from '../../shared/shared.module';
+import { InputTextModule } from 'primeng/inputtext';
 
 
 @NgModule({
@@ -32,24 +32,25 @@ import { SharedModule } from '../../shared/shared.module';
     AuftragserfassungComponent,
     WarenkorbDetailsComponent,
   ],
-  imports: [
-    CommonModule,
-    AuftragserfassungRoutingModule,
-    ButtonModule,
-    RippleModule,
-    TableModule,
-    TooltipModule,
-    TabViewModule,
-    InputNumberModule,
-    ReactiveFormsModule,
-    FormsModule,
-    PickListModule,
-    FieldsetModule,
-    CardModule,
-    DropdownModule,
-    AccordionModule,
-    SplitterModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        AuftragserfassungRoutingModule,
+        ButtonModule,
+        RippleModule,
+        TableModule,
+        TooltipModule,
+        TabViewModule,
+        InputNumberModule,
+        ReactiveFormsModule,
+        FormsModule,
+        PickListModule,
+        FieldsetModule,
+        CardModule,
+        DropdownModule,
+        AccordionModule,
+        SplitterModule,
+        SharedModule,
+        InputTextModule
+    ]
 })
 export class AuftragserfassungModule { }

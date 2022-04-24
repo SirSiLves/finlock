@@ -1,7 +1,7 @@
 <ng-container *ngIf="productList">
-  <p-table [value]="productList" [paginator]="true" [rows]="10" [showCurrentPageReport]="true" responsiveLayout="scroll"
-           currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-           [rowsPerPageOptions]="[10,25,50]">
+  <p-table [value]="productList"
+           [paginator]="true"
+           [rows]="10">
     <ng-template pTemplate="colgroup">
       <colgroup>
         <col style="width: 30%;">
@@ -23,7 +23,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
-      <tr>
+      <tr *ngIf="(mobile$ | async) === false; else mobile">
         <td>
           <p-inputNumber #anzahl inputId="anzahl" [ngModel]="product.anzahl"></p-inputNumber>
           <app-input-error-message *ngIf="anzahl.value * product.wert > 100000000">
@@ -34,7 +34,7 @@
         <td>{{product.kategorie}}</td>
         <td>{{product.gegenpartei.name}}</td>
         <td>{{product.wert * anzahl.value | currency:'CHF':'symbol'}}</td>
-        <td class="flex align-items-center justify-content-center" [pTooltip]="'Aus dem Warenkorb entfernen'">
+        <td class="button flex align-items-center justify-content-center" [pTooltip]="'Aus dem Warenkorb entfernen'">
           <button class="p-button-warning"
                   pButton
                   (click)="emitRemove(product)"
@@ -43,8 +43,53 @@
           </button>
         </td>
       </tr>
+
+      <ng-template #mobile>
+        <tr>
+          <td>
+            <span class="p-float-label mt-4">
+              <p-inputNumber #anzahl id="anzahl" [ngModel]="product.anzahl"></p-inputNumber>
+              <label for="anzahl">Anzahl</label>
+            </span>
+            <app-input-error-message *ngIf="anzahl.value * product.wert > 100000000">
+              Das Total übersteigt 100 Mio.
+            </app-input-error-message>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Einheit</p>
+              {{product.produkt}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Kategorie</p>
+              {{product.kategorie}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Gegenpartei</p>
+              {{product.gegenpartei.name}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Total</p>
+              {{product.wert * anzahl.value | currency:'CHF':'symbol'}}
+            </div>
+          </td>
+          <td class="button flex align-items-center justify-content-center" [pTooltip]="'Aus dem Warenkorb entfernen'">
+            <button class="p-button-warning mt-0"
+                    pButton
+                    (click)="emitRemove(product)"
+                    type="button">
+              <i class="pi pi-trash"></i>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
     </ng-template>
   </p-table>
 
 </ng-container>
-

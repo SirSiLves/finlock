@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from './warenkorb.service';
 import { Observable } from 'rxjs';
 import { shareReplay } from 'rxjs/operators';
+import { productBuyList } from '@test/products-data';
+import { gegenparteien } from '@test/gegenparteien-data';
 
 @Component({
   selector: 'app-warenkorb',
