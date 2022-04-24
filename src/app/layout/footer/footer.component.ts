@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import versions, { TsAppVersion } from '../../../_versions';
 import { AuthenticationService } from '../../core/authentication.service';
+import { LayoutService } from '../layout.service';
 
 
 @Component({
@@ -12,10 +13,12 @@ export class FooterComponent {
 
   currentDate = new Date();
   version: TsAppVersion = versions;
-  user$ = this.authenticationService.user$;
+  user$ = this.authenticationService.user;
+  mobile$ = this.layoutService.mobile;
 
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private layoutService: LayoutService
   ) { }
 
 

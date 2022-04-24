@@ -45,7 +45,7 @@ export class KontaktComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authenticationService.user$.pipe(takeUntil(this.onDestroy$)).subscribe(user => {
+    this.authenticationService.user.pipe(takeUntil(this.onDestroy$)).subscribe(user => {
       if (user) {
         this.vorname.patchValue(user.vorname);
         this.vorname.disable();

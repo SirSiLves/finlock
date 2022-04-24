@@ -22,15 +22,27 @@
 
     .shopping {
       cursor: pointer;
+      margin-right: 3rem;
+    }
+
+    .search {
+      margin-right: 3rem;
+      margin-top: 0.5rem;
     }
 
     .profil {
-      display: flex;
-      align-items: center;
       cursor: pointer;
+      margin-right: 2rem;
+    }
+  }
 
-      i {
-        font-size: 1.5rem;
+  @media screen and (max-width: 720px) {
+    .container {
+      .shopping {
+        margin-right: 1rem;
+      }
+      .profil {
+        margin-right: 0.5rem;
       }
     }
   }

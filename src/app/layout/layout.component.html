@@ -1,6 +1,20 @@
 <div class="layout-container">
   <app-header></app-header>
-  <app-menu></app-menu>
+  <app-menu *ngIf="(mobile$ | async) === false; else mobile"></app-menu>
+
+  <ng-template #mobile>
+    <div class="menu-search">
+      <div class="p-fluid grid">
+        <div class="col-10">
+          <app-search></app-search>
+        </div>
+
+        <div class="col-1">
+          <app-menu></app-menu>
+        </div>
+      </div>
+    </div>
+  </ng-template>
 
   <div class="content-wrapper">
     <main>

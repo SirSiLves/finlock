@@ -11,28 +11,28 @@
 
 <div class="container" *ngIf="$user | async as user else nonUser">
   <div class="shopping" [pTooltip]="'Warenkorb öffnen'" [routerLink]="'auftragserfassung/warenkorb'">
-    <button pButton type="button" class="p-button-text p-button-secondary mr-5"
+    <button pButton type="button" class="p-button-text p-button-secondary"
             icon="pi pi-shopping-cart"
             iconPos="left" label="{{shoppingCardSize$ | async | number}}">
     </button>
   </div>
 
-  <span *ngIf="$user | async as user" class="mr-5">
+  <span *ngIf="($user | async) && (mobile$ | async) === false" class="search">
     <app-search></app-search>
   </span>
 
-  <ng-container>
-    <div class="profil">
-      <button [routerLink]="'user/profil'" pButton type="button" pTooltip="Profil öffnen"
-              class="p-button-text p-button-secondary mr-3" icon="pi pi-user"
-              iconPos="left" label="{{user.name}}">
-      </button>
-    </div>
-  </ng-container>
+  <div class="profil">
+    <button [routerLink]="'user/profil'"
+            pButton type="button"
+            pTooltip="Profil öffnen"
+            class="p-button-text p-button-secondary" icon="pi pi-user"
+            iconPos="left" label="{{user.name}}">
+    </button>
+  </div>
 </div>
 
 <ng-template #nonUser>
-  <div class="container profi">
+  <div class="container profil">
     <button [routerLink]="'anmelden'" pButton type="button" pTooltip="Anmeldung öffnen"
             class="p-button-text p-button-secondary mr-3" icon="pi pi-user"
             iconPos="left" label="Anmelden">

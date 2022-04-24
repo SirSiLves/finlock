@@ -14,7 +14,7 @@ export class ProfilComponent implements OnInit, OnDestroy {
 
   onDestroy$ = new Subject<void>();
 
-  private $user = this.authenticationService.user$;
+  private $user = this.authenticationService.user;
 
   formGroup = this.formBuilder.group({
     vorname: {value: null, disabled: true},

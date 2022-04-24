@@ -1,23 +1,28 @@
-<div class="p-input-icon-left ">
-  <i *ngIf="isOpening else search" class="pi pi-spin pi-spinner"></i>
-  <ng-template #search>
-    <i class="pi pi-search"></i>
-  </ng-template>
-
-  <input type="text" pInputText placeholder="Suche"
-         [ngModel]="searchValue"
-         (ngModelChange)="onChange($event)"
-         [maxlength]="40"
-         (input)="showSearchBox(op, $event)"/>
+<div class="grid p-fluid">
+  <div class="col-12">
+    <div class="p-inputgroup">
+      <span class="p-inputgroup-addon">
+        <i *ngIf="isOpening else search" class="pi pi-spin pi-spinner"></i>
+        <ng-template #search>
+          <i class="pi pi-search"></i>
+        </ng-template>
+      </span>
+      <input type="text" pInputText placeholder="Suche"
+             [ngModel]="searchValue"
+             (ngModelChange)="onChange($event)"
+             [maxlength]="40"
+             (input)="showSearchBox(op, $event)"/>
+    </div>
+  </div>
 </div>
 
-<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '450px'}">
-  <ng-template pTemplate>
+<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: (mobile$ | async) ? '70%' : '20rem'}">
+  <ng-template pTemplate="body">
     <ng-container *ngIf="results.length > 0; else empty">
       <h3>Ergebnisse für "{{searchValue}}"</h3>
       <div class="formgrid grid">
         <div class="field col-6 result" *ngFor="let result of results">
-          <h5 class="m-0" [routerLink]="result.routerLink">
+          <h5 class="m-0" [routerLink]="result.routerLink" (click)="clear(op)">
             {{result.label}} <i class="pi pi-external-link" pTooltip="öffnen"></i>
           </h5>
         </div>

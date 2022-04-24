@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   private onDestory$ = new Subject<void>();
 
-  user$ = this.authenticationService.user$;
+  user$ = this.authenticationService.user;
   searched = false;
 
   formGroup = this.formBuilder.group({
@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.authenticationService.user$.pipe(takeUntil(this.onDestory$)).subscribe(user => {
+    this.authenticationService.user.pipe(takeUntil(this.onDestory$)).subscribe(user => {
       if (!user) {
         this.searched = false;
         this.formGroup.reset();

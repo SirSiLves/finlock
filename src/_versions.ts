@@ -7,12 +7,12 @@ export interface TsAppVersion {
     gitCommitHash?: string;
     gitCommitDate?: string;
     gitTag?: string;
-};
+}
 export const versions: TsAppVersion = {
     version: '0.0.0',
     name: 'finlok',
-    versionDate: '2022-04-23T07:41:17.892Z',
-    gitCommitHash: '0aaa69a',
-    versionLong: '0.0.0-0aaa69a',
-};
+    versionDate: '2022-04-24T06:17:50.819Z',
+    gitCommitHash: '519ba29',
+    versionLong: '0.0.0-519ba29',
+}
 export default versions;

@@ -13,6 +13,8 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { SearchComponent } from './search/search.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FormsModule } from '@angular/forms';
+import { MenuModule } from 'primeng/menu';
+import { RippleModule } from 'primeng/ripple';
 
 
 
@@ -33,7 +35,9 @@ import { FormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     BreadcrumbModule,
     OverlayPanelModule,
-    FormsModule
+    FormsModule,
+    MenuModule,
+    RippleModule
   ],
   exports: [
     LayoutComponent

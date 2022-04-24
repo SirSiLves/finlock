@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { AuthenticationService } from '../../core/authentication.service';
 import { menu } from '@test/menu-data';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'app-menu',
@@ -12,10 +13,12 @@ export class MenuComponent implements OnInit {
 
   items: MenuItem[] = menu;
   itemsWithoutLogin!: MenuItem[];
-  $user = this.authenticationService.user$;
+  user$ = this.authenticationService.user;
+  mobile$ = this.layoutService.mobile;
 
   constructor(
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private layoutService: LayoutService
   ) {
   }
 

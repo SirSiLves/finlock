@@ -18,33 +18,33 @@ import { map } from 'rxjs/operators';
 })
 export class AuthenticationService implements CanLoad, CanActivate {
 
-  readonly user$ = new BehaviorSubject<any>(undefined);
+  readonly user = new BehaviorSubject<any>(undefined);
   private readonly users = users;
 
   constructor(
     private router: Router
   ) {
-    this.user$.next(users[0]);
+    this.user.next(users[0]);
   }
 
   canLoad(route: Route, segments: UrlSegment[]): boolean | UrlTree | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> {
-    return this.user$.pipe(map(user => !!user || this.router.parseUrl('/anmelden')));
+    return this.user.pipe(map(user => !!user || this.router.parseUrl('/anmelden')));
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    return this.user$.pipe(map(user => !!user || this.router.parseUrl('/anmelden')));
+    return this.user.pipe(map(user => !!user || this.router.parseUrl('/anmelden')));
   }
 
   getUser(): any {
-    return this.user$.value;
+    return this.user.value;
   }
 
   setUser(user: any): void {
-    this.user$.next(user);
+    this.user.next(user);
   }
 
   logout(): void {
-    this.user$.next(undefined);
+    this.user.next(undefined);
   }
 
   login(user: any): boolean {

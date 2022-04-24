@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { menu } from '@test/menu-data';
 import { MenuItem } from 'primeng/api';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'app-search',
@@ -14,10 +15,13 @@ export class SearchComponent implements OnInit {
   isSearching = false;
   isOpening = false;
   results: any[] = [];
+  mobile$ = this.layoutService.mobile;
 
   searchTargets = [...menu];
 
-  constructor() {
+  constructor(
+    private layoutService: LayoutService
+  ) {
   }
 
   ngOnInit(): void {
@@ -78,4 +82,8 @@ export class SearchComponent implements OnInit {
   }
 
 
+  clear(op: OverlayPanel): void {
+    this.searchValue = '';
+    op.hide();
+  }
 }

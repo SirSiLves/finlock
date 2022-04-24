@@ -1,11 +1,11 @@
 :host {
   input {
-    width: 20rem;
+    min-width: 20rem;
   }
 
   @media screen and (max-width:720px) {
     input {
-      width: 20rem;
+      min-width: auto;
     }
   }
 }
@@ -16,6 +16,7 @@
   h5 {
     display: flex;
     flex-wrap: nowrap;
+    word-break: break-word;
 
     i {
       margin-left: 0.25rem;

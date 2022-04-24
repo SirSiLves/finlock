@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { WarenkorbService } from '../../features/auftragserfassung/warenkorb/warenkorb.service';
 import { combineLatest, Observable } from 'rxjs';
-import { map, shareReplay, tap } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { AuthenticationService } from '../../core/authentication.service';
+import { LayoutService } from '../layout.service';
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,13 @@ import { AuthenticationService } from '../../core/authentication.service';
 export class HeaderComponent implements OnInit {
 
   shoppingCardSize$?: Observable<any>;
-  $user = this.authenticationService.user$.pipe(shareReplay());
+  $user = this.authenticationService.user.pipe(shareReplay());
+  mobile$ = this.layoutService.mobile;
 
   constructor(
     private warenkorbService: WarenkorbService,
-    private authenticationService: AuthenticationService
+    private authenticationService: AuthenticationService,
+    private layoutService: LayoutService
   ) {
   }
 
@@ -27,5 +30,7 @@ export class HeaderComponent implements OnInit {
       map(([buy, sell]) => buy.length + sell.length)
     );
   }
+
+
 
 }

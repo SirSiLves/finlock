@@ -22,7 +22,7 @@ export class EinkaufenComponent implements OnInit {
     gegenpartei: ['', [Validators.required]]
   });
 
-  constructor(
+    constructor(
     private warenkorbService: WarenkorbService,
     private formBuilder: FormBuilder
   ) {
