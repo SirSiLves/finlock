@@ -32,25 +32,25 @@ import { InputTextModule } from 'primeng/inputtext';
     AuftragserfassungComponent,
     WarenkorbDetailsComponent,
   ],
-    imports: [
-        CommonModule,
-        AuftragserfassungRoutingModule,
-        ButtonModule,
-        RippleModule,
-        TableModule,
-        TooltipModule,
-        TabViewModule,
-        InputNumberModule,
-        ReactiveFormsModule,
-        FormsModule,
-        PickListModule,
-        FieldsetModule,
-        CardModule,
-        DropdownModule,
-        AccordionModule,
-        SplitterModule,
-        SharedModule,
-        InputTextModule
-    ]
+  imports: [
+    CommonModule,
+    AuftragserfassungRoutingModule,
+    ButtonModule,
+    RippleModule,
+    TableModule,
+    TooltipModule,
+    TabViewModule,
+    InputNumberModule,
+    ReactiveFormsModule,
+    FormsModule,
+    PickListModule,
+    FieldsetModule,
+    CardModule,
+    DropdownModule,
+    AccordionModule,
+    SplitterModule,
+    SharedModule,
+    InputTextModule
+  ]
 })
 export class AuftragserfassungModule { }

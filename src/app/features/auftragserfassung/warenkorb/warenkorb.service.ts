@@ -27,7 +27,7 @@ export class WarenkorbService {
 
   addCompleted(): void {
     this.messageService.add(
-      {severity: 'success', detail: 'Zum Warenkorb hinzugefügt'}
+      {severity:'success', summary: 'Erfolgreich', detail: 'Zum Warenkorb hinzugefügt'}
     );
   }
 
