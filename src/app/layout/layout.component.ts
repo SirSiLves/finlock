@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { LayoutService } from './layout.service';
 import { Subject } from 'rxjs';
 
@@ -19,6 +19,11 @@ export class LayoutComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.layoutService.setMobile(window.innerWidth);
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(): void {
     this.layoutService.setMobile(window.innerWidth);
   }
 
