@@ -15,7 +15,8 @@ import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { FormsModule } from '@angular/forms';
 import { MenuModule } from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
-
+import { HomeModule } from '../features/home/home.module';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -37,7 +38,9 @@ import { RippleModule } from 'primeng/ripple';
     OverlayPanelModule,
     FormsModule,
     MenuModule,
-    RippleModule
+    RippleModule,
+    HomeModule,
+    SharedModule
   ],
   exports: [
     LayoutComponent

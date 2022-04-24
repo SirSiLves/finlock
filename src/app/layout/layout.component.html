@@ -1,4 +1,4 @@
-<div class="layout-container">
+<div class="layout-container" id="top-anchor">
   <app-header></app-header>
   <app-menu *ngIf="(mobile$ | async) === false; else mobile"></app-menu>
 
@@ -17,13 +17,16 @@
   </ng-template>
 
   <div class="content-wrapper">
-    <main>
+    <main id="content-anchor">
       <ng-content></ng-content>
     </main>
 
-    <app-footer></app-footer>
-  </div>
+    <div>
+      <app-jump></app-jump>
+      <app-footer></app-footer>
+    </div>
 
+  </div>
 </div>
 
 <p-toast [baseZIndex]="99999"></p-toast>

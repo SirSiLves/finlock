@@ -14,10 +14,11 @@ import { DsgvoComponent } from './dsgvo/dsgvo.component';
     ImpressumComponent,
     DsgvoComponent
   ],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        CardModule
-    ]
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    CardModule
+  ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

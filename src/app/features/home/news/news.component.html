@@ -1,8 +1,8 @@
 <h1>Neuigkeiten</h1>
 
 <div class="list">
-  <ul *ngFor="let text of textList">
-    <li>
+  <ul *ngFor="let text of textList; let last = last">
+    <li [ngClass]="last ? '' : 'mb-4'">
       <p-card>
         <div class="title">
           <h2 class="m-0">{{text.title}}</h2>

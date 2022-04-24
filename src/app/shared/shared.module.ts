@@ -6,12 +6,14 @@ import { CardModule } from 'primeng/card';
 import { RippleModule } from 'primeng/ripple';
 import { ButtonModule } from 'primeng/button';
 import { RouterModule } from '@angular/router';
+import { JumpComponent } from './components/jump/jump.component';
 
 
 @NgModule({
   declarations: [
     InputErrorMessageComponent,
-    MaintenanceComponent
+    MaintenanceComponent,
+    JumpComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +24,8 @@ import { RouterModule } from '@angular/router';
   ],
   exports: [
     InputErrorMessageComponent,
-    MaintenanceComponent
+    MaintenanceComponent,
+    JumpComponent
   ]
 })
 export class SharedModule {
