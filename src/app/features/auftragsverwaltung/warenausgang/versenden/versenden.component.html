@@ -2,31 +2,31 @@
 
 <ng-container *ngIf="formGroup">
   <div class="formgrid grid mt-5 p-fluid">
-    <div class="field col-6 xl:col-2">
+    <div class="field col-12 md:col-6 xl:col-2">
       <label for="ga">Gezählter Auftragswert</label>
       <h4 id="ga" class="m-0">{{countTotal | currency:'CHF'}}</h4>
     </div>
 
-    <div class="field col-6 xl:col-2">
+    <div class="field col-12 md:col-6 xl:col-2">
       <label for="bearbeitung">In Bearbeitung</label>
       <h4 id="bearbeitung" class="m-0">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</h4>
     </div>
 
-    <div class="field col-6 xl:col-2 mt-3">
+    <div class="field col-12 md:col-6 xl:col-2 mt-3">
       <span class="p-float-label">
         <p-dropdown [formControl]="status" id=status [options]="statusListOptions" optionLabel="name"></p-dropdown>
         <label for="status">Status</label>
       </span>
     </div>
 
-    <div class="field col-6 xl:col-3 mt-3">
+    <div class="field col-12 md:col-6 xl:col-3 mt-3">
       <span class="p-float-label">
         <p-dropdown id="bearbeiter" [formControl]="bearbeiter" [options]="bearbeiterOptions" optionLabel="name"></p-dropdown>
         <label for="bearbeiter">Bearbeiter</label>
       </span>
     </div>
 
-    <div class="field col-6 xl:col-2 mt-3">
+    <div class="field col-12 md:col-6 xl:col-2 mt-3">
       <span class="p-float-label">
         <p-dropdown appendTo="body"
                     [formControl]="lieferant"
@@ -45,7 +45,7 @@
 
   <h4>Auftragsdetails</h4>
 
-  <p-table [value]="auftragList" responsiveLayout="scroll">
+  <p-table [value]="auftragList">
     <ng-template pTemplate="header">
       <tr>
         <th>Einheit</th>
@@ -56,7 +56,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
-      <tr>
+      <tr *ngIf="(mobile$ | async) === false; else mobile">
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
         <td>{{product.anzahl | number}}</td>
@@ -75,6 +75,51 @@
         </td>
         <td></td>
       </tr>
+
+      <ng-template #mobile>
+        <tr>
+          <td>
+            <div>
+              <p class="label m-0">Einheit</p>
+              {{product.produkt}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Kategorie</p>
+              {{product.kategorie}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Anzahl</p>
+              {{product.anzahl | number}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Bag gemäss Auftrag</p>
+              {{product.bag}}
+            </div>
+          </td>
+          <td class="pt-2">
+            <div class="dropdown">
+              <p class="label m-0">Bag vorhanden</p>
+              <p-dropdown appendTo="body"
+                          [formControl]="getFormBag(product)"
+                          id=palletM
+                          (onChange)="setCountedTotal()"
+                          placeholder="Vorhanden wählen"
+                          [options]="bagVorhandenOptions"
+                          optionLabel="name"></p-dropdown>
+              <app-input-error-message *ngIf="getFormBag(product).touched && getFormBag(product).invalid">
+                Bitte auswählen
+              </app-input-error-message>
+            </div>
+          </td>
+
+        </tr>
+      </ng-template>
     </ng-template>
   </p-table>
 

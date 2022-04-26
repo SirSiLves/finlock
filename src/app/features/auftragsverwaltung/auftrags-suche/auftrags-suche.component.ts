@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { auftraege } from '@test/auftraege-data';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { LayoutService } from '../../../layout/layout.service';
 
 @Component({
   selector: 'app-auftrags-suche',
@@ -13,11 +14,14 @@ export class AuftragsSucheComponent {
   isSearching = false;
   isOpening = false;
   results: any[] = [];
+  mobile$ = this.layoutService.mobile;
 
   searchTargets = [...auftraege];
 
 
-  constructor() { }
+  constructor(
+    private layoutService: LayoutService
+  ) { }
 
   onChange(searchValue: any): void {
     if (this.isSearching) return; // ExpressionChangedAfterItHasBeenCheckedError fix

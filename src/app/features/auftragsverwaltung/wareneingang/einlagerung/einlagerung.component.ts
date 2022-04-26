@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { users } from '@test/user-data';
 import { statusEingangList } from '@test/status-data';
+import { LayoutService } from '../../../../layout/layout.service';
 
 @Component({
   selector: 'app-einlagerung',
@@ -32,6 +33,7 @@ export class EinlagerungComponent {
   auftrag: any;
   auftragList: any;
   formGroup?: FormGroup;
+  mobile$ = this.layoutService.mobile;
 
   statusListOptions = statusEingangList;
   bearbeiterOptions = users;
@@ -45,7 +47,8 @@ export class EinlagerungComponent {
   ];
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private layoutService: LayoutService
   ) {
   }
 

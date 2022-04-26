@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { users } from '@test/user-data';
 import { statusEingangList } from '@test/status-data';
+import { LayoutService } from '../../../../layout/layout.service';
 
 @Component({
   selector: 'app-feinkontrolle',
@@ -37,6 +38,7 @@ export class FeinkontrolleComponent {
   formGroup?: FormGroup;
   countTotal = 0;
   total = 0;
+  mobile$ = this.layoutService.mobile;
 
   statusListOptions = statusEingangList;
   bearbeiterOptions = users;
@@ -47,7 +49,8 @@ export class FeinkontrolleComponent {
   ];
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private layoutService: LayoutService
   ) {
   }
 

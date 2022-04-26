@@ -1,17 +1,22 @@
 <div>
-  <span class="p-input-icon-left mr-5 search">
-      <i class="pi pi-search"></i>
-    <input type="number" pInputText placeholder="Auftrag ID"
-           [min]="1"
-           [ngModel]="searchValue"
-           (ngModelChange)="onChange($event)"
-           [maxlength]="10"
-           (input)="showSearchBox(op, $event)"/>
-  </span>
+  <div class="p-fluid formgrid">
+    <div class="field col-11 md:col-12">
+      <span class="p-input-icon-left mr-5 search">
+        <i class="pi pi-search"></i>
+        <input type="number" pInputText placeholder="Auftrag ID"
+               [min]="1"
+               [ngModel]="searchValue"
+               (ngModelChange)="onChange($event)"
+               [maxlength]="10"
+               (input)="showSearchBox(op, $event)"/>
+      </span>
+    </div>
+  </div>
+
 </div>
 
-<p-overlayPanel #op [showCloseIcon]="true">
-  <ng-template pTemplate>
+<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: (mobile$ | async) ? '55%' : 'auto'}">
+  <ng-template pTemplate="body">
     <ng-container *ngIf="results.length > 0; else empty">
       <div *ngFor="let result of results">
         <div class="header">
@@ -27,19 +32,19 @@
         </div>
 
         <div class="formgrid grid">
-          <div class="field col-6 mt-2">
+          <div class="field col-12 md:col-6 mt-2">
             <h3 class="m-0">Auftrag ID</h3>{{result.id}}
           </div>
 
-          <div class="field col-6">
+          <div class="field col-12 md:col-6">
             <h3 class="m-0">Aktueller Status</h3> {{result.status}}
           </div>
 
-          <div class="field col-6">
+          <div class="field col-12 md:col-6">
             <h3 class="m-0">Gegenpartei</h3> {{result.gegenpartei.name}}
           </div>
 
-          <div class="field col-6">
+          <div class="field col-12 md:col-6">
             <h3 class="m-0">Auftragswert</h3> {{result.wert | currency:'CHF'}}
           </div>
 

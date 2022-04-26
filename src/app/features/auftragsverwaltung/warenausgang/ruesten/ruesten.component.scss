@@ -18,3 +18,22 @@ h2 {
     height: 3rem;
   }
 }
+
+@media screen and (max-width: 720px) {
+  .label {
+    font-size: 0.75rem;
+  }
+
+  .dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .action {
+    button {
+      height: 2.5rem;
+      font-size: 0.8rem;
+    }
+  }
+}
+

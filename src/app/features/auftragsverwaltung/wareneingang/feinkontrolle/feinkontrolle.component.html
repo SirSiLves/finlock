@@ -2,26 +2,27 @@
 
 <ng-container *ngIf="formGroup">
   <div class="formgrid grid mt-5 p-fluid">
-    <div class="field col-6 xl:col-3">
+    <div class="field col-12 md:col-6 xl:col-3">
       <label for="ga">Gezählter Auftragswert</label>
       <h4 id="ga" class="m-0">{{countTotal | currency:'CHF'}}</h4>
     </div>
 
-    <div class="field col-6 xl:col-3">
+    <div class="field col-12 md:col-6 xl:col-3">
       <label for="bearbeitung">In Bearbeitung</label>
       <h4 id="bearbeitung" class="m-0">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</h4>
     </div>
 
-    <div class="field col-6 xl:col-3 mt-3">
+    <div class="field col-12 md:col-6 xl:col-3 mt-3">
       <span class="p-float-label">
         <p-dropdown [formControl]="status" id=status [options]="statusListOptions" optionLabel="name"></p-dropdown>
         <label for="status">Status</label>
       </span>
     </div>
 
-    <div class="field col-6 xl:col-3 mt-3">
+    <div class="field col-12 md:col-6 xl:col-3 mt-3">
       <span class="p-float-label">
-        <p-dropdown id="bearbeiter" [formControl]="bearbeiter" [options]="bearbeiterOptions" optionLabel="name"></p-dropdown>
+        <p-dropdown id="bearbeiter" [formControl]="bearbeiter" [options]="bearbeiterOptions"
+                    optionLabel="name"></p-dropdown>
         <label for="bearbeiter">Bearbeiter</label>
       </span>
     </div>
@@ -29,7 +30,7 @@
 
   <h4>Auftragsdetails</h4>
 
-  <p-table [value]="auftragList" responsiveLayout="scroll">
+  <p-table [value]="auftragList">
     <ng-template pTemplate="header">
       <tr>
         <th>Einheit</th>
@@ -40,7 +41,7 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-product>
-      <tr>
+      <tr *ngIf="(mobile$ | async) === false; else mobile">
         <td>{{product.produkt}}</td>
         <td>{{product.kategorie}}</td>
         <td>{{product.anzahl | number}}</td>
@@ -63,6 +64,52 @@
           </app-input-error-message>
         </td>
       </tr>
+      <ng-template #mobile>
+        <tr>
+          <td>
+            <div>
+              <p class="label m-0">Einheit</p>
+              {{product.produkt}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Kategorie</p>
+              {{product.kategorie}}
+            </div>
+          </td>
+          <td>
+            <div>
+              <p class="label m-0">Anzahl gemäss Auftrag</p>
+              {{product.anzahl | number}}
+            </div>
+          </td>
+          <td class="pt-2">
+            <div class="dropdown">
+              <p class="label m-0">Zustand</p>
+              <p-dropdown appendTo="body"
+                          [formControl]="getFormZustand(product)"
+                          id=zustandM
+                          placeholder="Zustand Wählen"
+                          [options]="zustandOptions"
+                          optionLabel="name"></p-dropdown>
+              <app-input-error-message *ngIf="getFormZustand(product).touched && getFormZustand(product).invalid">
+                Bitte auswählen
+              </app-input-error-message>
+            </div>
+          </td>
+          <td>
+            <span class="p-float-label">
+              <p-inputNumber (focusout)="setCountedTotal()" [formControl]="getFormAnzahl(product)"
+                             id="gezaehlteAnzahl"></p-inputNumber>
+              <label for="gezaehlteAnzahl">Anzahl</label>
+              <app-input-error-message *ngIf="getFormAnzahl(product).touched && getFormAnzahl(product).invalid">
+                Muss abgefüllt sein
+              </app-input-error-message>
+            </span>
+          </td>
+        </tr>
+      </ng-template>
     </ng-template>
   </p-table>
 

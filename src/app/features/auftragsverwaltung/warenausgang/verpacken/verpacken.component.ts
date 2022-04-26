@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { users } from '@test/user-data';
 import { statusAusgangList } from '@test/status-data';
+import { LayoutService } from '../../../../layout/layout.service';
 
 @Component({
   selector: 'app-verpacken',
@@ -38,6 +39,7 @@ export class VerpackenComponent {
   formGroup?: FormGroup;
   countTotal = 0;
   total = 0;
+  mobile$ = this.layoutService.mobile;
 
   statusListOptions = statusAusgangList;
   bearbeiterOptions = users;
@@ -55,7 +57,8 @@ export class VerpackenComponent {
   ];
 
   constructor(
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private layoutService: LayoutService
   ) {
   }
 
