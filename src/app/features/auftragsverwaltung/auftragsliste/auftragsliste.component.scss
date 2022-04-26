@@ -2,10 +2,24 @@ i {
   cursor: pointer;
 }
 
-.warenaeingang {
+.wareneingang {
   background-color: rgb(94, 122, 135, 0.1);
 }
 
 .warenausgang {
   background-color: rgb(237, 186, 47, 0.1);
+}
+
+
+@media screen and (max-width: 720px) {
+  tr {
+    td {
+      border-bottom: solid #ddddde;
+
+      .label {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
 }

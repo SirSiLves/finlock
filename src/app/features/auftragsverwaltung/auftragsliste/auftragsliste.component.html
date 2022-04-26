@@ -61,17 +61,28 @@
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-auftrag>
-      <tr>
-        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">
-          <i *ngIf="auftrag.typ === 'KAUF'" [class]="auftrag.status === 'EINGELAGERT' ? 'pi pi-check' : 'pi pi-pencil'"
-             pTooltip="Auftrag öffnen" [routerLink]="['../wareneingang', auftrag.id]"></i>
-          <i *ngIf="auftrag.typ === 'VERKAUF'"
-             [class]="auftrag.status === 'VERSENDET' ? 'pi pi-check' : 'pi pi-pencil'" pTooltip="Auftrag öffnen"
-             [routerLink]="['../warenausgang', auftrag.id]"></i>
+      <tr *ngIf="(mobile$ | async) === false; else mobile">
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">
+          <ng-container *ngIf="auftrag.typ === 'KAUF'">
+            <button pButton
+                    pRipple
+                    type="button"
+                    [icon]="auftrag.status === 'EINGELAGERT' ? 'pi pi-check' : 'pi pi-pencil'"
+                    class="mr-4 p-button-text p-button-raised"
+                    [routerLink]="['../wareneingang', auftrag.id]"></button>
+          </ng-container>
+          <ng-container *ngIf="auftrag.typ === 'VERKAUF'">
+            <button pButton
+                    pRipple
+                    type="button"
+                    [icon]="auftrag.status === 'VERSENDET' ? 'pi pi-check' : 'pi pi-pencil'"
+                    class="mr-4 p-button-text p-button-raised"
+                    [routerLink]="['../warenausgang', auftrag.id]"></button>
+          </ng-container>
         </td>
-        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.id}}</td>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">{{auftrag.id}}</td>
         <ng-container *ngIf="auftrag.typ === 'KAUF'; else warenausgang">
-          <td [class]="'warenaeingang'">
+          <td [class]="'wareneingang'">
             <p-tag severity="info" value="Wareneingang"></p-tag>
           </td>
         </ng-container>
@@ -81,14 +92,93 @@
           </td>
         </ng-template>
         <td
-          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">{{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}</td>
         <td
-          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</td>
-        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{getStatus(auftrag.status)}}</td>
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">{{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}</td>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">{{getStatus(auftrag.status)}}</td>
         <td
-          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.wert | currency:'CHF'}}</td>
-        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'warenaeingang'">{{auftrag.gegenpartei.name}}</td>
+          [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">{{auftrag.wert | currency:'CHF'}}</td>
+        <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">{{auftrag.gegenpartei.name}}</td>
       </tr>
+
+
+      <ng-template #mobile>
+        <tr>
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">
+            <ng-container *ngIf="auftrag.typ === 'KAUF'">
+              <button pButton
+                      pRipple
+                      type="button"
+                      [icon]="auftrag.status === 'EINGELAGERT' ? 'pi pi-check' : 'pi pi-pencil'"
+                      class="mr-4 p-button-text p-button-raised"
+                      [routerLink]="['../wareneingang', auftrag.id]"></button>
+            </ng-container>
+            <ng-container *ngIf="auftrag.typ === 'VERKAUF'">
+              <button pButton
+                      pRipple
+                      type="button"
+                      [icon]="auftrag.status === 'VERSENDET' ? 'pi pi-check' : 'pi pi-pencil'"
+                      class="mr-4 p-button-text p-button-raised"
+                      [routerLink]="['../warenausgang', auftrag.id]"></button>
+            </ng-container>
+          </td>
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'" class="pt-0 pb-2">
+            <div>
+              <p class="label m-0">Anzahl</p>
+              {{auftrag.id}}
+            </div>
+          </td>
+          <ng-container *ngIf="auftrag.typ === 'KAUF'; else warenausgang">
+            <td [class]="'wareneingang'" class="pt-1 pb-0">
+              <div>
+                <p class="label m-0">Typ</p>
+                <p-tag severity="info" value="Wareneingang"></p-tag>
+              </div>
+            </td>
+          </ng-container>
+          <ng-template #warenausgang>
+            <td [class]="'warenausgang'" class="pt-1 pb-0">
+              <div>
+                <p class="label m-0">Typ</p>
+                <p-tag severity="warning" value="Warenausgang"></p-tag>
+              </div>
+            </td>
+          </ng-template>
+
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'">
+            <div>
+              <p class="label m-0">Eingangsdatum</p>
+              {{auftrag.createDate | date: 'dd.MM.yyyy  HH:mm:ss'}}
+            </div>
+          </td>
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'" class="pt-1">
+            <div>
+              <p class="label m-0">In Bearbeitung</p>
+              {{auftrag.inBearbeitung ? 'Ja' : 'Nein'}}
+            </div>
+          </td>
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'" class="pt-1">
+            <div>
+              <p class="label m-0">Status</p>
+              {{getStatus(auftrag.status)}}
+            </div>
+          </td>
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'" class="pt-1">
+            <div>
+              <p class="label m-0">Auftragswert</p>
+              {{auftrag.wert | currency:'CHF'}}
+            </div>
+          </td>
+          <td [class]="auftrag.typ === 'VERKAUF' ? 'warenausgang' : 'wareneingang'" class="pt-1 pb-5">
+            <div>
+              <p class="label m-0">Gegenpartei</p>
+              {{auftrag.gegenpartei.name}}
+            </div>
+          </td>
+        </tr>
+
+
+      </ng-template>
     </ng-template>
   </p-table>
 

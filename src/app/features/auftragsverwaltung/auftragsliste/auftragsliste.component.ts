@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { statusAusgangList, statusEingangList } from '@test/status-data';
+import { LayoutService } from '../../../layout/layout.service';
 
 @Component({
   selector: 'app-auftragsliste',
@@ -9,6 +10,8 @@ import { statusAusgangList, statusEingangList } from '@test/status-data';
 export class AuftragslisteComponent {
 
   @Input() itemList?: any[];
+
+  mobile$ = this.layoutService.mobile;
 
   typOptions = [
     {label: 'Wareneingang', value: 'KAUF'},
@@ -24,7 +27,9 @@ export class AuftragslisteComponent {
     {label: 'Versendet', value: 'VERSENDET'},
   ];
 
-  constructor() {
+  constructor(
+    private layoutService: LayoutService
+  ) {
   }
 
   getStatus(status: string): string {
