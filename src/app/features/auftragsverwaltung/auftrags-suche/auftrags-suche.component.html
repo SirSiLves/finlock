@@ -1,6 +1,6 @@
 <div>
   <div class="p-fluid formgrid">
-    <div class="field col-11 md:col-12">
+    <div class="field col-12 md:col-4">
       <span class="p-input-icon-left mr-5 search">
         <i class="pi pi-search"></i>
         <input type="number" pInputText placeholder="Auftrag ID"
@@ -15,7 +15,7 @@
 
 </div>
 
-<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: (mobile$ | async) ? '55%' : 'auto'}">
+<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: (mobile$ | async) ? '80%' : 'auto'}">
   <ng-template pTemplate="body">
     <ng-container *ngIf="results.length > 0; else empty">
       <div *ngFor="let result of results">

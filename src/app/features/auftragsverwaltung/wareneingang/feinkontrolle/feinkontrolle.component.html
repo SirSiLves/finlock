@@ -118,7 +118,7 @@
       <textarea [formControl]="bemerkung" id="bemerkung" rows="5" pInputTextarea [autoResize]=true></textarea>
       <label for="bemerkung">Abweichungsbegründung</label>
     </span>
-    <app-input-error-message *ngIf="formGroup.touched && (countTotal !== total && !bemerkung.value)">
+    <app-input-error-message *ngIf="!formGroup.pristine && countTotal !== total && !bemerkung.value">
       Gezählter Auftragwert stimmt nicht mit Auftragswert überein. Bitte begründen!
     </app-input-error-message>
   </div>
