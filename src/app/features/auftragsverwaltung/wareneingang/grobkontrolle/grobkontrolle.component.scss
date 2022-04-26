@@ -20,8 +20,14 @@ h2 {
 }
 
 @media screen and (max-width: 720px) {
-  .label {
-    font-size: 0.75rem;
+  tr {
+    td {
+      border-bottom: solid #ddddde;
+
+      .label {
+        font-size: 0.75rem;
+      }
+    }
   }
 
   .action {
