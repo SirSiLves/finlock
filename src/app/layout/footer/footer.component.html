@@ -13,10 +13,6 @@
               class="p-button-text p-button-secondary p-button-rounded"></button>
     </li>
     <li>
-      <button [routerLink]="'kontakt'" pButton type="button" label="Kontakt"
-              class="p-button-text p-button-secondary p-button-rounded"></button>
-    </li>
-    <li>
       <button *ngIf="user$ | async" [routerLink]="'anmelden'" pButton type="button" label="Abmelden"
               (click)="abmelden()"
               class="p-button-text p-button-secondary p-button-rounded"></button>
@@ -40,10 +36,6 @@
     </div>
     <div>
       <button [routerLink]="'dsgvo'" pButton type="button" label="Datenschutz"
-              class="p-button-text p-button-secondary p-button-rounded"></button>
-    </div>
-    <div>
-      <button [routerLink]="'kontakt'" pButton type="button" label="Kontakt"
               class="p-button-text p-button-secondary p-button-rounded"></button>
     </div>
     <div>

@@ -22,7 +22,7 @@ export class EinkaufenComponent implements OnInit {
     gegenpartei: ['', [Validators.required]]
   });
 
-    constructor(
+  constructor(
     private warenkorbService: WarenkorbService,
     private formBuilder: FormBuilder
   ) {
@@ -44,8 +44,7 @@ export class EinkaufenComponent implements OnInit {
       this.gegenpartei.patchValue(raiffeisen[0]);
       this.gegenpartei.markAllAsTouched();
       this.gegenpartei.disable();
-    }
-    else {
+    } else {
       this.gegenparteiList = gegenparteien;
     }
   }

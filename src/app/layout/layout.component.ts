@@ -1,6 +1,5 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { LayoutService } from './layout.service';
-import { Subject } from 'rxjs';
 
 
 @Component({
@@ -10,7 +9,6 @@ import { Subject } from 'rxjs';
 })
 export class LayoutComponent implements OnInit {
 
-  destroy$ = new Subject();
   mobile$ = this.layoutService.mobile;
 
   constructor(

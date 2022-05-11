@@ -2,20 +2,7 @@ export const menu = [
   {
     label: 'Startseite',
     icon: 'pi pi-fw pi-home',
-    items: [
-      {
-        label: 'News',
-        routerLink: '/home/news'
-      },
-      {
-        label: 'Impressum',
-        routerLink: '/impressum'
-      },
-      {
-        label: 'Datenschutzerklärung',
-        routerLink: '/dsgvo'
-      }
-    ]
+    routerLink: '/home/news'
   },
   {
     label: 'Auftragserfassung',
@@ -62,10 +49,5 @@ export const menu = [
     label: 'Kontakt',
     icon: 'pi pi-fw pi-file-o',
     routerLink: 'kontakt'
-  },
-  {
-    label: 'Profil',
-    icon: 'pi pi-fw pi-user',
-    routerLink: 'user/profil'
   }
 ];

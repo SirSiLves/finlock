@@ -29,21 +29,15 @@ export class MenuComponent implements OnInit {
   private initialiseMenu(): void {
     this.itemsWithoutLogin = [
       {
-        label: 'Anmelden',
-        routerLink: '/anmelden'
-      },
-      {
-        label: 'Impressum',
-        routerLink: '/impressum'
-      },
-      {
-        label: 'Datenschutzerklärung',
-        routerLink: '/dsgvo'
+        label: 'Startseite',
+        icon: 'pi pi-fw pi-home',
+        routerLink: '/home/news'
       },
       {
         label: 'Kontakt',
+        icon: 'pi pi-fw pi-file-o',
         routerLink: 'kontakt'
-      },
+      }
     ];
   }
 
