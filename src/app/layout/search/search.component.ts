@@ -3,13 +3,14 @@ import { OverlayPanel } from 'primeng/overlaypanel';
 import { menu } from '@test/menu-data';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from '../layout.service';
+import { auftraege } from '@test/auftraege-data';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss']
 })
-export class SearchComponent implements OnInit {
+export class SearchComponent {
 
   searchValue = '';
   isSearching = false;
@@ -17,25 +18,9 @@ export class SearchComponent implements OnInit {
   results: any[] = [];
   mobile$ = this.layoutService.mobile;
 
-  searchTargets = [...menu];
-
   constructor(
     private layoutService: LayoutService
   ) {
-  }
-
-  ngOnInit(): void {
-    this.searchTargets.push({
-      label: 'Anmelden',
-      icon: '',
-      routerLink: 'anmelden'
-    });
-
-    this.searchTargets.push({
-      label: 'Abmelden',
-      icon: '',
-      routerLink: 'user/profil'
-    });
   }
 
   onChange(searchValue: any): void {
@@ -44,20 +29,44 @@ export class SearchComponent implements OnInit {
     this.isSearching = true;
     this.results = [];
 
-    this.search(searchValue, this.searchTargets);
+    this.searchMenu(searchValue, menu);
+    this.searchAuftraege(searchValue, auftraege);
+
 
     this.searchValue = searchValue;
     this.isSearching = false;
   }
 
-  search(searchValue: string, menuList: MenuItem[]): void {
-    menuList.forEach((m: any) => {
+  searchMenu(searchValue: string, list: any): void {
+    list.forEach((m: any) => {
       if (!!m.items) {
-        this.search(searchValue, m.items);
+        this.searchMenu(searchValue, m.items);
       } else {
         if (searchValue.length > 0 && m.label.toLowerCase().includes(searchValue.toLowerCase())
           || searchValue.length > 0 && m.routerLink.toLowerCase().includes(searchValue.toLowerCase())) {
           this.results.push(m);
+        }
+      }
+    });
+  }
+
+  searchAuftraege(searchValue: string, list: any): void {
+    list.forEach((auftrag: any) => {
+      if (auftrag.id.toString() === searchValue) {
+        if (auftrag.typ === 'KAUF') {
+          const menu = {
+            label: 'Auftrag ID in Wareneingang',
+            routerLink: '/auftragsverwaltung/wareneingang/' + auftrag.id
+          };
+
+          this.results.push(menu);
+        } else {
+          const menu = {
+            label: 'Auftrag ID in Warenausgang',
+            routerLink: '/auftragsverwaltung/warenausgang/' + auftrag.id
+          };
+
+          this.results.push(menu);
         }
       }
     });

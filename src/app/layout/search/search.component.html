@@ -11,6 +11,7 @@
              [ngModel]="searchValue"
              (ngModelChange)="onChange($event)"
              [maxlength]="40"
+             pTooltip="Suche nach Seitennamen oder Auftags-ID's"
              (input)="showSearchBox(op, $event)"/>
     </div>
   </div>
