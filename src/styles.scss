@@ -30,7 +30,11 @@ body {
   border: 0;
 }
 
-// Einkaufen
+.p-menubar .p-menubar-root-list > .p-menuitem > .p-menuitem-link {
+  //padding: 0.5rem;
+}
+
+  // Einkaufen
 .p-tabview-nav, .p-tabview .p-tabview-nav li {
   padding: 3px 0 0 3px;
 }

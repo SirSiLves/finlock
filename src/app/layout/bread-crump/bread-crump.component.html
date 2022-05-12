@@ -1,0 +1,32 @@
+<ng-container *ngIf="crumpList.length > 2">
+  <div *ngFor="let crump of crumpList; let first = first; let last = last">
+
+    <button *ngIf="crump.label && first"
+            pButton
+            type="button"
+            [icon]="'pi pi-angle-right'"
+            [iconPos]="'right'"
+            [routerLink]="crump.routerLink"
+            class="p-button-text p-button-secondary m-0 p-0">
+      <i class="pi pi-home"></i>
+    </button>
+
+    <button *ngIf="crump.label && !last && !first"
+            pButton
+            type="button"
+            [label]="crump.label"
+            [routerLink]="crump.routerLink"
+            class="p-button-text p-button-secondary m-0 p-0"></button>
+
+    <button *ngIf="crump.label && last"
+            pButton
+            type="button"
+            [icon]="'pi pi-angle-right'"
+            [iconPos]="'left'"
+            [label]="crump.label"
+            [routerLink]="crump.routerLink"
+            class="p-button-text p-button-secondary mt-0 mr-0 mb-0 ml-1 p-0"></button>
+  </div>
+</ng-container>
+
+

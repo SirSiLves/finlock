@@ -17,6 +17,7 @@ import { MenuModule } from 'primeng/menu';
 import { RippleModule } from 'primeng/ripple';
 import { HomeModule } from '../features/home/home.module';
 import { SharedModule } from '../shared/shared.module';
+import { BreadCrumpComponent } from './bread-crump/bread-crump.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { SharedModule } from '../shared/shared.module';
     HeaderComponent,
     FooterComponent,
     MenuComponent,
-    SearchComponent
+    SearchComponent,
+    BreadCrumpComponent
   ],
   imports: [
     CommonModule,

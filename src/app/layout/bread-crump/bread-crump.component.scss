@@ -1,0 +1,25 @@
+:host {
+  display: flex;
+  flex-direction: row;
+  margin: 0.25rem 1.1rem 0.25rem 1.3rem;
+  justify-content: start;
+
+  button {
+    font-size: 0.8rem;
+    align-content: center;
+
+    i {
+      font-size: 0.8rem;
+      margin-top: 2px;
+      margin-right: 7px;
+    }
+  }
+}
+
+
+@media screen and (max-width: 720px) {
+  :host {
+    margin: 0.25rem 1.1rem 0.25rem 1rem;
+  }
+
+}
