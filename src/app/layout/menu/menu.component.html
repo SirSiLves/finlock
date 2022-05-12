@@ -1,13 +1,9 @@
-<ng-container *ngIf="(user$ | async) !== undefined; else nonLoginMenu">
-  <p-menubar *ngIf="(mobile$ | async) === false; else mobile" [model]="items"></p-menubar>
+<ng-container *ngIf="(mobile$ | async) === false; else mobile">
+  <p-menubar [model]="(user$ | async) === undefined ? itemsWithoutLogin : items"></p-menubar>
 </ng-container>
-<ng-template #nonLoginMenu>
-  <p-menubar *ngIf="(mobile$ | async) === false; else mobile" [model]="itemsWithoutLogin"></p-menubar>
-</ng-template>
-
 
 <ng-template #mobile>
-  <p-menubar [model]="items">
+  <p-menubar [model]="(user$ | async) === undefined ? itemsWithoutLogin : items">
     <div class="mt-1">
       <app-search></app-search>
     </div>
