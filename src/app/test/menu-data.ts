@@ -22,7 +22,6 @@ export const menu = [
   },
   {
     label: 'Auftragsverwaltung',
-    routerLink: '/auftragsverwaltung/auftragsliste',
     items: [
       {
         label: 'Auftragsliste',
